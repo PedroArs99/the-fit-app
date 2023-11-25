@@ -7,6 +7,7 @@ import {
 } from '@fortawesome/angular-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
+import { icons } from './icons.config';
 
 @NgModule({
   declarations: [],
@@ -15,6 +16,6 @@ import { far } from '@fortawesome/free-regular-svg-icons';
 })
 export class SharedModule {
   constructor(iconLibrary: FaIconLibrary) {
-    iconLibrary.addIconPacks(fas, far);
+    iconLibrary.addIcons(...icons);
   }
 }
