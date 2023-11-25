@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
   
 jobs:
-  build:
+  build-and-push:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -23,10 +23,6 @@ jobs:
         cache-dependency-path: './ui/package-lock.json'
     - run: npm ci
     - run: npm run build --prod
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
     - name: Upload build to S3
       run: |
         aws s3 sync ./ui/dist/the-fit-app/browser s3://${{ vars.AWS_DEPLOYMENT_BUCKET}}
