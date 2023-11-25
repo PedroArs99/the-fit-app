@@ -29,4 +29,4 @@ jobs:
     steps:
     - name: Upload build to S3
       run: |
-        aws s3 sync ./ui/dist/the-fit-app/browser s3://$AWS_DEPLOYMENT_BUCKET
+        aws s3 sync ./ui/dist/the-fit-app/browser s3://${{ vars.AWS_DEPLOYMENT_BUCKET}}
