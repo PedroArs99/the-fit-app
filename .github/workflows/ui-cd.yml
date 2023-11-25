@@ -23,4 +23,12 @@ jobs:
         cache-dependency-path: './ui/package-lock.json'
     - run: npm ci
     - run: npm run build --prod
-    - run: npm run deploy
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Publish build artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: frontend-prod-build
+        path: ./ui/dist/the-fit-app/browser
+      
