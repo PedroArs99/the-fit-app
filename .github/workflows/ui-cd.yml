@@ -24,11 +24,9 @@ jobs:
     - run: npm ci
     - run: npm run build --prod
   deploy:
+    needs: build
     runs-on: ubuntu-latest
     steps:
-    - name: Publish build artifacts
-      uses: actions/upload-artifact@v3
-      with:
-        name: frontend-prod-build
-        path: ./ui/dist/the-fit-app/browser
-      
+    - name: Upload build to S3
+      run: |
+        aws s3 sync ./ui/dist/the-fit-app/browser s3://$AWS_DEPLOYMENT_BUCKET
