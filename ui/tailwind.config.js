@@ -2,7 +2,7 @@
 module.exports = {
   content: ["./src/**/*.{html,ts}"],
   daisyui: {
-    themes: ["sunset", "winter"],
+    themes: ["sunset", "bumblebee"],
   },
   theme: {
     extend: {},
