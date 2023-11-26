@@ -5,3 +5,11 @@
 html, body {
   height: 100%;
 }
+
+h1 {
+  @apply text-4xl;
+}
+
+.page-title {
+  padding-bottom: 1rem;
+}

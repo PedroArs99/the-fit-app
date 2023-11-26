@@ -5,7 +5,11 @@ module.exports = {
     themes: ["sunset", "bumblebee"],
   },
   theme: {
-    extend: {},
+    extend: {
+      spacing: {
+        '112': '27rem'
+      }
+    },
   },
   plugins: [require("daisyui")],
 };
