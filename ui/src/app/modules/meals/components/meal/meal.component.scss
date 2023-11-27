@@ -1,3 +1,7 @@
 :host {
-  @apply w-full lg:w-112 card card-compact lg:card-normal card-bordered border-neutral;
+  @apply  w-full lg:w-112 card card-compact lg:card-normal card-bordered border-neutral;
+}
+
+.card-body {
+  justify-content: space-between;
 }
