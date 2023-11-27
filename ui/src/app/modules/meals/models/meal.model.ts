@@ -1,3 +1,3 @@
 export class Meal {
-  constructor(public imageUrl: string, public name: string) {}
+  constructor(public id: string, public imageUrl: string, public name: string) {}
 }
