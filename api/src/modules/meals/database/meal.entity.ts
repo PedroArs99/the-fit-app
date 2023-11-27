@@ -17,8 +17,6 @@ export const mealSchema = new Schema<MealEntity>({
 export const MealEntity = mongoose.model("Meal", mealSchema);
 
 export function toDomain(entity: MealEntity): Meal {
-  console.log(entity);
-
   return {
     id: entity._id,
     imageUrl: entity.imageUrl,
