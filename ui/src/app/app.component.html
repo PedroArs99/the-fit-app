@@ -1,5 +1,9 @@
 <tfa-navbar></tfa-navbar>
 
 <main>
-  <router-outlet></router-outlet>
+  @if (isRouterLoading()) {
+    <tfa-spinner />
+  } @else {
+    <router-outlet></router-outlet>
+  }
 </main>
