@@ -1,3 +1,5 @@
+org: pedroars99
+app: the-fit-app
 service: the-fit-app
 frameworkVersion: '3'
 
@@ -24,7 +26,7 @@ custom:
     concurrency: 10
 
 functions:
-  hello:
+  add-meal:
     handler: src/modules/meals/functions/add-meal.handler
     events:
       - httpApi:
