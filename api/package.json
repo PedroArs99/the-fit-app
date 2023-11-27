@@ -10,7 +10,9 @@
     "node": ">=14.15.0"
   },
   "dependencies": {
-    "joi": "^17.11.0"
+    "joi": "^17.11.0",
+    "mongoose": "^8.0.1",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@serverless/typescript": "^3.0.0",
