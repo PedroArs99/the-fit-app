@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MealsRepository } from '../../services/meals-repository.service';
 
 @Component({
   selector: 'tfa-meals',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './meals.component.scss'
 })
 export class MealsComponent {
+  meals = this.mealsRepository.getAll();
 
+  constructor(private mealsRepository: MealsRepository){}
 }

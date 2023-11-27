@@ -3,58 +3,11 @@
 </div>
 
 <div class="meals">
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
-  <tfa-meal></tfa-meal>
+  @if (meals.isLoading()) {
+    <tfa-spinner />
+  } @else {
+    @for (meal of meals.value(); track $index) {
+      <tfa-meal [meal]="meal" />
+    }
+  }
 </div>

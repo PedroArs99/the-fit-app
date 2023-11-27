@@ -1,28 +1,23 @@
-import { Injectable, Signal, signal } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { Meal } from '../models/meal.model';
 import { Signalizable } from '../../../shared/models/signalizable.model';
-
-const mockMeals: Array<Meal> = [
-  {
-    name: 'Fried rice with beef',
-    imageUrl: 'https://the-fit-app-ui-food-images.s3.eu-central-1.amazonaws.com/fried+rice+with+beef.webp',
-  },
-];
-
-@Injectable({
-  providedIn: 'root',
-})
+import { environment } from '../../../../environments/environment';
+import { HttpClient } from '@angular/common/http';
+@Injectable()
 export class MealsRepository {
-  constructor() {}
+  constructor(private httpClient: HttpClient) {}
 
   getAll(): Signalizable<Meal[]> {
     const isLoading = signal(true);
     const meals = signal<Array<Meal>>([]);
 
-    setTimeout(() => {
-      isLoading.set(false);
-      meals.set(mockMeals);
-    }, 2000);
+    this.httpClient.get<Meal[]>(`${environment.apiUrl}/meals`)
+      .subscribe((data) => {
+        isLoading.set(false);
+
+        const mealsResponse = data.map(entry => new Meal(entry.imageUrl, entry.name));
+        meals.set(mealsResponse);
+      })
 
     return {
       isLoading,
