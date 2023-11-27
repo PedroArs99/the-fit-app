@@ -16,13 +16,22 @@ async function addMeal(id: string, addMeal: AddMealInput) {
 
 async function findAll() {
   const queryResult = await MongoTemplate.runOperation(async () => {
-    return await MealEntity.find().sort({ name: 'ascending' });
+    return await MealEntity.find().sort({ name: "ascending" });
   });
 
-  return queryResult.map(entry => toDomain(entry));
+  return queryResult.map((entry) => toDomain(entry));
+}
+
+async function findById(id: string) {
+  const queryResult = await MongoTemplate.runOperation(async () => {
+    return await MealEntity.findById(id);
+  });
+
+  return queryResult ? toDomain(queryResult) : undefined;
 }
 
 export const MealsRepository = {
   addMeal,
   findAll,
+  findById,
 };
