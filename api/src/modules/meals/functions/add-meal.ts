@@ -12,9 +12,9 @@ module.exports.handler = async (event: ApiGatewayEvent) => {
   if (error) return jsonResponse(400, error.details[0].message);
 
   const mealId = uuidv4();
-  MealsRepository.addMeal(mealId, input)
+  await MealsRepository.addMeal(mealId, input)
 
-  return jsonResponse(200, {
+  return jsonResponse(201, {
     mealId,
     ...input,
   });

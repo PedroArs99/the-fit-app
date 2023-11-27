@@ -1,9 +1,6 @@
 import { AddMealInput } from "../models/write/add-meal";
-import * as mongoose from "mongoose";
-import { mealSchema } from "./meal.entity";
+import { MealEntity, toDomain } from "./meal.entity";
 import { MongoTemplate } from "src/shared/mongo-template";
-
-const MealEntity = mongoose.model("Meal", mealSchema);
 
 async function addMeal(id: string, addMeal: AddMealInput) {
   const meal = new MealEntity({
@@ -17,6 +14,15 @@ async function addMeal(id: string, addMeal: AddMealInput) {
   });
 }
 
+async function findAll() {
+  const queryResult = await MongoTemplate.runOperation(async () => {
+    return await MealEntity.find().sort({ name: 'ascending' });
+  });
+
+  return queryResult.map(entry => toDomain(entry));
+}
+
 export const MealsRepository = {
-  addMeal
+  addMeal,
+  findAll,
 };

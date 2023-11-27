@@ -28,9 +28,15 @@ custom:
     concurrency: 10
 
 functions:
-  add-meal:
+  add-meals:
     handler: src/modules/meals/functions/add-meal.handler
     events:
       - httpApi:
           method: 'POST'
+          path: '/meals'
+  get-meals:
+    handler: src/modules/meals/functions/get-meals.handler
+    events:
+      - httpApi:
+          method: 'GET'
           path: '/meals'
