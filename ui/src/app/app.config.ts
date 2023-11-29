@@ -7,8 +7,14 @@ import { MealDetailsComponent } from './modules/meals/components/meal-details/me
 import { mealByIdResolver } from './modules/meals/resolvers/meal-by-id.resolver';
 import { MealsRepository } from './modules/meals/services/meals-repository.service';
 import { provideHttpClient } from '@angular/common/http';
+import { BodyDashboardComponent } from './modules/body/pages/body-dashboard/body-dashboard.component';
+import path from 'path';
 
 export const routes: Routes = [
+  {
+    path: 'body',
+    component: BodyDashboardComponent,
+  },
   {
     path: 'meals',
     component: MealsComponent,
@@ -20,6 +26,10 @@ export const routes: Routes = [
       meal: mealByIdResolver,
     },
   },
+  {
+    path: '**',
+    redirectTo: 'body',
+  }
 ];
 
 export const appConfig: ApplicationConfig = {

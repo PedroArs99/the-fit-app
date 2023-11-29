@@ -12,11 +12,12 @@ import { LayoutModule } from './layout/layout.module';
 import { MealsModule } from './modules/meals/meals.module';
 import { Subscription } from 'rxjs';
 import { SharedModule } from './shared/shared.module';
+import { BodyModule } from './modules/body/body.module';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, MealsModule, LayoutModule, RouterOutlet, SharedModule],
+  imports: [BodyModule, CommonModule, MealsModule, LayoutModule, RouterOutlet, SharedModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
