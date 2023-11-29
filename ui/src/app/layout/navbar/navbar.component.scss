@@ -1,3 +1,25 @@
 summary {
   @apply text-base;
 }
+
+.navbar-center {
+  display: flex;
+  
+  @apply gap-1;
+}
+
+.nav-header {
+  @apply text-base font-bold;
+}
+
+.nav-item {
+  @apply btn btn-ghost;
+}
+
+.nav-item-active {
+  @apply bg-primary-content text-primary;
+}
+
+.nav-item-active:hover {
+  @apply text-primary-content;
+}
