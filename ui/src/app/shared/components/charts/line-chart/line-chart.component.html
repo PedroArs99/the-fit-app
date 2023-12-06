@@ -1,11 +1,11 @@
 <div #canvasWrapper class="block">
+  @if (lineChartData()) {
   <canvas
     baseChart
     class="h-full w-full"
     [type]="'line'"
-    [data]="lineChartData"
+    [data]="lineChartData()"
     [options]="lineChartOptions"
-    [legend]="lineChartLegend"
-  >
-  </canvas>
+  ></canvas>
+  }
 </div>
