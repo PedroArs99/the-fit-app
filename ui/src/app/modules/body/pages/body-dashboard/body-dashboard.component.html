@@ -1,4 +1,8 @@
-<tfa-body-timeseries title="Weight" [timeSerie]="weightTimeSeries()" />
-<tfa-body-timeseries title="Muscle %" [timeSerie]="muscleMassTimeSeries()" />
-<tfa-body-timeseries title="Fat %" [timeSerie]="fatMassTimeSeries()" />
-<tfa-body-timeseries title="Bone %" [timeSerie]="boneMassTimeSeries()" />
+@if (isLoading()) {
+  <tfa-spinner />
+} @else {
+  <tfa-body-timeseries title="Weight" unit="kg" [timeSerie]="weightTimeSeries()" />
+  <tfa-body-timeseries title="Muscle" unit="%" [timeSerie]="muscleMassTimeSeries()" />
+  <tfa-body-timeseries title="Fat" unit="%" [timeSerie]="fatMassTimeSeries()" />
+  <tfa-body-timeseries title="Bone" unit="%" [timeSerie]="boneMassTimeSeries()" />
+}
