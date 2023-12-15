@@ -28,12 +28,20 @@ custom:
     concurrency: 10
 
 functions:
+  # Body
+  get-body-metrics:
+    handler: src/modules/body/functions/get-body-metrics.handler
+    events:
+      - httpApi:
+          method: 'GET'
+          path: '/body/metrics'
+  # Meals
   add-meals:
     handler: src/modules/meals/functions/add-meal.handler
     events:
       - httpApi:
           method: 'POST'
-          path: '/meals'
+          path: '/meals' 
   get-meals:
     handler: src/modules/meals/functions/get-meals.handler
     events:
