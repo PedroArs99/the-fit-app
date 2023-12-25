@@ -53,7 +53,7 @@ export class LineChartComponent implements OnInit {
         {
           data,
           fill: true,
-          tension: 0.5,
+          tension: 0,
           borderColor: '#ef8c65',
           backgroundColor: 'rgba(239, 140, 101, 0.4)',
           pointBackgroundColor: '#ef8c65',
