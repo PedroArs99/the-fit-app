@@ -1,8 +1,11 @@
 @if (isLoading()) {
   <tfa-spinner />
 } @else {
-  <tfa-body-timeseries title="Weight" unit="kg" [timeSerie]="weightTimeSeries()" />
-  <tfa-body-timeseries title="Muscle" unit="%" [timeSerie]="muscleMassTimeSeries()" />
-  <tfa-body-timeseries title="Fat" unit="%" [timeSerie]="fatMassTimeSeries()" />
-  <tfa-body-timeseries title="Bone" unit="%" [timeSerie]="boneMassTimeSeries()" />
+  <div class="flex flex-wrap lg:grid lg:grid-cols-3 gap-3">
+    <tfa-body-timeseries title="Weight" unit="kg" [timeSerie]="weightTimeSeries()" />
+    <tfa-body-timeseries title="Muscle" unit="%" [timeSerie]="muscleMassTimeSeries()" />
+    <tfa-body-timeseries title="Fat" unit="%" [timeSerie]="fatMassTimeSeries()" />
+    <tfa-body-timeseries title="Bone" unit="%" [timeSerie]="boneMassTimeSeries()" />
+  </div>
+
 }
