@@ -3,7 +3,8 @@ summary {
 }
 
 .navbar {
-  height: 3.5rem;
+  min-height: 3rem;
+  height: 3rem;
 }
 
 .navbar-center {
@@ -17,7 +18,7 @@ summary {
 }
 
 .nav-item {
-  @apply btn btn-ghost;
+  @apply btn btn-sm btn-ghost;
 }
 
 .nav-item-active {
