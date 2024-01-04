@@ -7,7 +7,7 @@
     <tfa-spinner />
   } @else {
     @for (meal of meals.value(); track $index) {
-      <tfa-meal-card [meal]="meal" />
+      <tfa-meal-card class="base-card" [meal]="meal" />
     }
   }
 </div>
