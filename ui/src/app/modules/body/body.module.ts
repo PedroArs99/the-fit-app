@@ -5,6 +5,7 @@ import { BodyTimeseriesComponent } from './components/body-timeseries/body-times
 import { LineChartComponent } from '../../shared/components/charts/line-chart/line-chart.component';
 import { bodyMetricsRepository } from './services/body-metrics-repository.service';
 import { SharedModule } from '../../shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -16,6 +17,7 @@ import { SharedModule } from '../../shared/shared.module';
   imports: [
     CommonModule,
     LineChartComponent,
+    ReactiveFormsModule,
     SharedModule,
   ],
   providers: [

@@ -10,6 +10,10 @@ h1 {
   @apply text-4xl;
 }
 
+.base-card {
+  @apply card card-compact card-bordered border-neutral w-full;
+}
+
 .page-title {
   padding-bottom: 1rem;
 }

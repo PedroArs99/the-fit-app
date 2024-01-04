@@ -1,6 +1,7 @@
 import { Component, computed, signal } from '@angular/core';
 import { BodyMetric } from '../../models/body-metric.model';
 import { bodyMetricsRepository } from '../../services/body-metrics-repository.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'tfa-body-dashboard',
@@ -8,7 +9,7 @@ import { bodyMetricsRepository } from '../../services/body-metrics-repository.se
   styleUrl: './body-dashboard.component.scss',
 })
 export class BodyDashboardComponent {
-  private metrics = this.bodyMetricsRepository.getAll();
+  private metrics = this.bodyMetricsRepository.metrics;
 
   isLoading = this.metrics.isLoading;
 
@@ -28,5 +29,36 @@ export class BodyDashboardComponent {
     this.metrics.value().map((it) => ({ timestamp: it.timestamp, value: it.boneMassPercentage }))
   );
 
-  constructor(private bodyMetricsRepository: bodyMetricsRepository) {}
+  progressForm = new FormGroup({
+    weight: new FormControl<number | undefined>(undefined, [Validators.required, Validators.min(0)]),
+    muscleMass: new FormControl<number | undefined>(undefined, [
+      Validators.required,
+      Validators.min(0),
+      Validators.max(100),
+    ]),
+    fatMass: new FormControl<number | undefined>(undefined, [
+      Validators.required,
+      Validators.min(0),
+      Validators.max(100),
+    ]),
+  });
+
+  constructor(private bodyMetricsRepository: bodyMetricsRepository) {
+    this.bodyMetricsRepository.getAll();
+  }
+
+  trackProgress(): void {
+    const formValue = this.progressForm.value;
+
+    const bodyMetric: BodyMetric = {
+      timestamp: new Date(),
+      weight: formValue.weight!,
+      muscleMassPercentage: formValue.muscleMass!,
+      fatMassPercentage: formValue.fatMass!,
+      boneMassPercentage: 100 - formValue.muscleMass! - formValue.fatMass!,
+    };
+
+    this.bodyMetricsRepository.save(bodyMetric);
+    this.progressForm.reset();
+  }
 }
