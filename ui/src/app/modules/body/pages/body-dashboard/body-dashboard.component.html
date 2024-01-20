@@ -14,6 +14,12 @@
       <form [formGroup]="progressForm" (ngSubmit)="trackProgress()" class="w-full">
         <label class="form-control w-full">
           <div class="label">
+            <span class="label-text">Date</span>
+          </div>
+          <input type="date" class="input input-bordered w-full" formControlName="date" />
+        </label>
+        <label class="form-control w-full">
+          <div class="label">
             <span class="label-text">Weight (kg)</span>
           </div>
           <input type="number" class="input input-bordered w-full" formControlName="weight" />

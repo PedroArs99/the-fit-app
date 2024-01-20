@@ -30,6 +30,7 @@ export class BodyDashboardComponent {
   );
 
   progressForm = new FormGroup({
+    date: new FormControl<Date | undefined>(undefined, [Validators.required]),
     weight: new FormControl<number | undefined>(undefined, [Validators.required, Validators.min(0)]),
     muscleMass: new FormControl<number | undefined>(undefined, [
       Validators.required,
@@ -51,11 +52,11 @@ export class BodyDashboardComponent {
     const formValue = this.progressForm.value;
 
     const bodyMetric: BodyMetric = {
-      timestamp: new Date(),
+      timestamp: formValue.date!,
       weight: formValue.weight!,
       muscleMassPercentage: formValue.muscleMass!,
       fatMassPercentage: formValue.fatMass!,
-      boneMassPercentage: 100 - formValue.muscleMass! - formValue.fatMass!,
+      boneMassPercentage: +(100 - formValue.muscleMass! - formValue.fatMass!).toFixed(2),
     };
 
     this.bodyMetricsRepository.save(bodyMetric);
