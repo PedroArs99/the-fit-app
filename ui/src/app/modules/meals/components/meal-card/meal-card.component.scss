@@ -1,9 +1,9 @@
 :host {
-  @apply w-full lg:w-112;
+  @apply w-full rounded-xl;
 }
 
 .card-body:hover {
-  @apply cursor-pointer border border-primary rounded-xl shadow-lg shadow-primary;
+  @apply cursor-pointer border border-primary rounded-xl shadow-lg;
 }
 
 .card-body {

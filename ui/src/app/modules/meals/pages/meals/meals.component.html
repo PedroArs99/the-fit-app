@@ -6,8 +6,10 @@
   @if (meals.isLoading()) {
     <tfa-spinner />
   } @else {
-    @for (meal of meals.value(); track $index) {
-      <tfa-meal-card class="base-card" [meal]="meal" />
-    }
+    <div class="flex flex-wrap lg:grid lg:grid-cols-5 gap-3">
+      @for (meal of meals.value(); track $index) {
+        <tfa-meal-card class="base-card" [meal]="meal" />
+      }
+    </div>
   }
 </div>
