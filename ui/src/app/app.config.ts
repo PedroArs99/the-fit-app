@@ -10,6 +10,10 @@ export const routes: Routes = [
     loadChildren: () => import('./modules/body/body.module').then((m) => m.BodyModule),
   },
   {
+    path: 'meals',
+    loadChildren: () => import('./modules/meals/meals.module').then((m) => m.MealsModule),
+  },
+  {
     path: '**',
     redirectTo: 'body',
   },
