@@ -1,6 +1,6 @@
 import { Component, computed, signal } from '@angular/core';
 import { BodyMetric } from '../../models/body-metric.model';
-import { bodyMetricsRepository } from '../../services/body-metrics-repository.service';
+import { BodyMetricsRepository } from '../../services/body-metrics-repository.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -44,7 +44,7 @@ export class BodyDashboardComponent {
     ]),
   });
 
-  constructor(private bodyMetricsRepository: bodyMetricsRepository) {
+  constructor(private bodyMetricsRepository: BodyMetricsRepository) {
     this.bodyMetricsRepository.getAll();
   }
 

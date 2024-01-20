@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { BodyMetric } from '../models/body-metric.model';
 
 @Injectable()
-export class bodyMetricsRepository {
+export class BodyMetricsRepository {
   private _isLoading = signal(true);
   private _metrics = signal<Array<BodyMetric>>([]);
 
