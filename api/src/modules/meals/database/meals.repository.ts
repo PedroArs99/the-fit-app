@@ -1,13 +1,9 @@
 import { AddMealInput } from "../models/write/add-meal";
-import { MealEntity, toDomain } from "./meal.entity";
+import { MealEntity, toDomain, toEntity } from "./meal.entity";
 import { MongoTemplate } from "src/shared/mongo-template";
 
 async function addMeal(id: string, addMeal: AddMealInput) {
-  const meal = new MealEntity({
-    _id: id,
-    imageUrl: addMeal.imageUrl,
-    name: addMeal.name,
-  });
+  const meal = toEntity(id, addMeal);
 
   await MongoTemplate.runOperation(async () => {
     await meal.save();
