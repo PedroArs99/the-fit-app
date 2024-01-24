@@ -1,9 +1,9 @@
 import { inject } from '@angular/core';
-import { ActivatedRouteSnapshot,  ResolveFn, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, ResolveFn, RouterStateSnapshot } from '@angular/router';
 import { Meal } from '../models/meal.model';
 import { MealsRepository } from '../services/meals-repository.service';
 
-export const mealByIdResolver: ResolveFn<Meal> = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
+export const MealByIdResolver: ResolveFn<Meal> = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
   const mealRepository = inject(MealsRepository);
 
   const id = route.paramMap.get('id');

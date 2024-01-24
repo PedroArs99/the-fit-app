@@ -1,1 +1,46 @@
-<p>{{ meal()?.name}}</p>
+<div class="page-title">
+  <h1>{{ meal()?.name }}</h1>
+</div>
+
+<div class="flex flex-col lg:flex-row items-start">
+  <figure>
+    <img class="lg:max-w-xl lg:m-auto border border-primary rounded-xl" [src]="meal()?.imageUrl" />
+  </figure>
+
+  <div class="divider divider-primary lg:divider-horizontal"></div>
+
+  <table class="table table-zebra">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Amount per 100g</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>Energy</th>
+        <td>{{ meal()?.nutritionalValues?.energy }} kcal</td>
+      </tr>
+      <tr>
+        <th>Fat</th>
+        <td>{{ meal()?.nutritionalValues?.fat }} g</td>
+      </tr>
+      <tr>
+        <th>Carbohydrates</th>
+        <td>{{ meal()?.nutritionalValues?.carbohydrates }} g</td>
+      </tr>
+      <tr>
+        <th>Fiber</th>
+        <td>{{ meal()?.nutritionalValues?.fiber }} g</td>
+      </tr>
+      <tr>
+        <th>Protein</th>
+        <td>{{ meal()?.nutritionalValues?.protein }} g</td>
+      </tr>
+      <tr>
+        <th>Salt</th>
+        <td>{{ meal()?.nutritionalValues?.salt }} g</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

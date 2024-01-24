@@ -33,6 +33,6 @@ export class MealsRepository {
   }
 
   private mapResponseEntryToDomain(entry: Meal) {
-    return new Meal(entry.id, entry.imageUrl, entry.name);
+    return new Meal(entry.id, entry.imageUrl, entry.name, entry.nutritionalValues);
   }
 }
