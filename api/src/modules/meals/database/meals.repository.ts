@@ -1,29 +1,36 @@
+import { PrismaClient } from "@prisma/client";
+import { Meal } from "../models/read/meal";
 import { AddMealInput } from "../models/write/add-meal";
-import { MealEntity, toDomain, toEntity } from "./meal.entity";
-import { MongoTemplate } from "src/shared/mongo-template";
 
-async function addMeal(id: string, addMeal: AddMealInput) {
-  const meal = toEntity(id, addMeal);
+const prisma = new PrismaClient();
 
-  await MongoTemplate.runOperation(async () => {
-    await meal.save();
+async function addMeal(id: string, addMeal: AddMealInput): Promise<Meal> {
+  const result = await prisma.meal.create({
+    data: {
+      id,
+      imageUrl: addMeal.imageUrl,
+      name: addMeal.name,
+      nutritionalValues: addMeal.nutritionalValues,
+    },
   });
+
+  return result;
 }
 
-async function findAll() {
-  const queryResult = await MongoTemplate.runOperation(async () => {
-    return await MealEntity.find().sort({ name: "ascending" });
-  });
+async function findAll(): Promise<Meal[]> {
+  const meals = await prisma.meal.findMany();
 
-  return queryResult.map((entry) => toDomain(entry));
+  return meals;
 }
 
-async function findById(id: string) {
-  const queryResult = await MongoTemplate.runOperation(async () => {
-    return await MealEntity.findById(id);
+async function findById(id: string): Promise<Meal | undefined> {
+  const meal = await prisma.meal.findUnique({
+    where: {
+      id,
+    },
   });
 
-  return queryResult ? toDomain(queryResult) : undefined;
+  return meal;
 }
 
 export const MealsRepository = {
