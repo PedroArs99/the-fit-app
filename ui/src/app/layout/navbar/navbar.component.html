@@ -1,35 +1,16 @@
 <div class="navbar bg-primary text-primary-content">
   <div class="navbar-start">
-    <button class="btn btn-ghost" routerLink="/body">
+    <button class="btn btn-ghost" routerLink="/">
       <img src="/assets/logo.svg" width="48" />
     </button>
   </div>
 
   <div class="navbar-center">
-    <a class="nav-item" routerLink="/body" routerLinkActive="nav-item-active">
-      <fa-icon icon="child-reaching" />
-      <span class="nav-header">Body</span>
+    <a class="nav-item" routerLink="/meals" routerLinkActive="nav-item-active">
+      <fa-icon icon="utensils" />
+      <span>Meals</span>
     </a>
   </div>
 
-  <ul class="menu menu-horizontal navbar-end">
-    <li>
-      <details>
-        <summary>
-          <fa-icon icon="book-open" />
-          <span class="nav-header">Catalog</span>
-        </summary>
-
-        <ul class="p-2 bg-base-100 rounded-t-none">
-          <li>
-            <a class="catalog-item" routerLink="/meals" routerLinkActive="catalog-item-active">
-              <fa-icon icon="utensils" />
-              <span>Meals</span>
-            </a>
-          </li>
-        </ul>
-      </details>
-    </li>
-  </ul>
+  <ul class="navbar-end"></ul>
 </div>
-´

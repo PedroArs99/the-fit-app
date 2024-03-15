@@ -3,18 +3,6 @@
   height: 3rem;
 }
 
-.catalog-item {
-  @apply text-primary;
-}
-
-.catalog-item:hover {
-  @apply bg-base-200;
-}
-
-.catalog-item-active {
-  @apply bg-primary-content;
-}
-
 .navbar-center {
   display: flex;
 
