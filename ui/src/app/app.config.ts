@@ -6,6 +6,10 @@ import { provideHttpClient } from '@angular/common/http';
 
 export const routes: Routes = [
   {
+    path: 'excercises',
+    loadChildren: () => import('./modules/excercises/excercises.module').then((m) => m.ExcercisesModule),
+  },
+  {
     path: 'meals',
     loadChildren: () => import('./modules/meals/meals.module').then((m) => m.MealsModule),
   },
