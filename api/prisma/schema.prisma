@@ -1,0 +1,16 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("MONGO_CONNECTION_STRING")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Excercise {
+  id String @id @map("_id") 
+  imageUrl String
+  name String
+
+  @@map("excercises")
+}
