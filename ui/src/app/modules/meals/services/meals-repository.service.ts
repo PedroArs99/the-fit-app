@@ -1,7 +1,7 @@
 import { Injectable, signal } from '@angular/core';
 import { Meal } from '../models/meal.model';
-import { Signalizable } from '../../../shared/models/signalizable.model';
-import { environment } from '../../../../environments/environment';
+import { Signalizable } from '@shared/models/signalizable.model';
+import { environment } from '@environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 
