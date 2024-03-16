@@ -23,6 +23,14 @@ h1 {
   @apply card card-compact card-bordered border-neutral w-full;
 }
 
+.form {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
 .page-body {
   display: flex;
   justify-content: space-around;
