@@ -2,7 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -11,19 +12,17 @@ h1 {
 }
 
 .base-card {
+  .card-body {
+    justify-content: space-between;
+  }
+
+  .card-body:hover {
+    @apply cursor-pointer rounded-xl shadow-xl;
+  }
+
   @apply card card-compact card-bordered border-neutral w-full;
 }
 
 .page-title {
   padding-bottom: 1rem;
-}
-
-.stat {
-  @apply py-0 px-3;
-}
-
-.stat-value {
-  font-size: 1.75rem;
-
-  @apply py-1;
 }
