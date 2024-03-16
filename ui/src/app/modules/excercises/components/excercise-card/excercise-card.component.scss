@@ -1,0 +1,11 @@
+:host {
+  @apply w-full rounded-xl border-primary;
+}
+
+.card-body:hover {
+  @apply cursor-pointer border border-primary rounded-xl shadow-lg;
+}
+
+.card-body {
+  justify-content: space-between;
+}

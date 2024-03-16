@@ -1,1 +1,15 @@
-<p>excercises works!</p>
+<div class="page-title">
+  <h1>Excercises</h1>
+</div>
+
+<div class="excercises">
+  @if (excercises.isLoading()) {
+    <tfa-spinner />
+  } @else {
+    <div class="flex flex-wrap lg:grid lg:grid-cols-5 gap-3">
+      @for (excercise of excercises.value(); track $index) {
+        <tfa-excercise-card class="base-card" [excercise]="excercise"/>
+      }
+    </div>
+  }
+</div>
