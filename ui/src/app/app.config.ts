@@ -1,8 +1,9 @@
-import { ApplicationConfig } from '@angular/core';
+import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { Routes } from '@angular/router';
-import { provideHttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { errorToasterHttpInterceptor } from '@shared/interceptors/error-toaster.interceptor';
 
 export const routes: Routes = [
   {
@@ -20,5 +21,5 @@ export const routes: Routes = [
 ];
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), provideHttpClient()],
+  providers: [errorToasterHttpInterceptor, importProvidersFrom(HttpClientModule), provideRouter(routes)],
 };
