@@ -4,11 +4,12 @@ import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontaweso
 import { icons } from './config/icons.config';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { RouterModule } from '@angular/router';
+import { ToasterComponent } from './components/toaster/toaster.component';
 
 @NgModule({
-  declarations: [SpinnerComponent],
+  declarations: [SpinnerComponent, ToasterComponent],
   imports: [CommonModule, FontAwesomeModule, RouterModule],
-  exports: [FontAwesomeModule, RouterModule, SpinnerComponent],
+  exports: [FontAwesomeModule, RouterModule, SpinnerComponent, ToasterComponent],
 })
 export class SharedModule {
   constructor(iconLibrary: FaIconLibrary) {
