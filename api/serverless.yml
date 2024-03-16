@@ -29,6 +29,12 @@ custom:
 
 functions:
   # Excercises
+  add-excercise:
+    handler: src/modules/excercises/functions/add-excercise.handler
+    events:
+      - httpApi:
+          method: 'POST'
+          path: '/excercises'
   get-excercises:
     handler: src/modules/excercises/functions/get-excercises.handler
     events:
