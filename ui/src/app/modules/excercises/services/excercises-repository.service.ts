@@ -3,6 +3,7 @@ import { Signalizable } from '@shared/models/signalizable.model';
 import { environment } from '@environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Excercise } from '../models/excercise.model';
+import { Observable, map } from 'rxjs';
 
 type AddExcerciseInput = {
   name: string;
@@ -13,21 +14,10 @@ type AddExcerciseInput = {
 export class ExcercisesRepository {
   constructor(private httpClient: HttpClient) {}
 
-  add(input: AddExcerciseInput): Signalizable<Excercise | undefined> {
-    const isLoading = signal(true);
-    const excercise = signal<Excercise | undefined>(undefined);
-
-    this.httpClient.post<Excercise>(`${environment.apiUrl}/excercises`, input).subscribe((data) => {
-      isLoading.set(false);
-
-      const excerciseResponse = this.mapResponseEntryToDomain(data);
-      excercise.set(excerciseResponse);
-    });
-
-    return {
-      isLoading,
-      value: excercise,
-    };
+  add(input: AddExcerciseInput, callback?: (excercise: Excercise) => void): Observable<Excercise> {
+    return this.httpClient
+      .post<Excercise>(`${environment.apiUrl}/excercises`, input)
+      .pipe(map((response) => this.mapResponseEntryToDomain(response)));
   }
 
   getAll(): Signalizable<Excercise[]> {

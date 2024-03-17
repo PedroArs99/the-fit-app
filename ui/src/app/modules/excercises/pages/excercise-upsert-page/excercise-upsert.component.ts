@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Injector, effect } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ExcercisesRepository } from '../../services/excercises-repository.service';
+import { Observable, catchError } from 'rxjs';
+import { ToasterService } from '@shared/services/toaster.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'tfa-excercise-upsert',
@@ -13,7 +16,11 @@ export class ExcerciseUpsertPageComponent {
     imageUrl: new FormControl<string>('', Validators.required),
   });
 
-  constructor(private excerciseRepository: ExcercisesRepository) {}
+  constructor(
+    private excerciseRepository: ExcercisesRepository,
+    private router: Router,
+    private toaster: ToasterService
+  ) {}
 
   save() {
     if (this.form.valid) {
@@ -22,7 +29,10 @@ export class ExcerciseUpsertPageComponent {
         imageUrl: this.form.value.imageUrl!,
       };
 
-      this.excerciseRepository.add(input);
+      this.excerciseRepository.add(input).subscribe((excercise) => {
+        this.router.navigate(['/excercises']);
+        this.toaster.toast(`${excercise.name} Has been successfully added.`, 'success');
+      });
     }
   }
 }
