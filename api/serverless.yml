@@ -4,6 +4,8 @@ service: the-fit-app
 frameworkVersion: '3'
 
 provider:
+  httpApi:
+    cors: true
   name: aws
   region: eu-central-1
   runtime: nodejs20.x
