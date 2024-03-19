@@ -12,8 +12,21 @@ model Excercise {
   id String @id @map("_id") 
   imageUrl String
   name String
+  trainingPlansIds String[]
+
+  trainingPlans TrainingPlan[] @relation("ExcerciseToTrainingPlan", fields: [trainingPlansIds], references: [id])
+
 
   @@map("excercises")
+}
+
+type NutritionalValues {
+  carbohydrates Float
+  energy Float
+  fat Float
+  fiber Float
+  protein Float
+  salt Float
 }
 
 model Meal {
@@ -25,11 +38,12 @@ model Meal {
   @@map("meals")
 }
 
-type NutritionalValues {
-  carbohydrates Float
-  energy Float
-  fat Float
-  fiber Float
-  protein Float
-  salt Float
+model TrainingPlan {
+  id String @id @map("_id")
+  excerciseIds String[]
+  name String
+
+  excercises Excercise[] @relation("ExcerciseToTrainingPlan", fields: [excerciseIds], references: [id])
+
+  @@map("trainingPlans")
 }

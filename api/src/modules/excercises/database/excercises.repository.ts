@@ -3,6 +3,12 @@ import { AddExcerciseInput } from "../models/write/add-excercise";
 
 const prisma = new PrismaClient();
 
+type ExcercisePrismaEntity = {
+  id: string,
+  imageUrl: string,
+  name: string,
+}
+
 async function add(id: string, addMeal: AddExcerciseInput): Promise<Excercise> {
   const result = await prisma.excercise.create({
     data: {
@@ -18,10 +24,19 @@ async function add(id: string, addMeal: AddExcerciseInput): Promise<Excercise> {
 async function findAll(): Promise<Excercise[]> {
   const allExcercises = await prisma.excercise.findMany();
 
-  return allExcercises;
+  return allExcercises.map((it) => excerciseEntityToDomain(it));
+}
+
+function excerciseEntityToDomain(excerciseEntity: ExcercisePrismaEntity): Excercise {
+  return {
+    id: excerciseEntity.id,
+    imageUrl: excerciseEntity.imageUrl,
+    name: excerciseEntity.name,
+  };
 }
 
 export const ExcerciseRepository = {
   add,
   findAll,
+  toDomainMapper: excerciseEntityToDomain,
 };

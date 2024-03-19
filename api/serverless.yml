@@ -48,6 +48,7 @@ functions:
       - httpApi:
           method: 'GET'
           path: '/excercises'
+  
   # Meals
   add-meals:
     handler: src/modules/meals/functions/add-meal.handler
@@ -67,3 +68,11 @@ functions:
       - httpApi:
           method: 'GET'
           path: '/meals/{id}'
+  
+  # Training Plans
+  get-training-plans:
+    handler: src/modules/trainingPlan/functions/get-training-plans.handler
+    events:
+      - httpApi:
+          method: 'GET'
+          path: '/training-plans'
