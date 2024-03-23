@@ -15,8 +15,12 @@ export const routes: Routes = [
     loadChildren: () => import('./modules/meals/meals.module').then((m) => m.MealsModule),
   },
   {
+    path: 'training-plans',
+    loadChildren: () => import('./modules/training-plans/training-plans.module').then(m => m.TrainingPlansModule)
+  },
+  {
     path: '**',
-    redirectTo: 'meals',
+    redirectTo: 'training-plans',
   },
 ];
 
