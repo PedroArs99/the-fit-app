@@ -1,1 +1,13 @@
-<p>training-plans-page works!</p>
+<div class="page-title">
+  <h1>Training Plans</h1>
+</div>
+
+<div class="page-body">
+  @if (trainingPlans.isLoading()) {
+    <tfa-spinner />
+  } @else {
+    @for (trainingPlan of trainingPlans.value(); track $index) {
+       <tfa-training-plan-card class="base-card" [trainingPlan]="trainingPlan"/>
+    }
+  }
+</div>
