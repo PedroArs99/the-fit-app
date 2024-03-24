@@ -71,7 +71,7 @@ functions:
   
   # Training Plans
   get-training-plans:
-    handler: src/modules/trainingPlan/functions/get-training-plans.handler
+    handler: src/modules/trainingPlans/functions/get-training-plans.handler
     events:
       - httpApi:
           method: 'GET'
