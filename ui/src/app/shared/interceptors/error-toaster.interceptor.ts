@@ -22,13 +22,13 @@ export class ErrorToasterInterceptor implements HttpInterceptor {
       tap({
         error: (error: HttpErrorResponse) => {
           statusCode = error.status;
-          errorMessage = error.error;
+          errorMessage = JSON.stringify(errorMessage);
 
           console.error(`Http Error: ${statusCode} - ${errorMessage}`);
         },
       }),
       finalize(() => {
-        if(statusCode >= 400) this.toaster.toast(`Error: ${errorMessage}`, 'error');
+        if(statusCode < 200 || statusCode > 299) this.toaster.toast(`Error: ${errorMessage}`, 'error');
       })
     );
   }
