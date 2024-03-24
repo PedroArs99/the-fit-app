@@ -4,10 +4,12 @@
 
 <div class="page-body">
   @if (trainingPlans.isLoading()) {
-    <tfa-spinner />
+  <tfa-spinner />
   } @else {
+  <div class="cards-grid">
     @for (trainingPlan of trainingPlans.value(); track $index) {
-       <tfa-training-plan-card class="base-card" [trainingPlan]="trainingPlan"/>
+    <tfa-training-plan-card class="base-card" [trainingPlan]="trainingPlan" />
     }
+  </div>
   }
 </div>

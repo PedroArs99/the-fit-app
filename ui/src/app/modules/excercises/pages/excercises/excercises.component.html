@@ -8,7 +8,7 @@
   @if (excercises.isLoading()) {
     <tfa-spinner />
   } @else {
-    <div class="flex flex-wrap lg:grid lg:grid-cols-5 gap-3">
+    <div class="cards-grid">
       @for (excercise of excercises.value(); track $index) {
         <tfa-excercise-card class="base-card" [excercise]="excercise"/>
       }

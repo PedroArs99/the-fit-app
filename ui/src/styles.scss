@@ -23,6 +23,10 @@ h1 {
   @apply card card-compact card-bordered border-neutral w-full;
 }
 
+.cards-grid {
+  @apply w-full flex flex-wrap justify-start lg:grid lg:grid-cols-5 gap-3; 
+}
+
 .form {
   width: 100%;
 
