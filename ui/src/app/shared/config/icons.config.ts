@@ -1,3 +1,3 @@
-import { faDumbbell, faTableList, faUtensils } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarDays, faDumbbell, faTableList, faUtensils } from '@fortawesome/free-solid-svg-icons';
 
-export const icons = [faDumbbell, faTableList, faUtensils];
+export const icons = [faCalendarDays,faDumbbell, faTableList, faUtensils];
