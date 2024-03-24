@@ -18,6 +18,18 @@
       <input type="url" placeholder="Type here" class="input input-bordered" formControlName="imageUrl" />
     </label>
 
+    <label for="imageUrl" class="form-control">
+      <div class="label">
+        <span class="label-text">Muscle Group</span>
+      </div>
+      <select class="input input-bordered" formControlName="muscleGroup">
+        <option [value]="0" disabled>Choose</option>
+        @for (muscleGroup of muscleGroups; track $index) {
+          <option [value]="muscleGroup">{{ muscleGroup | toCamelCase }}</option>
+        }
+      </select>
+    </label>
+
     <button class="btn btn-primary" (click)="save()" [disabled]="form.invalid">Save</button>
   </form>
 </div>

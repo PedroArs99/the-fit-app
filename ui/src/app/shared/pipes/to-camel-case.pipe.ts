@@ -6,8 +6,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class ToCamelCasePipe implements PipeTransform {
 
   transform(value: string, ...args: unknown[]): string {
-    console.debug(value);
-
     return value
       // Split the string into words using a regex that matches spaces, underscores, and hyphens
       .split(/[\s_-]+/)

@@ -4,6 +4,7 @@ import { ExcercisesRepository } from '../../services/excercises-repository.servi
 import { Observable, catchError } from 'rxjs';
 import { ToasterService } from '@shared/services/toaster.service';
 import { Router } from '@angular/router';
+import { MuscleGroup } from '../../models/excercise.model';
 
 @Component({
   selector: 'tfa-excercise-upsert',
@@ -11,9 +12,12 @@ import { Router } from '@angular/router';
   styleUrl: './excercise-upsert.component.scss',
 })
 export class ExcerciseUpsertPageComponent {
+  muscleGroups = Object.keys(MuscleGroup);
+
   form = new FormGroup({
     name: new FormControl<string>('', Validators.required),
     imageUrl: new FormControl<string>('', Validators.required),
+    muscleGroup: new FormControl<MuscleGroup>(MuscleGroup.ABS, Validators.required)
   });
 
   constructor(
@@ -27,6 +31,7 @@ export class ExcerciseUpsertPageComponent {
       const input = {
         name: this.form.value.name!,
         imageUrl: this.form.value.imageUrl!,
+        muscleGroup: this.form.value.muscleGroup,
       };
 
       this.excerciseRepository.add(input).subscribe((excercise) => {
