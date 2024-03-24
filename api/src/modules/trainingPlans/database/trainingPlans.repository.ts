@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { Excercise, PrismaClient } from "@prisma/client";
 import { ExcerciseRepository } from "src/modules/excercises/database/excercises.repository";
 
 const prisma = new PrismaClient();
@@ -19,6 +19,19 @@ async function findAll(): Promise<TrainingPlan[]> {
   return allTrainingPlans.map((it) => trainingPlanEntityToDomain(it));
 }
 
+async function findById(id: string): Promise<TrainingPlan> {
+  const trainingPlan = await prisma.trainingPlan.findUnique({
+    where: {
+      id
+    },
+    include: {
+      excercises: true,
+    },
+  });
+
+  return trainingPlanEntityToDomain(trainingPlan);
+}
+
 function trainingPlanEntityToDomain(trainingPlan: TrainingPlanPrismaEntity): TrainingPlan {
   return {
     id: trainingPlan.id,
@@ -29,4 +42,5 @@ function trainingPlanEntityToDomain(trainingPlan: TrainingPlanPrismaEntity): Tra
 
 export const TrainingPlanRepository = {
   findAll,
+  findById,
 };

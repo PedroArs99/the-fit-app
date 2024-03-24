@@ -76,3 +76,9 @@ functions:
       - httpApi:
           method: 'GET'
           path: '/training-plans'
+  get-training-plan-by-id:
+    handler: src/modules/trainingPlans/functions/get-training-plan-by-id.handler
+    events:
+      - httpApi:
+          method: 'GET'
+          path: '/training-plans/{id}'
