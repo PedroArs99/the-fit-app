@@ -3,4 +3,7 @@
     <img class="rounded-xl" [src]="excercise().imageUrl" />
   </figure>
   <span class="card-title">{{ excercise().name }}</span>
+  <div class="card-badges">
+    <div class="badge badge-outline">{{ excercise().muscleGroup | toCamelCase }}</div>
+  </div>
 </div>

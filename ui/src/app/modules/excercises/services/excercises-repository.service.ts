@@ -38,6 +38,6 @@ export class ExcercisesRepository {
   }
 
   private mapResponseEntryToDomain(entry: Excercise) {
-    return new Excercise(entry.id, entry.imageUrl, entry.name);
+    return new Excercise(entry.id, entry.imageUrl, entry.name, entry.muscleGroup);
   }
 }
