@@ -1,13 +1,15 @@
-import {PrismaClient } from "@prisma/client";
+import { MuscleGroup as MuscleGroupEntity, PrismaClient } from "@prisma/client";
 import { AddExcerciseInput } from "../models/write/add-excercise";
+import { Excercise, MuscleGroup } from "../models/read/excercise";
 
 const prisma = new PrismaClient();
 
 type ExcercisePrismaEntity = {
-  id: string,
-  imageUrl: string,
-  name: string,
-}
+  id: string;
+  imageUrl: string;
+  name: string;
+  muscleGroup: MuscleGroupEntity;
+};
 
 async function add(id: string, addMeal: AddExcerciseInput): Promise<Excercise> {
   const result = await prisma.excercise.create({
@@ -15,10 +17,11 @@ async function add(id: string, addMeal: AddExcerciseInput): Promise<Excercise> {
       id,
       imageUrl: addMeal.imageUrl,
       name: addMeal.name,
+      muscleGroup: MuscleGroupEntity[addMeal.muscleGroup],
     },
   });
 
-  return result;
+  return excerciseEntityToDomain(result);
 }
 
 async function findAll(): Promise<Excercise[]> {
@@ -32,6 +35,7 @@ function excerciseEntityToDomain(excerciseEntity: ExcercisePrismaEntity): Excerc
     id: excerciseEntity.id,
     imageUrl: excerciseEntity.imageUrl,
     name: excerciseEntity.name,
+    muscleGroup: MuscleGroup[excerciseEntity.muscleGroup] as MuscleGroup,
   };
 }
 

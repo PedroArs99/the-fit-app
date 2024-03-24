@@ -12,6 +12,7 @@ model Excercise {
   id String @id @map("_id") 
   imageUrl String
   name String
+  muscleGroup MuscleGroup
   trainingPlansIds String[]
 
   trainingPlans TrainingPlan[] @relation("ExcerciseToTrainingPlan", fields: [trainingPlansIds], references: [id])
@@ -36,6 +37,18 @@ model Meal {
   nutritionalValues NutritionalValues
 
   @@map("meals")
+}
+
+enum MuscleGroup {
+  ABS
+  BACK
+  BICEPS
+  CARDIO
+  CHEST
+  LEGS
+  LUMBARS
+  SHOULDERS
+  TRICEPS
 }
 
 model TrainingPlan {
