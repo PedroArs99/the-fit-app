@@ -10,5 +10,5 @@ export type AddExcerciseInput = {
 export const validationSchema = Joi.object({
   imageUrl: Joi.string().uri().required(),
   name: Joi.string().required(),
-  muscleGroup: Joi.string().valid(Object.keys(MuscleGroup)).required(),
+  muscleGroup: Joi.string().valid(...Object.keys(MuscleGroup)).required(),
 });
