@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "training_plans",
+  "info": {
+    "singularName": "training-plan",
+    "pluralName": "training-plans",
+    "displayName": "Training Plan",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "workouts": {
+      "type": "json"
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "excercises",
+  "info": {
+    "singularName": "excercise",
+    "pluralName": "excercises",
+    "displayName": "Excercise",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "imageUrl": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "key_name": {
+      "type": "uid",
+      "targetField": "name"
+    },
+    "muscleGroup": {
+      "type": "enumeration",
+      "enum": [
+        "ABS",
+        "BACK",
+        "BICEPS",
+        "CARDIO",
+        "CHEST",
+        "LEGS",
+        "LUMBARS",
+        "SHOULDERS",
+        "TRICEPS"
+      ]
+    }
+  }
+}
