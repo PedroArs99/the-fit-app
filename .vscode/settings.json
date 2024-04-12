@@ -1,0 +1,10 @@
+{
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#CCCCCC",
+    "activityBar.foreground": "#333333",
+
+    "titleBar.activeBackground": "#CCCCCC",
+    "titleBar.activeForeground": "#333333"
+  },
+  "workbench.colorTheme": "Bearded Theme Black & Amethyst"
+}
