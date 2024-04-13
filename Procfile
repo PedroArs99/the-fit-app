@@ -1,1 +1,0 @@
-strapi: cd cms && npm start
