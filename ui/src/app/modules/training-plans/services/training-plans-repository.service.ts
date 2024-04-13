@@ -33,6 +33,6 @@ export class TrainingPlansRepository {
   }
 
   private mapResponseEntryToDomain(entry: TrainingPlan) {
-    return new TrainingPlan(entry.id, entry.name, entry.excercises);
+    return new TrainingPlan(entry.id, entry.name, entry.workouts);
   }
 }
