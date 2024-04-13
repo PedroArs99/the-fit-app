@@ -12,12 +12,9 @@ type StrapiExcercise = {
 };
 
 async function findAll(): Promise<Excercise[]> {
-  const url = `excercises`;
+  const url = `excercises?pagination[pageSize]=999`;
 
   const strapiExcercises = await strapiClient.get<StrapiExcercise[]>(url);
-
-
-
   return strapiExcercises.map(it => _mapStrapiToDomain(it));
 }
 
