@@ -18,5 +18,6 @@ const routes: Routes = [
   declarations: [ExcerciseCardComponent, ExcercisesPageComponent],
   imports: [CommonModule, ReactiveFormsModule, RouterModule.forChild(routes), SharedModule],
   providers: [ExcercisesRepository],
+  exports: [ExcerciseCardComponent],
 })
 export class ExcercisesModule {}
