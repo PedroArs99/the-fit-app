@@ -7,6 +7,7 @@ import { TrainingPlansRepository } from './services/training-plans-repository.se
 import { TrainingPlanCardComponent } from './components/training-plan-card/training-plan-card.component';
 import { TrainingPlanDetailsPageComponent } from './pages/training-plan-details/training-plan-details-page.component';
 import { trainingPlanByIdResolver } from './resolvers/training-plan-by-id.resolver';
+import { ExcercisesModule } from '../excercises/excercises.module';
 
 const routes: Routes = [
   {
@@ -21,8 +22,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [TrainingPlansPageComponent, TrainingPlanCardComponent],
-  imports: [CommonModule, RouterModule.forChild(routes), SharedModule],
+  declarations: [TrainingPlansPageComponent, TrainingPlanDetailsPageComponent, TrainingPlanCardComponent],
+  imports: [CommonModule, ExcercisesModule, RouterModule.forChild(routes), SharedModule],
   providers: [TrainingPlansRepository],
 })
 export class TrainingPlansModule {}

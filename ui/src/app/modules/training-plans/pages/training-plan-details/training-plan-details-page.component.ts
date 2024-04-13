@@ -6,8 +6,6 @@ import { map } from 'rxjs';
 
 @Component({
   selector: 'tfa-training-plan-details-page',
-  standalone: true,
-  imports: [],
   templateUrl: './training-plan-details-page.component.html',
   styleUrl: './training-plan-details-page.component.scss',
 })
