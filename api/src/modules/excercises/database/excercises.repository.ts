@@ -1,46 +1,36 @@
-import { MuscleGroup as MuscleGroupEntity, PrismaClient } from "@prisma/client";
-import { AddExcerciseInput } from "../models/write/add-excercise";
+import { strapiClient } from "src/shared/strapi-client";
 import { Excercise, MuscleGroup } from "../models/read/excercise";
 
-const prisma = new PrismaClient();
-
-type ExcercisePrismaEntity = {
-  id: string;
-  imageUrl: string;
-  name: string;
-  muscleGroup: MuscleGroupEntity;
+type StrapiExcercise = {
+  id: number;
+  attributes: {
+    imageUrl: string | null;
+    name: string;
+    key_name: string | null;
+    muscleGroup: MuscleGroup;
+  };
 };
 
-async function add(id: string, addMeal: AddExcerciseInput): Promise<Excercise> {
-  const result = await prisma.excercise.create({
-    data: {
-      id,
-      imageUrl: addMeal.imageUrl,
-      name: addMeal.name,
-      muscleGroup: MuscleGroupEntity[addMeal.muscleGroup],
-    },
-  });
-
-  return excerciseEntityToDomain(result);
-}
-
 async function findAll(): Promise<Excercise[]> {
-  const allExcercises = await prisma.excercise.findMany();
+  const url = `excercises`;
 
-  return allExcercises.map((it) => excerciseEntityToDomain(it));
+  const strapiExcercises = await strapiClient.get<StrapiExcercise[]>(url);
+
+
+
+  return strapiExcercises.map(it => _mapStrapiToDomain(it));
 }
 
-function excerciseEntityToDomain(excerciseEntity: ExcercisePrismaEntity): Excercise {
+function _mapStrapiToDomain(strapiObject: StrapiExcercise): Excercise {
   return {
-    id: excerciseEntity.id,
-    imageUrl: excerciseEntity.imageUrl,
-    name: excerciseEntity.name,
-    muscleGroup: MuscleGroup[excerciseEntity.muscleGroup] as MuscleGroup,
-  };
+    id: strapiObject.id,
+    imageUrl: strapiObject.attributes.imageUrl,
+    name: strapiObject.attributes.name,
+    keyName: strapiObject.attributes.key_name,
+    muscleGroup: strapiObject.attributes.muscleGroup,
+  }
 }
 
 export const ExcerciseRepository = {
-  add,
   findAll,
-  toDomainMapper: excerciseEntityToDomain,
-};
+}

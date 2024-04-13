@@ -11,8 +11,9 @@ export enum MuscleGroup {
 }
 
 export type Excercise = {
-  id: string;
+  id: number;
   imageUrl: string;
   name: string;
+  keyName: string;
   muscleGroup: MuscleGroup;
 }
