@@ -11,6 +11,8 @@ provider:
   runtime: nodejs20.x
   environment:
     MONGO_CONNECTION_STRING: ${ssm:/the-fit-app/dev/mongo-connection-string}
+    STRAPI_URL: https://the-fit-app-cms-f350b7666974.herokuapp.com
+    STRAPI_API_TOKEN: ${ssm:/the-fit-app/dev/strapi-api-token}
 
 plugins: 
   - serverless-esbuild
@@ -36,12 +38,6 @@ custom:
 
 functions:
   # Excercises
-  add-excercise:
-    handler: src/modules/excercises/functions/add-excercise.handler
-    events:
-      - httpApi:
-          method: 'POST'
-          path: '/excercises'
   get-excercises:
     handler: src/modules/excercises/functions/get-excercises.handler
     events:
