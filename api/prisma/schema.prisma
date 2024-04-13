@@ -8,19 +8,6 @@ generator client {
   binaryTargets = ["rhel-openssl-3.0.x"]
 }
 
-model Excercise {
-  id String @id @map("_id") 
-  imageUrl String
-  name String
-  muscleGroup MuscleGroup
-  trainingPlansIds String[]
-
-  trainingPlans TrainingPlan[] @relation("ExcerciseToTrainingPlan", fields: [trainingPlansIds], references: [id])
-
-
-  @@map("excercises")
-}
-
 type NutritionalValues {
   carbohydrates Float
   energy Float
@@ -37,26 +24,4 @@ model Meal {
   nutritionalValues NutritionalValues
 
   @@map("meals")
-}
-
-enum MuscleGroup {
-  ABS
-  BACK
-  BICEPS
-  CARDIO
-  CHEST
-  LEGS
-  LUMBARS
-  SHOULDERS
-  TRICEPS
-}
-
-model TrainingPlan {
-  id String @id @map("_id")
-  excerciseIds String[]
-  name String
-
-  excercises Excercise[] @relation("ExcerciseToTrainingPlan", fields: [excerciseIds], references: [id])
-
-  @@map("trainingPlans")
 }

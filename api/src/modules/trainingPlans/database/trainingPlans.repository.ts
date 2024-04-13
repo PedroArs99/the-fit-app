@@ -1,42 +1,45 @@
-import { Excercise, PrismaClient } from "@prisma/client";
+import { strapiClient } from "src/shared/strapi-client";
+import { TrainingPlan } from "../models/read/trainingPlan";
 import { ExcerciseRepository } from "src/modules/excercises/database/excercises.repository";
+import { Excercise } from "src/modules/excercises/models/read/excercise";
 
-const prisma = new PrismaClient();
-
-type TrainingPlanPrismaEntity = {
-  id: string;
-  excercises: Excercise[];
-  name: string;
+type StrapiTrainingPlan = {
+  id: number;
+  attributes: {
+    name: string;
+    workouts: {
+      name: string;
+      excercises: string[];
+    }[];
+  };
 };
 
 async function findAll(): Promise<TrainingPlan[]> {
-  const allTrainingPlans = await prisma.trainingPlan.findMany({
-    include: {
-      excercises: true,
-    },
-  });
+  const url = "training-plans?pagination[pageSize]=999";
 
-  return allTrainingPlans.map((it) => trainingPlanEntityToDomain(it));
+  const strapiTrainingPlans = await strapiClient.get<StrapiTrainingPlan[]>(url);
+  const excercises = await ExcerciseRepository.findAll();
+
+  return strapiTrainingPlans.map((it) => _strapiTrainingPlanToDomain(it, excercises));
 }
 
-async function findById(id: string): Promise<TrainingPlan> {
-  const trainingPlan = await prisma.trainingPlan.findUnique({
-    where: {
-      id
-    },
-    include: {
-      excercises: true,
-    },
-  });
+async function findById(id: number): Promise<TrainingPlan> {
+  const url = `training-plans/${id}`;
 
-  return trainingPlanEntityToDomain(trainingPlan);
+  const strapiTrainingPlan = await strapiClient.get<StrapiTrainingPlan>(url);
+  const excercises = await ExcerciseRepository.findAll();
+
+  return _strapiTrainingPlanToDomain(strapiTrainingPlan, excercises);
 }
 
-function trainingPlanEntityToDomain(trainingPlan: TrainingPlanPrismaEntity): TrainingPlan {
+function _strapiTrainingPlanToDomain({ id, attributes }: StrapiTrainingPlan, excercises: Excercise[]): TrainingPlan {
   return {
-    id: trainingPlan.id,
-    name: trainingPlan.name,
-    excercises: trainingPlan.excercises.map((it) => ExcerciseRepository.toDomainMapper(it)),
+    id,
+    name: attributes.name,
+    workouts: attributes.workouts.map((it) => ({
+      name: it.name,
+      excercises: it.excercises.map((ex) => excercises.find((e) => e.keyName === ex)).filter((e) => e !== null),
+    })),
   };
 }
 
