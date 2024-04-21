@@ -11,13 +11,12 @@ const routes: Routes = [
   {
     path: '',
     component: ExcercisesPageComponent,
-  }
+  },
 ];
 
 @NgModule({
-  declarations: [ExcerciseCardComponent, ExcercisesPageComponent],
-  imports: [CommonModule, ReactiveFormsModule, RouterModule.forChild(routes), SharedModule],
+  declarations: [ExcercisesPageComponent],
+  imports: [CommonModule, ExcerciseCardComponent, ReactiveFormsModule, RouterModule.forChild(routes), SharedModule],
   providers: [ExcercisesRepository],
-  exports: [ExcerciseCardComponent],
 })
 export class ExcercisesModule {}
