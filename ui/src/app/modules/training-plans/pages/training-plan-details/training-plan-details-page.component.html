@@ -6,6 +6,12 @@
   <div class="workouts">
     @for (workout of trainingPlan()?.workouts; track $index) {
       <h2>{{ workout.name }}</h2>
+
+      <div class="excercises">
+        @for (excercise of workout.excercises; track $index) {
+          <tfa-excercise-card class="self-stretch w-full md:max-w-64" [excercise]="excercise" />
+        }
+      </div>
     }
   </div>
 </div>

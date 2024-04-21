@@ -1,3 +1,10 @@
+.excercises {
+  display: flex;
+  justify-content: space-between;
+
+  @apply my-3 flex-col md:flex-row flex-wrap gap-3;
+}
+
 .workouts {
   width: 100%;
 
