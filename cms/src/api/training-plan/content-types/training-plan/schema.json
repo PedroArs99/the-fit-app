@@ -17,7 +17,9 @@
       "required": true
     },
     "workouts": {
-      "type": "json"
+      "type": "component",
+      "repeatable": true,
+      "component": "common.workout"
     }
   }
 }
