@@ -3,7 +3,7 @@ import { TrainingPlan } from "../models/read/trainingPlan";
 import { StrapiExcercise, mapStrapiExcerciseToDomain } from "src/modules/excercises/database/excercises.repository";
 
 type StrapiWorkout = {
-  sortId: number;
+  name: string;
   excercises: {
     Series: number;
     Reps: number;
@@ -42,7 +42,7 @@ function _strapiTrainingPlanToDomain({ id, attributes }: StrapiTrainingPlan): Tr
     id,
     name: attributes.name,
     workouts: attributes.workouts.map((it) => ({
-      name: `${it.sortId}`,
+      name: it.name,
       excercises: it.excercises.map((ex) => ({
         series: ex.Series,
         reps: ex.Reps,
