@@ -1,44 +1,53 @@
 import { strapiClient } from "src/shared/strapi-client";
 import { TrainingPlan } from "../models/read/trainingPlan";
-import { ExcerciseRepository } from "src/modules/excercises/database/excercises.repository";
-import { Excercise } from "src/modules/excercises/models/read/excercise";
+import { StrapiExcercise, mapStrapiExcerciseToDomain } from "src/modules/excercises/database/excercises.repository";
+
+type StrapiWorkout = {
+  sortId: number;
+  excercises: {
+    Series: number;
+    Reps: number;
+    excercise: {
+      data: StrapiExcercise;
+    };
+  }[]
+}
 
 type StrapiTrainingPlan = {
   id: number;
   attributes: {
     name: string;
-    workouts: {
-      name: string;
-      excercises: string[];
-    }[];
+    workouts: StrapiWorkout[];
   };
 };
 
 async function findAll(): Promise<TrainingPlan[]> {
-  const url = "training-plans?pagination[pageSize]=999";
+  const url = "training-plans?pagination[pageSize]=999&populate[0]=workouts.excercises.excercise";
 
   const strapiTrainingPlans = await strapiClient.get<StrapiTrainingPlan[]>(url);
-  const excercises = await ExcerciseRepository.findAll();
 
-  return strapiTrainingPlans.map((it) => _strapiTrainingPlanToDomain(it, excercises));
+  return strapiTrainingPlans.map((it) => _strapiTrainingPlanToDomain(it));
 }
 
 async function findById(id: number): Promise<TrainingPlan> {
-  const url = `training-plans/${id}`;
+  const url = `training-plans/${id}?populate[0]=workouts.excercises.excercise`;
 
   const strapiTrainingPlan = await strapiClient.get<StrapiTrainingPlan>(url);
-  const excercises = await ExcerciseRepository.findAll();
 
-  return _strapiTrainingPlanToDomain(strapiTrainingPlan, excercises);
+  return _strapiTrainingPlanToDomain(strapiTrainingPlan);
 }
 
-function _strapiTrainingPlanToDomain({ id, attributes }: StrapiTrainingPlan, excercises: Excercise[]): TrainingPlan {
+function _strapiTrainingPlanToDomain({ id, attributes }: StrapiTrainingPlan): TrainingPlan {
   return {
     id,
     name: attributes.name,
     workouts: attributes.workouts.map((it) => ({
-      name: it.name,
-      excercises: it.excercises.map((ex) => excercises.find((e) => e.keyName === ex)).filter((e) => e !== null),
+      name: `${it.sortId}`,
+      excercises: it.excercises.map((ex) => ({
+        series: ex.Series,
+        reps: ex.Reps,
+        excercise: mapStrapiExcerciseToDomain(ex.excercise.data),
+      })),
     })),
   };
 }

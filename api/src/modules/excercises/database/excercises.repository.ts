@@ -1,7 +1,7 @@
 import { strapiClient } from "src/shared/strapi-client";
 import { Excercise, MuscleGroup } from "../models/read/excercise";
 
-type StrapiExcercise = {
+export type StrapiExcercise = {
   id: number;
   attributes: {
     imageUrl: string | null;
@@ -15,10 +15,10 @@ async function findAll(): Promise<Excercise[]> {
   const url = `excercises?pagination[pageSize]=999`;
 
   const strapiExcercises = await strapiClient.get<StrapiExcercise[]>(url);
-  return strapiExcercises.map(it => _mapStrapiToDomain(it));
+  return strapiExcercises.map(it => mapStrapiExcerciseToDomain(it));
 }
 
-function _mapStrapiToDomain(strapiObject: StrapiExcercise): Excercise {
+export function mapStrapiExcerciseToDomain(strapiObject: StrapiExcercise): Excercise {
   return {
     id: strapiObject.id,
     imageUrl: strapiObject.attributes.imageUrl,

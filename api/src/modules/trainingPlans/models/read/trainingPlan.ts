@@ -3,7 +3,11 @@ import { Excercise } from "src/modules/excercises/models/read/excercise";
 
 type Workout = {
   name: string,
-  excercises: Excercise[],
+  excercises: {
+    series: number;
+    reps: number;
+    excercise: Excercise;
+  }[],
 }
 
 export type TrainingPlan = {
