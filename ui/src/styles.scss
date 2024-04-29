@@ -24,7 +24,7 @@ h2 {
     @apply cursor-pointer rounded-xl shadow-xl;
   }
 
-  @apply card card-compact card-bordered border-neutral w-full;
+  @apply card card-compact card-bordered border-neutral w-full justify-between;
 }
 
 .cards-grid {

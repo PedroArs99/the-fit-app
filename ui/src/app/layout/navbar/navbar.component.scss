@@ -1,6 +1,6 @@
 .navbar {
   min-height: 3rem;
-  height: 3rem;
+  height: 3.5rem;
 }
 
 .navbar-center {
@@ -21,6 +21,6 @@
   @apply bg-primary-content text-primary;
 }
 
-.nav-item-active:hover {
-  @apply text-primary;
+.nav-item:hover {
+  @apply bg-primary-content text-primary;
 }
