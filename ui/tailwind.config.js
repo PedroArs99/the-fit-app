@@ -12,6 +12,8 @@ const baseTheme = {
   success: "#00c68e",
   warning: "#ecc200",
   error: "#dd0045",
+
+  "--padding-card": "0.75rem",
 };
 
 module.exports = {
