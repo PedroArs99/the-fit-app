@@ -1,13 +1,20 @@
 /** @type {import('tailwindcss').Config} */
 
+const primary = "#FD7014"
+const secondary = "#222831"
+
 const baseTheme = {
-  primary: "#000000",
-  secondary: "#999999",
-  accent: "#777777",
-  neutral: "#555555",
+  primary,
+  "primary-content": secondary,
+
+  secondary,
+  accent: "#393E46",
+  neutral: "#393E46",
+
   "base-100": "#FFFFFF",
   "base-200": "#DDDDDD",
   "base-300": "#BBBBBB",
+
   info: "#0074bf",
   success: "#00c68e",
   warning: "#ecc200",
