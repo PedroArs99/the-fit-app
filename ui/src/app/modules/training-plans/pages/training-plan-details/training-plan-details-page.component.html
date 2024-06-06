@@ -5,7 +5,7 @@
 <div class="page-body">
   <div class="workouts">
     @for (workout of trainingPlan()?.workouts; track $index) {
-    <h2>{{ workout.name }}</h2>
+    <h2 class="text-center lg:text-left">{{ workout.name }}</h2>
 
     <div class="excercises">
       @for (extendedExcercise of workout.excercises; track $index) {
