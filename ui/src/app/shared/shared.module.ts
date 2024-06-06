@@ -6,11 +6,14 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { RouterModule } from '@angular/router';
 import { ToasterComponent } from './components/toaster/toaster.component';
 import { ToCamelCasePipe } from './pipes/to-camel-case.pipe';
+import { AlertComponent } from './components/alert/alert.component';
+
+const components = [AlertComponent, SpinnerComponent, ToasterComponent];
 
 @NgModule({
-  declarations: [SpinnerComponent, ToasterComponent, ToCamelCasePipe],
+  declarations: [...components, ToCamelCasePipe],
   imports: [CommonModule, FontAwesomeModule, RouterModule],
-  exports: [FontAwesomeModule, RouterModule, SpinnerComponent, ToasterComponent, ToCamelCasePipe],
+  exports: [...components, FontAwesomeModule, RouterModule, ToCamelCasePipe],
 })
 export class SharedModule {
   constructor(iconLibrary: FaIconLibrary) {
