@@ -1,0 +1,12 @@
+:host {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.excercises {
+  display: flex;
+
+  @apply my-3 flex-col md:flex-row flex-wrap gap-3;
+}

@@ -8,6 +8,14 @@ import { TrainingPlanCardComponent } from './components/training-plan-card/train
 import { TrainingPlanDetailsPageComponent } from './pages/training-plan-details/training-plan-details-page.component';
 import { trainingPlanByIdResolver } from './resolvers/training-plan-by-id.resolver';
 import { ExcerciseCardComponent } from '../excercises/components/excercise-card/excercise-card.component';
+import { WorkoutsGridComponent } from './components/workouts-grid/workouts-grid.component';
+
+const components = [
+  TrainingPlanCardComponent,
+  TrainingPlanDetailsPageComponent,
+  TrainingPlansPageComponent,
+  WorkoutsGridComponent,
+];
 
 const routes: Routes = [
   {
@@ -22,7 +30,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [TrainingPlansPageComponent, TrainingPlanDetailsPageComponent, TrainingPlanCardComponent],
+  declarations: [...components],
   imports: [CommonModule, ExcerciseCardComponent, RouterModule.forChild(routes), SharedModule],
   providers: [TrainingPlansRepository],
 })
