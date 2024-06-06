@@ -1,10 +1,12 @@
-@for (workout of workouts(); track $index) {
-<h2 class="text-center lg:text-left">{{ workout.name }}</h2>
-
-<div class="excercises">
-  @for (extendedExcercise of workout.excercises; track $index) {
-  <tfa-excercise-card class="self-stretch w-full md:max-w-64" [excercise]="extendedExcercise.excercise"
-    [series]="extendedExcercise.series" [reps]="extendedExcercise.reps" />
+<div class="workouts">
+  @for (workout of workouts(); track $index) {
+  <h2 class="text-center lg:text-left">{{ workout.name }}</h2>
+  
+  <div class="excercises">
+    @for (extendedExcercise of workout.excercises; track $index) {
+    <tfa-excercise-card class="self-stretch w-full md:max-w-64" [excercise]="extendedExcercise.excercise"
+      [series]="extendedExcercise.series" [reps]="extendedExcercise.reps" />
+    }
+  </div>
   }
 </div>
-}

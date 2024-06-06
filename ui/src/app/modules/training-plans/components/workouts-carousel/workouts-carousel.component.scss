@@ -1,0 +1,13 @@
+.carousel-control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @apply my-3;
+}
+
+.excercises {
+  display: flex;
+
+  @apply my-3 flex-col md:flex-row flex-wrap gap-3;
+}
