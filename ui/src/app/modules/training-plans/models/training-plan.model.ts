@@ -1,6 +1,6 @@
 import { Excercise } from '../../excercises/models/excercise.model';
 
-type Workout = {
+export type Workout = {
   name: string;
   excercises: {
     series: number;
