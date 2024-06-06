@@ -1,6 +1,10 @@
 <div class="base-card card-body h-full">
   <figure class="p-3">
-    <img class="rounded-xl" [src]="excercise().imageUrl" />
+    @if (excercise().imageUrl) {
+      <img class="rounded-xl" [src]="excercise().imageUrl" />
+    } @else {
+      <img class="rounded-xl" src="/assets/images/excercise-placeholder.webp" />
+    }
   </figure>
   <span class="card-title">{{ excercise().name }}</span>
   <div class="card-badges">
