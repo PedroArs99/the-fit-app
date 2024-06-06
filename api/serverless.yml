@@ -1,0 +1,24 @@
+org: pedroars99
+app: the-fit-app-api
+service: the-fit-app-api
+frameworkVersion: '3'
+
+provider:
+  httpApi:
+    cors: true
+    name: the-fit-app-api
+  name: aws
+  runtime: nodejs20.x
+  stackName: the-fit-app-api
+  stage: prod
+  
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-offline
+
+functions:
+  api:
+    handler: index.handler
+    events:
+      - httpApi: '*'
