@@ -1,5 +1,5 @@
 import { Component, computed, input } from '@angular/core';
-import { Excercise } from '../../models/excercise.model';
+import { Exercise } from '../../models/exercise.model';
 import { SharedModule } from '@shared/shared.module';
 
 @Component({
@@ -10,7 +10,7 @@ import { SharedModule } from '@shared/shared.module';
   styleUrl: './excercise-card.component.scss',
 })
 export class ExcerciseCardComponent {
-  excercise = input.required<Excercise>();
+  excercise = input.required<Exercise>();
   series = input<number>();
   reps = input<number>();
 

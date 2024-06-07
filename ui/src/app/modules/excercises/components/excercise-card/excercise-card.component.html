@@ -1,14 +1,14 @@
 <div class="base-card card-body h-full">
   <figure class="p-3">
-    @if (excercise().imageUrl) {
-      <img class="rounded-xl" [src]="excercise().imageUrl" />
+    @if (excercise().image) {
+      <img class="rounded-xl" [src]="excercise().image" />
     } @else {
       <img class="rounded-xl" src="/assets/images/excercise-placeholder.webp" />
     }
   </figure>
   <span class="card-title">{{ excercise().name }}</span>
   <div class="card-badges">
-    <div class="badge badge-outline">{{ excercise().muscleGroup | toCamelCase }}</div>
+    <div class="badge badge-outline">{{ excercise().category | toCamelCase }}</div>
     
     @if (seriesXrepsBadge() !== null) {
       <div class="badge badge-outline">{{ seriesXrepsBadge() }}</div>

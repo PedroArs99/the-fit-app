@@ -1,11 +1,11 @@
-import { Excercise } from '../../excercises/models/excercise.model';
+import { Exercise } from '../../excercises/models/exercise.model';
 
 export type Workout = {
   name: string;
   excercises: {
     series: number;
     reps: number;
-    excercise: Excercise;
+    excercise: Exercise;
   }[];
 };
 
