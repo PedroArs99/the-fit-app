@@ -3,13 +3,16 @@
 </div>
 
 <div class="page-body">
-  @if (excercises.isLoading()) {
-    <tfa-spinner />
+  @if (isLoading()) {
+  <tfa-spinner />
   } @else {
-    <div class="cards-grid">
-      @for (excercise of excercises.value(); track $index) {
-        <tfa-excercise-card [excercise]="excercise"/>
-      }
-    </div>
+  @for (category of exercisesByCategory() | keyvalue; track $index) {
+  <h2>{{category.key}}</h2>
+  <div class="cards-grid">
+    @for (exercise of category.value; track $index) {
+    <tfa-excercise-card [excercise]="exercise" />
+    }
+  </div>
+  }
   }
 </div>
