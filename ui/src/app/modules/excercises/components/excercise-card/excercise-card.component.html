@@ -6,12 +6,15 @@
       <img class="rounded-xl" src="/assets/images/excercise-placeholder.webp" />
     }
   </figure>
-  <span class="card-title">{{ excercise().name }}</span>
-  <div class="card-badges">
-    <div class="badge badge-outline">{{ excercise().category | toCamelCase }}</div>
-    
-    @if (seriesXrepsBadge() !== null) {
-      <div class="badge badge-outline">{{ seriesXrepsBadge() }}</div>
-    }
+
+  <div>
+    <span class="card-title">{{ excercise().name }}</span>
+    <div class="card-badges">
+      <div class="badge badge-outline">{{ excercise().category | toCamelCase }}</div>
+      
+      @if (seriesXrepsBadge() !== null) {
+        <div class="badge badge-outline">{{ seriesXrepsBadge() }}</div>
+      }
+    </div>
   </div>
 </div>
