@@ -2,10 +2,16 @@
   <h1>{{ exercise()?.name }}</h1>
 </div>
 
-<div class="flex flex-col lg:flex-row items-start">
+<div class="page-body">
   <figure>
+    @if (exercise()?.image) {
     <img class="lg:max-w-xl lg:m-auto border border-neutral rounded-xl" [src]="exercise()?.image" />
+    } @else {
+    <img class="lg:max-w-xl lg:m-auto border border-neutral rounded-xl" src="/assets/images/exercise-placeholder.webp" />
+    }
   </figure>
 
   <div class="divider divider-neutral lg:divider-horizontal"></div>
+
+  
 </div>

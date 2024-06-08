@@ -1,4 +1,4 @@
-import { effect, inject } from '@angular/core';
+import { inject } from '@angular/core';
 import { ResolveFn } from '@angular/router';
 import { ExercisesRepository } from '../services/exercises-repository.service';
 import { Exercise } from '../models/exercise.model';
@@ -13,5 +13,5 @@ export const exerciseByIdResolver: ResolveFn<Exercise | undefined> = (route) => 
 
   const exercise = repo.getById(parseInt(id));
 
-  return toObservable(exercise.value);
+  return exercise;
 };

@@ -3,6 +3,7 @@ import { Signalizable } from '@shared/models/signalizable.model';
 import { environment } from '@environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Exercise } from '../models/exercise.model';
+import { Observable, map } from 'rxjs';
 
 @Injectable()
 export class ExercisesRepository {
@@ -25,21 +26,10 @@ export class ExercisesRepository {
     };
   }
 
-  getById(id: number): Signalizable<Exercise | undefined> {
-    const isLoading = signal(true);
-    const excercise = signal<Exercise | undefined>(undefined);
-
-    this.httpClient.get<Exercise>(`${environment.apiUrl}/exercises/${id}`).subscribe((data) => {
-      isLoading.set(false);
-
-      const response = this.mapResponseEntryToDomain(data);
-      excercise.set(response);
-    });
-
-    return {
-      isLoading,
-      value: excercise,
-    };
+  getById(id: number): Observable<Exercise | undefined> {
+    return this.httpClient
+      .get<Exercise>(`${environment.apiUrl}/exercises/${id}`)
+      .pipe(map((data) => this.mapResponseEntryToDomain(data)));
   }
 
   private mapResponseEntryToDomain(entry: Exercise) {
