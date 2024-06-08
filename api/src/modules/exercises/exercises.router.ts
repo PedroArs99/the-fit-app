@@ -10,6 +10,17 @@ router.get("/", async (_, res) => {
   res.json(exercises);
 });
 
+// GET By Id
+router.get("/:id", async (req, res) => {
+  const exerciseId = parseInt(req.params.id);
+
+  const result = await exerciseRepository.findById(exerciseId);
+
+  if (!result) res.status(404);
+
+  return res.json(result);
+});
+
 // POST a new exercise
 router.post("/", (req, res) => {
   // TODO: Validate Schemas!
@@ -17,9 +28,8 @@ router.post("/", (req, res) => {
   console.error(payload);
 
   const result = exerciseRepository.create(payload);
-  
+
   res.status(201).json(result);
 });
-
 
 export default router;

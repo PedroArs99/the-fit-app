@@ -42,6 +42,16 @@ class ExerciseRepository implements CrudRepository<Exercise> {
 
     return results.map((it) => _mapToDomain(it));
   }
+
+  async findById(id: number): Promise<Exercise> {
+    const results = await ExerciseModel.find({ id }).exec();
+
+    if (results.length !== 1) {
+      return undefined;
+    }
+
+    return _mapToDomain(results[0]);
+  }
 }
 
 export const exerciseRepository = new ExerciseRepository();
