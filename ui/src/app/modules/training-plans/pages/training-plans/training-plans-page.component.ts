@@ -4,10 +4,10 @@ import { TrainingPlansRepository } from '../../services/training-plans-repositor
 @Component({
   selector: 'tfa-training-plans-page',
   templateUrl: './training-plans-page.component.html',
-  styleUrl: './training-plans-page.component.scss'
+  styleUrl: './training-plans-page.component.scss',
 })
 export class TrainingPlansPageComponent {
-  trainingPlans = this.trainingPlansRepository.getAll()
+  trainingPlans = this.trainingPlansRepository.getAll();
 
   constructor(private trainingPlansRepository: TrainingPlansRepository) {}
 }

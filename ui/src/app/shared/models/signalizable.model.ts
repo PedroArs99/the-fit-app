@@ -1,6 +1,6 @@
-import { Signal } from "@angular/core"
+import { Signal } from '@angular/core';
 
 export type Signalizable<T> = {
-  isLoading: Signal<boolean>,
-  value: Signal<T>
-}
+  isLoading: Signal<boolean>;
+  value: Signal<T>;
+};

@@ -1,14 +1,20 @@
 <div class="carousel-control">
-  <button class="btn btn-outline" (click)="prevWorkout()" [disabled]="index() === 0"><fa-icon
-      icon="chevron-left" /></button>
+  <button class="btn btn-outline" (click)="prevWorkout()" [disabled]="index() === 0">
+    <fa-icon icon="chevron-left" />
+  </button>
   <h2 class="text-center lg:text-left">{{ activeWorkout().name }}</h2>
-  <button class="btn btn-outline" (click)="nextWorkout()" [disabled]="index() === workouts().length -1"><fa-icon
-      icon="chevron-right" /></button>
+  <button class="btn btn-outline" (click)="nextWorkout()" [disabled]="index() === workouts().length - 1">
+    <fa-icon icon="chevron-right" />
+  </button>
 </div>
 
 <div class="excercises">
   @for (extendedExcercise of activeWorkout().excercises; track $index) {
-  <tfa-excercise-card class="self-stretch w-full md:max-w-64" [excercise]="extendedExcercise.excercise"
-    [series]="extendedExcercise.series" [reps]="extendedExcercise.reps" />
+    <tfa-excercise-card
+      class="self-stretch w-full md:max-w-64"
+      [excercise]="extendedExcercise.excercise"
+      [series]="extendedExcercise.series"
+      [reps]="extendedExcercise.reps"
+    />
   }
 </div>

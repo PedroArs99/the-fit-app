@@ -16,7 +16,7 @@ export const routes: Routes = [
   },
   {
     path: 'training-plans',
-    loadChildren: () => import('./modules/training-plans/training-plans.module').then(m => m.TrainingPlansModule)
+    loadChildren: () => import('./modules/training-plans/training-plans.module').then((m) => m.TrainingPlansModule),
   },
   {
     path: '**',

@@ -28,8 +28,8 @@ export class ErrorToasterInterceptor implements HttpInterceptor {
         },
       }),
       finalize(() => {
-        if(statusCode < 200 || statusCode > 299) this.toaster.toast(`Error: ${errorMessage}`, 'error');
-      })
+        if (statusCode < 200 || statusCode > 299) this.toaster.toast(`Error: ${errorMessage}`, 'error');
+      }),
     );
   }
 }

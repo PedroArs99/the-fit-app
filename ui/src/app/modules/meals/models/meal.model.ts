@@ -12,6 +12,6 @@ export class Meal {
     public id: string,
     public imageUrl: string,
     public name: string,
-    public nutritionalValues: NutritionalValues
+    public nutritionalValues: NutritionalValues,
   ) {}
 }

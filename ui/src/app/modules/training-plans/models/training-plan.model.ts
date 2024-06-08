@@ -10,5 +10,9 @@ export type Workout = {
 };
 
 export class TrainingPlan {
-  constructor(public id: number, public name: string, public workouts: Workout[]) {}
+  constructor(
+    public id: number,
+    public name: string,
+    public workouts: Workout[],
+  ) {}
 }

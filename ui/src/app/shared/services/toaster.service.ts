@@ -12,9 +12,7 @@ export class ToasterService implements OnDestroy {
 
   constructor() {
     this.cleanUpToastsJob = setInterval(() => {
-      this._toasts.update(toasts => [
-        ...toasts.slice(1)
-      ])
+      this._toasts.update((toasts) => [...toasts.slice(1)]);
     }, 5000);
   }
 

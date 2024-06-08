@@ -4,15 +4,15 @@
 
 <div class="page-body">
   @if (isLoading()) {
-  <tfa-spinner />
+    <tfa-spinner />
   } @else {
-  @for (category of exercisesByCategory() | keyvalue; track $index) {
-  <h2>{{category.key}}</h2>
-  <div class="cards-grid">
-    @for (exercise of category.value; track $index) {
-    <tfa-excercise-card [excercise]="exercise" />
+    @for (category of exercisesByCategory() | keyvalue; track $index) {
+      <h2>{{ category.key }}</h2>
+      <div class="cards-grid">
+        @for (exercise of category.value; track $index) {
+          <tfa-excercise-card [excercise]="exercise" />
+        }
+      </div>
     }
-  </div>
-  }
   }
 </div>
