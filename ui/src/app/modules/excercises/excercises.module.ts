@@ -10,12 +10,12 @@ import { ExercisesDetailsPageComponent } from './pages/exercises-details/exercis
 
 const routes: Routes = [
   {
-    path: '',
-    component: ExcercisesPageComponent,
-  },
-  {
     path: ':id',
     component: ExercisesDetailsPageComponent,
+  },
+  {
+    path: '',
+    component: ExcercisesPageComponent,
   },
 ];
 

@@ -7,7 +7,7 @@ import { errorToasterHttpInterceptor } from '@shared/interceptors/error-toaster.
 
 export const routes: Routes = [
   {
-    path: 'excercises',
+    path: 'exercises',
     loadChildren: () => import('./modules/excercises/excercises.module').then((m) => m.ExcercisesModule),
   },
   {
@@ -20,7 +20,7 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'training-plans',
+    redirectTo: 'exercises',
   },
 ];
 
