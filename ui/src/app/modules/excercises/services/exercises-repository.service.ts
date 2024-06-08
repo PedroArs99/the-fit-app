@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Exercise } from '../models/exercise.model';
 
 @Injectable()
-export class ExcercisesRepository {
+export class ExercisesRepository {
   constructor(private httpClient: HttpClient) {}
 
   getAll(): Signalizable<Exercise[]> {
@@ -22,6 +22,23 @@ export class ExcercisesRepository {
     return {
       isLoading,
       value: excercises,
+    };
+  }
+
+  getById(id: number): Signalizable<Exercise | undefined> {
+    const isLoading = signal(true);
+    const excercise = signal<Exercise | undefined>(undefined);
+
+    this.httpClient.get<Exercise>(`${environment.apiUrl}/exercises/${id}`).subscribe((data) => {
+      isLoading.set(false);
+
+      const response = this.mapResponseEntryToDomain(data);
+      excercise.set(response);
+    });
+
+    return {
+      isLoading,
+      value: excercise,
     };
   }
 

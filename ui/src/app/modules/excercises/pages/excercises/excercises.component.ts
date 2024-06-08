@@ -1,5 +1,5 @@
 import { Component, computed } from '@angular/core';
-import { ExcercisesRepository } from '../../services/excercises-repository.service';
+import { ExercisesRepository } from '../../services/exercises-repository.service';
 import { Exercise } from '../../models/exercise.model';
 
 @Component({
@@ -17,7 +17,7 @@ export class ExcercisesPageComponent {
     return this.groupExercisesByCategory(exercises);
   });
 
-  constructor(private excercisesRepository: ExcercisesRepository) {}
+  constructor(private excercisesRepository: ExercisesRepository) {}
 
   private groupExercisesByCategory(exercises: Exercise[]): { [key: string]: Exercise[] } {
     return exercises.reduce(
