@@ -4,8 +4,8 @@
 
 <div class="page-body">
   @if (trainingPlan()?.workouts; as workouts) {
-    <tfa-workouts-grid class="hidden lg:block" [workouts]="workouts" />
-    <tfa-workouts-carousel class="display lg:hidden" [workouts]="workouts" />
+    <tfa-workouts-grid class="hidden md:block" [workouts]="workouts" />
+    <tfa-workouts-carousel class="display md:hidden" [workouts]="workouts" />
   } @else {
     <tfa-alert>There are no workouts defined yet.</tfa-alert>
   }

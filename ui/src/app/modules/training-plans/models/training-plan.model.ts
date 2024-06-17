@@ -2,10 +2,10 @@ import { Exercise } from '../../excercises/models/exercise.model';
 
 export type Workout = {
   name: string;
-  excercises: {
+  exercises: {
     series: number;
     reps: number;
-    excercise: Exercise;
+    exercise: Exercise;
   }[];
 };
 
