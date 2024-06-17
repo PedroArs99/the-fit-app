@@ -7,15 +7,15 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "outDir": ".build",
+    "paths": {
+      "@exercises/*": ["./src/modules/exercises/*"]
+    },
     "removeComments": true,
     "sourceMap": true,
-    "target": "ES2022",
+    "target": "ES2022"
   },
   "include": ["src/**/*.ts"],
-  "exclude": [
-    "node_modules/**/*",
-    ".build/**/*",
-  ],
+  "exclude": ["node_modules/**/*", ".build/**/*"],
   "ts-node": {
     "require": ["tsconfig-paths/register"]
   }
