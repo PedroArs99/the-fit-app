@@ -10,8 +10,10 @@ import { trainingPlanByIdResolver } from './resolvers/training-plan-by-id.resolv
 import { ExcerciseCardComponent } from '../excercises/components/excercise-card/excercise-card.component';
 import { WorkoutsGridComponent } from './components/workouts-grid/workouts-grid.component';
 import { WorkoutsCarouselComponent } from './components/workouts-carousel/workouts-carousel.component';
+import { NewTrainingPlanButtonComponent } from './components/new-training-plan-button/new-training-plan-button.component';
 
 const components = [
+  NewTrainingPlanButtonComponent,
   TrainingPlanCardComponent,
   TrainingPlanDetailsPageComponent,
   TrainingPlansPageComponent,

@@ -10,6 +10,7 @@
       @for (trainingPlan of trainingPlans.value(); track $index) {
         <tfa-training-plan-card class="base-card" [trainingPlan]="trainingPlan" [routerLink]="['.', trainingPlan.id]" />
       }
+      <tfa-new-training-plan-button class="base-card"/>
     </div>
   }
 </div>
