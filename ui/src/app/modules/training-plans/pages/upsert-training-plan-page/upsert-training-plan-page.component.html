@@ -1,0 +1,75 @@
+<div class="page-title">
+  <h1>New Training Plan</h1>
+</div>
+
+<div class="page-body">
+  <form class="form" [formGroup]="trainingPlanForm">
+    <label for="name" class="form-control w-full">
+      <div class="label">
+        <span class="label-text">Name</span>
+      </div>
+      <input formControlName="name" type="text" placeholder="Type here" class="input input-bordered w-full" />
+    </label>
+
+    <h4>Workouts</h4>
+
+    <div class="workouts" formArrayName="workouts">
+      @for (workout of workouts.value; track $index) {
+      <div class="workout-form" [formGroupName]="$index">
+        <label for="workout-{{$index}}-name" class="form-control w-full">
+          <!--TODO: Use a nicest component for this -->
+          <div class="label">
+            <span class="label-text">Name</span>
+          </div>
+          <input formControlName="name" type="text" placeholder="Type here" class="input input-bordered w-full" />
+        </label>
+
+        <div class="exercises" >
+          <table class="table table-zebra">
+            <thead>
+              <tr>
+                <th>Exercise</th>
+                <th>Series</th>
+                <th>Reps</th>
+                <th class="flex flex-row-reverse">
+                  <button class="btn btn-sm btn-outline" (click)="addNewExercise($index)">
+                    <fa-icon icon="plus" />
+                  </button>
+                </th>
+              </tr>
+            </thead>
+            <tbody formArrayName="exercises">
+              @for (exercise of workout.exercises; track $index) {
+                <tr [formGroupName]="$index">
+                  <td>
+                    <datalist id="suggestions">
+                      @for (exercise of exercises.value(); track $index) {
+                        <option [value]="exercise.id">{{ exercise.name }}</option>
+                      }
+                    </datalist>
+                    <input formControlName="exerciseId" autoComplete="on" list="suggestions" class="input input-bordered w-full" />
+                  </td>
+                  <td>
+                    <input formControlName="series" type="number" placeholder="Series" class="input input-bordered w-full" />
+                  </td>
+                  <td>
+                    <input formControlName="reps" type="number" placeholder="Reps" class="input input-bordered w-full" />
+                  </td>
+                  <td></td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+      }
+    </div>
+
+    <button class="btn btn-outline" (click)="addNewWorkout()">
+      <fa-icon icon="plus" size="2x" />
+    </button>
+
+    <button class="btn btn-primary" (click)="save()" [disabled]="trainingPlanForm.invalid">Save</button>
+  </form>
+</div>

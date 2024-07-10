@@ -4,10 +4,15 @@ import { environment } from '@environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { TrainingPlan } from '../models/training-plan.model';
 import { Observable, map } from 'rxjs';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Injectable()
 export class TrainingPlansRepository {
   constructor(private httpClient: HttpClient) {}
+
+  create(newTrainingPlan: TrainingPlan) {
+    return this.httpClient.post<TrainingPlan>(`${environment.apiUrl}/training-plans`, newTrainingPlan);
+  }
 
   getAll(): Signalizable<TrainingPlan[]> {
     const isLoading = signal(true);

@@ -11,6 +11,9 @@ import { ExcerciseCardComponent } from '../excercises/components/excercise-card/
 import { WorkoutsGridComponent } from './components/workouts-grid/workouts-grid.component';
 import { WorkoutsCarouselComponent } from './components/workouts-carousel/workouts-carousel.component';
 import { NewTrainingPlanButtonComponent } from './components/new-training-plan-button/new-training-plan-button.component';
+import { UpsertTrainingPlanPageComponent } from './pages/upsert-training-plan-page/upsert-training-plan-page.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ExercisesRepository } from '../excercises/services/exercises-repository.service';
 
 const components = [
   NewTrainingPlanButtonComponent,
@@ -27,6 +30,10 @@ const routes: Routes = [
     component: TrainingPlansPageComponent,
   },
   {
+    path: 'new',
+    component: UpsertTrainingPlanPageComponent,
+  },
+  {
     path: ':id',
     component: TrainingPlanDetailsPageComponent,
     resolve: { trainingPlan: trainingPlanByIdResolver },
@@ -34,8 +41,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [...components],
-  imports: [CommonModule, ExcerciseCardComponent, RouterModule.forChild(routes), SharedModule],
-  providers: [TrainingPlansRepository],
+  declarations: [...components, UpsertTrainingPlanPageComponent],
+  imports: [CommonModule, ExcerciseCardComponent, ReactiveFormsModule, RouterModule.forChild(routes), SharedModule],
+  providers: [ExercisesRepository, TrainingPlansRepository],
 })
 export class TrainingPlansModule {}
