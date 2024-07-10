@@ -68,7 +68,10 @@ function _mapToMongoModel(domain: TrainingPlan): TrainingPlanMongoModel {
 
 class TrainingPlanRepository implements CrudRepository<TrainingPlan> {
   async create(trainingPlan: TrainingPlan): Promise<TrainingPlan> {
+    const id = await TrainingPlan.countDocuments();
+
     const mongoModel = _mapToMongoModel(trainingPlan);
+    mongoModel.id = id + 1;
 
     const result = await TrainingPlan.create(mongoModel);
     await result.populate({

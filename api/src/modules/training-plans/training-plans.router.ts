@@ -25,7 +25,6 @@ router.get("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
   // TODO: Validate Schemas!
   const payload = req.body;
-  console.error(payload);
 
   const result = await trainingPlanRepository.create(payload);
 
