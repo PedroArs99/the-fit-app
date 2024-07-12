@@ -10,7 +10,7 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 export const routes: Routes = [
   {
     path: 'exercises',
-    loadChildren: () => import('./modules/excercises/excercises.module').then((m) => m.ExcercisesModule),
+    loadChildren: () => import('./modules/excercises/exercises-lazy.module').then((m) => m.ExerciseLazyModule),
   },
   {
     path: 'meals',
