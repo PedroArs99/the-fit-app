@@ -3,29 +3,31 @@
 </div>
 
 <div class="page-body">
-  <figure>
-    @if (exercise()?.image) {
-    <img class="lg:max-w-xl lg:m-auto border border-neutral rounded-xl" [src]="exercise()?.image" />
-    } @else {
-    <img class="lg:max-w-xl lg:m-auto border border-neutral rounded-xl"
-      src="/assets/images/exercise-placeholder.webp" />
-    }
-  </figure>
+  <div class="content">
+    <figure>
+      @if (exercise()?.image) {
+      <img class="lg:max-w-xl lg:m-auto border border-neutral rounded-xl" [src]="exercise()?.image" />
+      } @else {
+      <img class="lg:max-w-xl lg:m-auto border border-neutral rounded-xl"
+        src="/assets/images/exercise-placeholder.webp" />
+      }
+    </figure>
 
-  <div class="divider divider-secondary lg:divider-horizontal"></div>
+    <div class="divider divider-secondary lg:divider-horizontal"></div>
 
-  <div class="details">
-    <div class="table table-zebra">
-      <tbody>
-        <tr>
-          <td>Category</td>
-          <td>{{ exercise()?.category}}</td>
-        </tr>
-        <tr>
-          <td>Description</td>
-          <td>{{ exercise()?.description}}</td>
-        </tr>
-      </tbody>
+    <div class="details">
+      <div class="table table-zebra">
+        <tbody>
+          <tr>
+            <td>Category</td>
+            <td>{{ exercise()?.category}}</td>
+          </tr>
+          <tr>
+            <td>Description</td>
+            <td>{{ exercise()?.description}}</td>
+          </tr>
+        </tbody>
+      </div>
+    </div>
+
   </div>
-
-</div>
