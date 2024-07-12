@@ -1,6 +1,7 @@
-import { Component, computed } from '@angular/core';
-import { ExercisesRepository } from '../../services/exercises-repository.service';
-import { Exercise } from '../../models/exercise.model';
+import { Component } from '@angular/core';
+import { ExercisesState } from '../../store/exercises.state';
+import { Store } from '@ngrx/store';
+import { selectAllExercisesGroupedByCategory, selectIsLoadingExercises } from '../../store/exercises.selectors';
 
 @Component({
   selector: 'tfa-excercises',
@@ -8,30 +9,8 @@ import { Exercise } from '../../models/exercise.model';
   styleUrl: './excercises.component.scss',
 })
 export class ExcercisesPageComponent {
-  private _excercises = this.excercisesRepository.getAll();
+  isLoading = this.store.selectSignal(selectIsLoadingExercises);
+  exercisesByCategory = this.store.selectSignal(selectAllExercisesGroupedByCategory);
 
-  isLoading = this._excercises.isLoading;
-
-  exercisesByCategory = computed(() => {
-    const exercises = this._excercises.value();
-    return this.groupExercisesByCategory(exercises);
-  });
-
-  constructor(private excercisesRepository: ExercisesRepository) {}
-
-  private groupExercisesByCategory(exercises: Exercise[]): { [key: string]: Exercise[] } {
-    return exercises.reduce(
-      (acc, item) => {
-        const categoryExercises = acc[item.category];
-        if (!categoryExercises) {
-          acc[item.category] = [item];
-        } else {
-          acc[item.category] = [...categoryExercises, item];
-        }
-
-        return acc;
-      },
-      {} as { [key: string]: Exercise[] },
-    );
-  }
+  constructor(private store: Store<ExercisesState>) {}
 }
