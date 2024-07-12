@@ -1,4 +1,10 @@
 <div class="base-card card-body h-full">
+  <div class="actions">
+    <a [routerLink]="['/exercises', excercise().id]" target="_blank"  class="btn btn-sm btn-ghost">
+      <fa-icon icon="up-right-from-square" />
+    </a>
+  </div>
+
   <figure class="p-3">
     @if (excercise().image) {
       <img class="rounded-xl" [src]="excercise().image" />

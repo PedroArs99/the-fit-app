@@ -6,6 +6,8 @@ import {
   faDumbbell,
   faPlus,
   faTableList,
+  faTrash,
+  faUpRightFromSquare,
   faUtensils,
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -17,5 +19,7 @@ export const icons = [
   faDumbbell,
   faPlus,
   faTableList,
+  faTrash,
+  faUpRightFromSquare,
   faUtensils,
 ];
