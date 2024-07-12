@@ -1,5 +1,4 @@
-import { Injectable, signal } from '@angular/core';
-import { Signalizable } from '@shared/models/signalizable.model';
+import { Injectable } from '@angular/core';
 import { environment } from '@environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Exercise } from '../models/exercise.model';
@@ -9,21 +8,10 @@ import { Observable, map } from 'rxjs';
 export class ExercisesRepository {
   constructor(private httpClient: HttpClient) {}
 
-  getAll(): Signalizable<Exercise[]> {
-    const isLoading = signal(true);
-    const excercises = signal<Array<Exercise>>([]);
-
-    this.httpClient.get<Exercise[]>(`${environment.apiUrl}/exercises`).subscribe((data) => {
-      isLoading.set(false);
-
-      const excercisesResponse = data.map((entry) => this.mapResponseEntryToDomain(entry));
-      excercises.set(excercisesResponse);
-    });
-
-    return {
-      isLoading,
-      value: excercises,
-    };
+  getAll() {
+    return this.httpClient
+      .get<Exercise[]>(`${environment.apiUrl}/exercises`)
+      .pipe(map((data) => data.map((entry) => this.mapResponseEntryToDomain(entry))));
   }
 
   getById(id: number): Observable<Exercise | undefined> {
