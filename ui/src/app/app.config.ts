@@ -1,11 +1,12 @@
-import { ApplicationConfig, isDevMode } from '@angular/core';
+import { ApplicationConfig, importProvidersFrom, isDevMode } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { Routes } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
 import { errorToasterHttpInterceptor } from '@shared/interceptors/error-toaster.interceptor';
-import { provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 export const routes: Routes = [
   {
@@ -31,7 +32,7 @@ export const appConfig: ApplicationConfig = {
     errorToasterHttpInterceptor,
     provideHttpClient(),
     provideRouter(routes),
-    provideStore(),
+    importProvidersFrom(EffectsModule.forRoot({}), StoreModule.forRoot({})),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
   ],
 };
