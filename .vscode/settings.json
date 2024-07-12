@@ -1,4 +1,6 @@
 {
+  "material-icon-theme.activeIconPack": "angular_ngrx",
+  "workbench.iconTheme": "material-icon-theme",
   "workbench.colorCustomizations": {
     "activityBar.background": "#CCCCCC",
     "activityBar.foreground": "#333333",
