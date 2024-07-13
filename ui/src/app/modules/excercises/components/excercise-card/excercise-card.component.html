@@ -1,26 +1,26 @@
 <div class="base-card card-body h-full">
   <div class="actions">
-    <a [routerLink]="['/exercises', excercise().id]" target="_blank"  class="btn btn-sm btn-ghost">
+    <button (dblclick)="delete()" class="btn btn-sm btn-ghost">
+      <fa-icon icon="trash" />
+    </button>
+
+    <a [routerLink]="['/exercises', exercise().id]" target="_blank"  class="btn btn-sm btn-ghost">
       <fa-icon icon="up-right-from-square" />
     </a>
   </div>
 
   <figure class="p-3">
-    @if (excercise().image) {
-      <img class="rounded-xl" [src]="excercise().image" />
+    @if (exercise().image) {
+      <img class="rounded-xl" [src]="exercise().image" />
     } @else {
       <img class="rounded-xl" src="/assets/images/exercise-placeholder.webp" />
     }
   </figure>
 
   <div>
-    <span class="card-title">{{ excercise().name }}</span>
+    <span class="card-title">{{ exercise().name }}</span>
     <div class="card-badges">
-      <div class="badge badge-outline">{{ excercise().category | toCamelCase }}</div>
-
-      @if (seriesXrepsBadge() !== null) {
-        <div class="badge badge-outline">{{ seriesXrepsBadge() }}</div>
-      }
+      <div class="badge badge-outline">{{ exercise().category | toCamelCase }}</div>
     </div>
   </div>
 </div>

@@ -32,4 +32,13 @@ router.post("/", (req, res) => {
   res.status(201).json(result);
 });
 
+// DELETE a exercise
+router.delete("/:id", async (req, res) => {
+  const exerciseId = parseInt(req.params.id);
+
+  await exerciseRepository.delete(exerciseId);
+
+  return res.status(204);
+});
+
 export default router;

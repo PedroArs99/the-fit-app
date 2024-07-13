@@ -37,6 +37,10 @@ class ExerciseRepository implements CrudRepository<Exercise> {
     return _mapToDomain(result);
   }
 
+  async delete(id: number): Promise<void> {
+    await ExerciseModel.deleteOne({ id }).exec();
+  }
+
   async findAll(): Promise<Exercise[]> {
     const results = await ExerciseModel.find().exec();
 

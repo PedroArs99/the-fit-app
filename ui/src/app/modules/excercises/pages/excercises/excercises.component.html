@@ -29,7 +29,7 @@
       <h2>{{ category.key }}</h2>
       <div class="cards-grid">
         @for (exercise of category.value; track $index) {
-        <tfa-excercise-card class="exercise-card" [excercise]="exercise" />
+        <tfa-excercise-card class="exercise-card" [exercise]="exercise" />
         }
       </div>
       }

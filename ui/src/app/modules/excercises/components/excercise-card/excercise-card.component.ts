@@ -1,5 +1,8 @@
-import { Component, computed, input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { Exercise } from '../../models/exercise.model';
+import { Store } from '@ngrx/store';
+import { ExercisesState } from '../../store/exercises.state';
+import { deleteExercise } from '../../store/exercises.actions';
 
 @Component({
   selector: 'tfa-excercise-card',
@@ -7,20 +10,11 @@ import { Exercise } from '../../models/exercise.model';
   styleUrl: './excercise-card.component.scss',
 })
 export class ExcerciseCardComponent {
-  excercise = input.required<Exercise>();
-  series = input<number>();
-  reps = input<number>();
+  exercise = input.required<Exercise>();
 
-  seriesXrepsBadge = computed(() => {
-    const series = this.series();
-    const reps = this.reps();
+  constructor(private store: Store<ExercisesState>) {}
 
-    if (series && reps) {
-      return `${series}x${reps}`;
-    } else if (series) {
-      return `${series} to Failure`;
-    } else {
-      return null;
-    }
-  });
+  delete() {
+    this.store.dispatch(deleteExercise({ exercise: this.exercise() }));
+  }
 }

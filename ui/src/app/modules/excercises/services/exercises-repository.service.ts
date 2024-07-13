@@ -8,6 +8,10 @@ import { Observable, map } from 'rxjs';
 export class ExercisesRepository {
   constructor(private httpClient: HttpClient) {}
 
+  delete(id: number) {
+    return this.httpClient.delete(`${environment.apiUrl}/exercises/${id}`);
+  }
+
   getAll() {
     return this.httpClient
       .get<Exercise[]>(`${environment.apiUrl}/exercises`)
