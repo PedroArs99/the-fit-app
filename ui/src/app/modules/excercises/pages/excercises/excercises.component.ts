@@ -17,7 +17,6 @@ export class ExcercisesPageComponent {
   isLoading = this.store.selectSignal(selectIsLoadingExercises);
   exercises = computed(() => {
     const category = this.selectedCategory();
-    console.log(category);
     const exercisesByCategory = this.exercisesByCategory();
 
     if (category) {
