@@ -4,6 +4,7 @@ import { ExercisesRepository } from 'src/app/modules/excercises/services/exercis
 import { TrainingPlansRepository } from '../../services/training-plans-repository.service';
 import { TrainingPlan } from '../../models/training-plan.model';
 import {  Router } from '@angular/router';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'tfa-upsert-training-plan-page',
@@ -11,7 +12,7 @@ import {  Router } from '@angular/router';
   styleUrl: './upsert-training-plan-page.component.scss',
 })
 export class UpsertTrainingPlanPageComponent {
-  exercises = this.exerciseRepository.getAll();
+  exercises = toSignal(this.exerciseRepository.getAll());
 
   trainingPlanForm = this.formBuilder.group({
     name: ['', Validators.required],
@@ -51,7 +52,6 @@ export class UpsertTrainingPlanPageComponent {
     );
   }
 
-
   save() {
     const value = this.trainingPlanForm.value;
     const parsedValue = {
@@ -67,9 +67,9 @@ export class UpsertTrainingPlanPageComponent {
       })),
     } as TrainingPlan;
 
-    this.trainingPlanRepository.create(parsedValue).subscribe(trainingPlan => {
-      console.log(trainingPlan)
-      this.router.navigate(['/training-plans', trainingPlan.id])
+    this.trainingPlanRepository.create(parsedValue).subscribe((trainingPlan) => {
+      console.log(trainingPlan);
+      this.router.navigate(['/training-plans', trainingPlan.id]);
     });
   }
 }

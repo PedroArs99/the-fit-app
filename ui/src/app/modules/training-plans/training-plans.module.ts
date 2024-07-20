@@ -13,6 +13,7 @@ import { NewTrainingPlanButtonComponent } from './components/new-training-plan-b
 import { UpsertTrainingPlanPageComponent } from './pages/upsert-training-plan-page/upsert-training-plan-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ExerciseCardComponent } from './components/exercise-card/exercise-card.component';
+import { ExercisesModule } from '../excercises/exercises.module';
 
 const components = [
   ExerciseCardComponent,
@@ -42,7 +43,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [...components, ...pages],
-  imports: [CommonModule, ReactiveFormsModule, RouterModule.forChild(routes), SharedModule],
+  imports: [CommonModule, ExercisesModule, ReactiveFormsModule, RouterModule.forChild(routes), SharedModule],
   providers: [TrainingPlansRepository],
 })
 export class TrainingPlansModule {}

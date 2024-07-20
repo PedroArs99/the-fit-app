@@ -43,7 +43,7 @@
                 <tr [formGroupName]="$index">
                   <td>
                     <datalist id="suggestions">
-                      @for (exercise of exercises.value(); track $index) {
+                      @for (exercise of exercises(); track $index) {
                         <option [value]="exercise.id">{{ exercise.name }}</option>
                       }
                     </datalist>
