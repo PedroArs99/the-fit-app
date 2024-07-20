@@ -12,13 +12,20 @@ import { exercisesReducer } from './store/exercises.reducer';
 import { ExercisesEffects } from './store/exercises.effects';
 import { EffectsModule } from '@ngrx/effects';
 
+const components = [ExcerciseCardComponent];
+
+const pages = [ExcercisesPageComponent, ExercisesDetailsPageComponent];
+
 @NgModule({
-  declarations: [ExcerciseCardComponent, ExcercisesPageComponent, ExercisesDetailsPageComponent],
-  imports: [CommonModule, ReactiveFormsModule, SharedModule,
+  declarations: [...components, ...pages],
+  imports: [
+    CommonModule,
     EffectsModule.forFeature(ExercisesEffects),
+    ReactiveFormsModule,
+    SharedModule,
     StoreModule.forFeature('exercises', exercisesReducer),
   ],
-  providers: [ExercisesEffects,ExercisesRepository],
+  providers: [ExercisesEffects, ExercisesRepository],
 })
 export class ExercisesModule {
   constructor(private _: ExercisesModuleInitService) {}
