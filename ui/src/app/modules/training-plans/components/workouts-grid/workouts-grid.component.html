@@ -4,9 +4,9 @@
 
     <div class="excercises">
       @for (extendedExcercise of workout.exercises; track $index) {
-        <tfa-excercise-card
-          class="self-stretch w-full md:max-w-64"
-          [excercise]="extendedExcercise.exercise"
+        <tfa-exercise-card
+          class="self-stretch w-full md:max-w-96"
+          [exercise]="extendedExcercise.exercise"
           [series]="extendedExcercise.series"
           [reps]="extendedExcercise.reps"
         />

@@ -9,12 +9,8 @@
 </div>
 
 <div class="excercises">
-  @for (extendedExcercise of activeWorkout().exercises; track $index) {
-    <tfa-excercise-card
-      class="self-stretch w-full md:max-w-64"
-      [excercise]="extendedExcercise.exercise"
-      [series]="extendedExcercise.series"
-      [reps]="extendedExcercise.reps"
-    />
+  @for (extendedExercise of activeWorkout().exercises; track $index) {
+  <tfa-exercise-card [exercise]="extendedExercise.exercise" [series]="extendedExercise.series"
+    [reps]="extendedExercise.reps" />
   }
 </div>

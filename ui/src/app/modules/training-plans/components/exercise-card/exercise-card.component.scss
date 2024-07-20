@@ -1,0 +1,8 @@
+:host {
+  @apply card;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row-reverse;
+}
