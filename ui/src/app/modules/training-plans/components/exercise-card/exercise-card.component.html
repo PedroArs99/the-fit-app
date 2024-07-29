@@ -13,7 +13,19 @@
     }
   </figure>
 
-  <div>
-    <span class="card-title">{{ exercise().name }} - {{ series() }} x {{ reps() }}</span>
-  </div>
+  <span class="card-title">{{ exercise().name }} - {{ series() }} x {{ reps() > 0 ? reps() : "Limit" }}</span>
+  <form class="flex flex-col gap-2" [formGroup]="diaryEntryForm" (submit)="addNewDiaryEntry()">
+    <span>New Diary Entry: </span>
+
+    <label class="input input-bordered flex items-center gap-2">
+      Date
+      <input type="date" class="grow" formControlName="date" />
+    </label>
+    <label class="input input-bordered flex items-center gap-2">
+      Load
+      <input type="number" class="grow" formControlName="load" />
+    </label>
+
+    <button class="btn btn-primary">Save</button>
+  </form>
 </div>
