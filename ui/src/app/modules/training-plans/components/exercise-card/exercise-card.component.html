@@ -7,9 +7,9 @@
 
   <figure class="p-3">
     @if (exercise().image) {
-    <img class="rounded-xl" [src]="exercise().image" />
+      <img class="rounded-xl" [src]="exercise().image" />
     } @else {
-    <img class="rounded-xl" src="/assets/images/exercise-placeholder.webp" />
+      <img class="rounded-xl" src="/assets/images/exercise-placeholder.webp" />
     }
   </figure>
 
@@ -21,6 +21,7 @@
       Date
       <input type="date" class="grow" formControlName="date" />
     </label>
+
     <label class="input input-bordered flex items-center gap-2">
       Load
       <input type="number" class="grow" formControlName="load" />

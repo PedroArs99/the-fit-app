@@ -1,7 +1,6 @@
-type DiaryEntry = {
+export type DiaryEntry = {
   date: Date;
-  weight: number;
-  unit: string;
+  load: number;
 };
 
 export type Exercise = {
