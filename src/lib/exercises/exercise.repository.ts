@@ -4,6 +4,14 @@ import { supabase } from '$lib/supabase/client';
 class ExerciseRepository {
 	private tableName = 'exercises';
 
+	async create(exercise: Partial<Exercise>): Promise<Exercise> {
+		const { data, error } = await supabase.from(this.tableName).insert([{ ...exercise }]).select('*');
+
+		if (error) throw Error(error.message);
+
+		return data[0];
+	}
+
 	async findAll(): Promise<Exercise[]> {
 		const { data, error } = await supabase.from(this.tableName).select('*');
 
@@ -13,15 +21,15 @@ class ExerciseRepository {
 	}
 
 	async findById(id: string): Promise<Exercise | null> {
-    const { data, error } = await supabase.from(this.tableName).select('*').eq('id', id);
-    
-    if (error) throw Error(error.message);
+		const { data, error } = await supabase.from(this.tableName).select('*').eq('id', id);
 
-    if (data) {
-      return data[0];
-    } else {
-      return null;
-    }
+		if (error) throw Error(error.message);
+
+		if (data) {
+			return data[0];
+		} else {
+			return null;
+		}
 	}
 }
 
