@@ -10,7 +10,12 @@
 			<Icon icon="bars" />
 		</div>
 		<ul class="menu dropdown-content">
-			<li><a href="/exercises">Exercises</a></li>
+			<li>
+				<a href="/exercises">
+					<Icon icon="dumbbell" />
+					<span>Exercises</span>
+				</a>
+			</li>
 		</ul>
 	</div>
 </div>
