@@ -34,7 +34,7 @@ form {
   display: flex;
   flex-direction: row-reverse;
 
-  @apply p-1;
+  @apply p-1 gap-1;
 }
 
 .card-body {
