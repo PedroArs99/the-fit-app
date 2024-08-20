@@ -1,4 +1,5 @@
 <script lang="ts">
+	import ExerciseCard from '$lib/exercises/components/ExerciseCard.svelte';
 	import type { Exercise } from '$lib/exercises/exercise.model';
 	import Icon from '$lib/Icon.svelte';
 
@@ -10,41 +11,23 @@
 		<div class="category">
 			<h2>{category}</h2>
 
-			<table class="table table-zebra">
-				<thead>
-					<tr>
-						<th>Name</th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
-					{#each exercises as exercise}
-						<tr>
-							<td>{exercise.name}</td>
-							<td>
-								<div class="actions">
-									<a href={`/exercises/${exercise.id}`} target="_blank" class="action">
-										<Icon icon="link-new-tab" />
-									</a>
-								</div>
-							</td>
-						</tr>
-					{/each}
-				</tbody>
-			</table>
+			<div class="exercises">
+				{#each exercises as exercise}
+					<ExerciseCard exercise={exercise} />
+				{/each}
+			</div>
 		</div>
 	{/each}
 </div>
 
 <style lang="postcss">
-	.action {
-		@apply btn btn-sm btn-ghost;
-	}
-
-	.actions {
+	.exercises {
 		display: flex;
-		flex-direction: row;
-		justify-content: end;
+		flex-wrap: wrap;
+		align-items: stretch;
+		justify-content: space-evenly;
+
+		@apply gap-3;
 	}
 
 	.categories {

@@ -10,3 +10,28 @@ h1 {
 h2 {
   @apply text-2xl;
 }
+
+.card {
+  @apply w-full md:max-w-56 card-compact border;
+}
+
+.card figure {
+  flex-grow: 1;
+}
+
+.card img {
+  @apply md:max-w-52 p-3;
+}
+
+.card-actions {
+  display: flex;
+  flex-direction: row-reverse;
+
+  @apply p-1;
+}
+
+.card-body {
+  flex-grow: 0;
+
+  @apply min-h-24;
+}
