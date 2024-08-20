@@ -53,8 +53,4 @@
 
 		@apply gap-3;
 	}
-
-	.category {
-		@apply px-3;
-	}
 </style>
