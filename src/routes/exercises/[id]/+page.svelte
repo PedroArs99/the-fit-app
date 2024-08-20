@@ -28,10 +28,10 @@
 	}
 
 	.facts {
-		@apply flex flex-col md:flex-row-reverse gap-3;
+		@apply flex flex-col md:flex-row-reverse md:justify-end gap-3;
 	}
 
 	.image {
-		@apply p-3 border;
+		@apply p-3 border md:max-w-96;
 	}
 </style>
