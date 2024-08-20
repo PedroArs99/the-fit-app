@@ -12,6 +12,15 @@ class ExerciseRepository {
 		return data[0];
 	}
 
+	async delete(id: string): Promise<void> {
+		const { error } = await supabase
+			.from(this.tableName)
+			.delete()
+			.eq('id',id);
+
+		if (error) throw Error(error.message);
+	}
+
 	async findAll(): Promise<Exercise[]> {
 		const { data, error } = await supabase.from(this.tableName).select('*');
 
