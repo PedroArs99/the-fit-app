@@ -1,14 +1,13 @@
 {
-  "material-icon-theme.activeIconPack": "angular_ngrx",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.colorCustomizations": {
-    "activityBar.background": "#CCCCCC",
+    "activityBar.background": "#BBBBBB",
     "activityBar.foreground": "#333333",
 
-    "titleBar.activeBackground": "#CCCCCC",
+    "titleBar.activeBackground": "#BBBBBB",
     "titleBar.activeForeground": "#333333",
-    "titleBar.inactiveBackground": "#CCCCCC",
+    "titleBar.inactiveBackground": "#BBBBBB",
     "titleBar.inactiveForeground": "#333333"
   },
-  "workbench.colorTheme": "Bearded Theme Black & Amethyst"
+  "workbench.colorTheme": "Bearded Theme feat. Melle Julie"
 }
