@@ -11,6 +11,13 @@ h2 {
   @apply text-2xl;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+
+  @apply gap-3;
+}
+
 .card {
   @apply w-full md:max-w-56 card-compact border;
 }
@@ -34,4 +41,12 @@ h2 {
   flex-grow: 0;
 
   @apply min-h-24;
+}
+
+.form-control {
+  @apply w-full;
+}
+
+.input {
+  @apply input-bordered;
 }
