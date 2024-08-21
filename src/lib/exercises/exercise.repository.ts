@@ -40,6 +40,18 @@ class ExerciseRepository {
 			return null;
 		}
 	}
+
+	async update(id: string, exercise: Partial<Exercise>) {
+		const _exercise = { ...exercise };
+		delete _exercise.id;
+
+		const { error } = await supabase
+			.from(this.tableName)
+			.update({ ..._exercise })
+			.eq('id', id);
+
+		if (error) throw Error(error.message);
+	}
 }
 
 export const exerciseRepository = new ExerciseRepository();
