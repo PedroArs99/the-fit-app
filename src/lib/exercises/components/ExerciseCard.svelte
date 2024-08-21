@@ -18,6 +18,9 @@
 		<a href={`/exercises/${exercise.id}`} class="btn btn-sm btn-ghost">
 			<Icon icon="link-new-tab" />
 		</a>
+		<a href={`/exercises/${exercise.id}/update`} class="btn btn-sm btn-ghost">
+			<Icon icon="pencil" />
+		</a>
 		<button on:dblclick={onDelete} class="btn btn-sm btn-ghost">
 			<Icon icon="trash" />
 		</button>

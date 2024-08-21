@@ -3,27 +3,27 @@
 	import type { Exercise } from "$lib/exercises/exercise.model";
 	import { exerciseRepository } from "$lib/exercises/exercise.repository";
 
+	export let data: { exercise: Exercise};
+
   let exercise: Partial<Exercise> = {
-    name: undefined,
-    description: undefined,
-    category: undefined,
-    image: undefined,
+		id: data.exercise.id,
+    name: data.exercise.name,
+    description: data.exercise.description,
+    category: data.exercise.category,
+    image: data.exercise.image,
   }
 
   async function submit() {
-    const result = await exerciseRepository.create(exercise);
+    await exerciseRepository.update(exercise.id!, exercise);
 
-    if(result.id) {
-      goto(`/exercises/${result.id}`)
-    }
-
+    goto(`/exercises/${exercise.id}`)
   }
 
-  $:isFormValid = !!exercise.name && !!exercise.category;
+  $:isFormValid = !!exercise.id && !!exercise.name && !!exercise.category;
 </script>
 
 <div class="page">
-	<h1>Create New Exercise</h1>
+	<h1>Update Exercise</h1>
 
 	<form>
 		<label class="form-control">

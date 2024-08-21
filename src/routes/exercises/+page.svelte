@@ -9,11 +9,13 @@
 
 	function onExerciseDelete(event: CustomEvent) {
 		exerciseRepository.delete(event.detail.id).then(() => {
-			data.exercises = data.exercises.filter(e => e.id !== event.detail.id);
+			data.exercises = data.exercises.filter((e) => e.id !== event.detail.id);
 		});
 	}
 
-	$: groupedByCategory = Object.entries(_.groupBy(data.exercises, 'category'));
+	$: groupedByCategory = Object.entries(_.groupBy(data.exercises, 'category')).sort(
+		([a, v1], [b, v2]) => a.localeCompare(b)
+	);
 </script>
 
 <div class="actions">
