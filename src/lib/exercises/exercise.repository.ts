@@ -5,7 +5,10 @@ class ExerciseRepository {
 	private tableName = 'exercises';
 
 	async create(exercise: Partial<Exercise>): Promise<Exercise> {
-		const { data, error } = await supabase.from(this.tableName).insert([{ ...exercise }]).select('*');
+		const { data, error } = await supabase
+			.from(this.tableName)
+			.insert([{ ...exercise }])
+			.select('*');
 
 		if (error) throw Error(error.message);
 
@@ -13,16 +16,13 @@ class ExerciseRepository {
 	}
 
 	async delete(id: string): Promise<void> {
-		const { error } = await supabase
-			.from(this.tableName)
-			.delete()
-			.eq('id',id);
+		const { error } = await supabase.from(this.tableName).delete().eq('id', id);
 
 		if (error) throw Error(error.message);
 	}
 
 	async findAll(): Promise<Exercise[]> {
-		const { data, error } = await supabase.from(this.tableName).select('*');
+		const { data, error } = await supabase.from(this.tableName).select('*').order('name');
 
 		if (error) throw Error(error.message);
 
