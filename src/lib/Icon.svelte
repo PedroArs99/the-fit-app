@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { faArrowUpRightFromSquare, faBars, faDumbbell, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
-	import Fa from 'svelte-fa';
+	import Fa, { type IconSize } from 'svelte-fa';
 
 	export let icon: 'bars' | 'dumbbell' | 'link-new-tab' | 'plus' | 'trash';
+	export let size: IconSize | undefined = undefined;
 
 	const iconToDefinition = {
 		bars: faBars,
@@ -13,4 +14,4 @@
 	};
 </script>
 
-<Fa icon={iconToDefinition[icon]} />
+<Fa icon={iconToDefinition[icon]} size={size} />
