@@ -24,7 +24,11 @@
 	</div>
 
 	<figure>
-		<img src={exercise.image} alt={exercise.name} />
+		{#if exercise.image}
+			<img src={exercise.image} alt={exercise.name} />
+		{:else}
+			<Icon icon="dumbbell" size="3x"/>
+		{/if}
 	</figure>
 
 	<div class="card-body">
