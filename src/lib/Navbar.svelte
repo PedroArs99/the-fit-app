@@ -16,6 +16,12 @@
 					<span>Exercises</span>
 				</a>
 			</li>
+			<li>
+				<a href="/training-plans">
+					<Icon icon="list" />
+					<span>Training Plans</span>
+				</a>
+			</li>
 		</ul>
 	</div>
 </div>
