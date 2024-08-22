@@ -1,7 +1,8 @@
 import type { Exercise } from '$lib/exercises/exercise.model';
 import { supabase } from '$lib/supabase/client';
+import type { SupabaseRepository } from '$lib/supabase/repository';
 
-class ExerciseRepository {
+class ExerciseRepository implements SupabaseRepository<Exercise> {
 	private tableName = 'exercises';
 
 	async create(exercise: Partial<Exercise>): Promise<Exercise> {
