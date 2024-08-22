@@ -1,7 +1,15 @@
 <script lang="ts">
+	import LineChart from '$lib/charts/LineChart.svelte';
 	import type { Exercise } from '$lib/exercises/exercise.model';
 
 	export let data: { exercise: Exercise };
+
+	$: diaryEntries = data.exercise.diaryEntries
+		.map((e) => ({
+			label: e.date,
+			value: e.load
+		}))
+		.slice(0, 5);
 </script>
 
 <div class="exercise">
@@ -9,17 +17,28 @@
 	<div class="badge">{data.exercise.category}</div>
 
 	<div class="facts">
-	
 		<p>{@html data.exercise.description}</p>
-	
 		<div class="image">
-			<img src={data.exercise.image} alt={data.exercise.name}>
+			<img src={data.exercise.image} alt={data.exercise.name} />
+		</div>
+	</div>
+
+	<div class="divider"></div>
+
+	<div class="stats">
+		<h2>Diary</h2>
+
+		<div class="diary">
+			<LineChart dataPoints={diaryEntries} />
 		</div>
 	</div>
 </div>
 
-
 <style lang="postcss">
+	.diary {
+		@apply md:max-w-96;
+	}
+
 	.exercise {
 		display: flex;
 		flex-direction: column;
@@ -33,5 +52,12 @@
 
 	.image {
 		@apply p-3 border md:max-w-96;
+	}
+
+	.stats {
+		display: flex;
+		flex-direction: column;
+
+		@apply gap-3;
 	}
 </style>

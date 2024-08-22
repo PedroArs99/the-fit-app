@@ -1,10 +1,13 @@
 <script lang="ts">
-	import { Chart, LineController, LineElement } from 'chart.js';
+	import { CategoryScale, Chart, LinearScale, LineController, LineElement, PointElement } from 'chart.js';
 	import { onMount } from 'svelte';
 
   Chart.register(
-    LineController,
-    LineElement,
+		CategoryScale,
+		LineController,
+		LineElement,
+		LinearScale,
+		PointElement,
   )
 
 	export let dataPoints: { label: string, value: number}[];
