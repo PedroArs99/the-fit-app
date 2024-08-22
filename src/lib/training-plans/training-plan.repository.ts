@@ -9,8 +9,10 @@ class TrainingPlanRepository implements SupabaseRepository<TrainingPlan> {
 		throw new Error('Method not implemented.');
 	}
 
-	delete(id: string): Promise<void> {
-		throw new Error('Method not implemented.');
+	async delete(id: string): Promise<void> {
+		const { error } = await supabase.from(this.tableName).delete().eq('id', id);
+
+		if (error) throw Error(error.message);
 	}
 
 	async findAll(): Promise<TrainingPlan[]> {

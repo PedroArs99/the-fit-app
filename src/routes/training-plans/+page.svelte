@@ -1,8 +1,16 @@
 <script lang="ts">
 	import Icon from '$lib/Icon.svelte';
 	import type { TrainingPlan } from '$lib/training-plans/training-plan.model';
+	import { trainingPlanRepository } from '$lib/training-plans/training-plan.repository';
+	import { fade } from 'svelte/transition';
 
 	export let data: { trainingPlans: TrainingPlan[] };
+
+	function onDeleteTrainingPlan(id: string) {
+		trainingPlanRepository.delete(id).then(() => {
+			data.trainingPlans = data.trainingPlans.filter((tp) => tp.id !== id);
+		});
+	}
 </script>
 
 <div class="actions">
@@ -16,7 +24,7 @@
 
 <div class="training-plans">
 	{#each data.trainingPlans as trainingPlan}
-		<div class="card">
+		<div class="card" out:fade>
 			<div class="card-body">
 				<h2 class="card-title">{trainingPlan.name}</h2>
 
@@ -29,9 +37,9 @@
 						<span>TODO: Update</span>
 						<Icon icon="pencil" />
 					</button>
-					<button class="btn btn-error bg-gray-500">
+					<button class="btn btn-error" on:dblclick={() => onDeleteTrainingPlan(trainingPlan.id)}>
 						<Icon icon="trash" />
-						<span>TODO: Delete</span>
+						<span>Delete</span>
 					</button>
 				</div>
 			</div>
