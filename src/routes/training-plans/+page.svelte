@@ -24,7 +24,7 @@
 
 <div class="training-plans">
 	{#each data.trainingPlans as trainingPlan}
-		<div class="card" out:fade>
+		<div class="card w-full" out:fade>
 			<div class="card-body">
 				<h2 class="card-title">{trainingPlan.name}</h2>
 

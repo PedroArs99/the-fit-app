@@ -19,7 +19,7 @@ form {
 }
 
 .card {
-  @apply w-full md:max-w-56 card-compact border;
+  @apply w-full card-compact border;
 }
 
 .card figure {

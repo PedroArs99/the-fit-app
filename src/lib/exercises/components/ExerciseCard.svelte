@@ -13,7 +13,7 @@
 	}
 </script>
 
-<div out:fade class="card">
+<div out:fade class="card md:max-w-56">
 	<div class="card-actions">
 		<a href={`/exercises/${exercise.id}`} class="btn btn-sm btn-ghost">
 			<Icon icon="link-new-tab" />
@@ -30,7 +30,7 @@
 		{#if exercise.image}
 			<img src={exercise.image} alt={exercise.name} />
 		{:else}
-			<Icon icon="dumbbell" size="3x"/>
+			<Icon icon="dumbbell" size="3x" />
 		{/if}
 	</figure>
 
@@ -38,3 +38,12 @@
 		<h2 class="card-title">{exercise.name}</h2>
 	</div>
 </div>
+
+<style lang="postcss">
+	.card-actions {
+		display: flex;
+		flex-direction: row-reverse;
+
+		@apply p-1 gap-1;
+	}
+</style>
