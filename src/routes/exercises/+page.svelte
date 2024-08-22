@@ -47,6 +47,13 @@
 		flex-direction: row-reverse;
 	}
 
+	.card-actions {
+		display: flex;
+		flex-direction: row-reverse;
+
+		@apply p-1 gap-1;
+	}
+
 	.categories {
 		display: flex;
 		flex-direction: column;

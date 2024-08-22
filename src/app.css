@@ -30,13 +30,6 @@ form {
   @apply md:max-w-52 p-3;
 }
 
-.card-actions {
-  display: flex;
-  flex-direction: row-reverse;
-
-  @apply p-1 gap-1;
-}
-
 .card-body {
   flex-grow: 0;
 
