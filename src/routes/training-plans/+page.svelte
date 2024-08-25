@@ -26,13 +26,9 @@
 	{#each data.trainingPlans as trainingPlan}
 		<div class="card w-full" out:fade>
 			<div class="card-body">
-				<h2 class="card-title">{trainingPlan.name}</h2>
+				<a href={`training-plans/${trainingPlan.id}`} class="card-title">{trainingPlan.name}</a>
 
 				<div class="card-actions">
-					<button class="btn btn-ghost btn-outline">
-						<Icon icon="link-new-tab" />
-						<span>Open</span>
-					</button>
 					<button class="btn btn-info bg-gray-500">
 						<span>TODO: Update</span>
 						<Icon icon="pencil" />
