@@ -27,7 +27,10 @@ class TrainingPlanRepository implements SupabaseRepository<TrainingPlan> {
 	}
 
 	async findById(id: string): Promise<TrainingPlan | null> {
-		const { data, error } = await supabase.from(this.tableName).select('*').eq('id', id);
+		const { data, error } = await supabase
+			.from(this.tableName)
+			.select('*, workouts ( * )')
+			.eq('id', id);
 
 		if (error) throw Error(error.message);
 
@@ -37,6 +40,7 @@ class TrainingPlanRepository implements SupabaseRepository<TrainingPlan> {
 			return null;
 		}
 	}
+
 	update(id: string, entity: Partial<TrainingPlan>): Promise<void> {
 		throw new Error('Method not implemented.');
 	}
