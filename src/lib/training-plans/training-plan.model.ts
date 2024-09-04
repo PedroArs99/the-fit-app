@@ -1,9 +1,15 @@
 import type { Exercise } from '$lib/exercises/exercise.model';
 
+export interface WorkoutExercise {
+	exercise: Exercise;
+	series: number;
+	reps: number;
+}
+
 export interface Workout {
 	name: string;
 	sort: string;
-	exercises: Exercise[];
+	exercises: WorkoutExercise[];
 }
 
 export interface TrainingPlan {

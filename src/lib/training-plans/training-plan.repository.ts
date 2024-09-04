@@ -29,7 +29,7 @@ class TrainingPlanRepository implements SupabaseRepository<TrainingPlan> {
 	async findById(id: string): Promise<TrainingPlan | null> {
 		const { data, error } = await supabase
 			.from(this.tableName)
-			.select('*, workouts ( *, exercises( * ) )')
+			.select('*, workouts ( *, exercises:workout_exercises( *, exercise:exercise_id( * ) ) )')
 			.eq('id', id);
 
 		if (error) throw Error(error.message);

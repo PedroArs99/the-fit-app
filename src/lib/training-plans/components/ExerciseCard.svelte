@@ -1,31 +1,36 @@
 <script lang="ts">
 	import Icon from '$lib/Icon.svelte';
-	import { createEventDispatcher } from 'svelte';
-	import type { Exercise } from '$lib/exercises/exercise.model';
 	import { fade } from 'svelte/transition';
+	import type { WorkoutExercise } from '../training-plan.model';
 
-	export let exercise: Exercise;
+	export let exercise: WorkoutExercise;
 
-	const dispatch = createEventDispatcher();
+	$: _exercise = exercise.exercise;
+	$: series = exercise.series;
+	$: reps = exercise.reps;
 </script>
 
 <div out:fade class="card md:max-w-56">
 	<div class="card-actions">
-		<a href={`/exercises/${exercise.id}`} class="btn btn-sm btn-ghost">
+		<a href={`/exercises/${_exercise.id}`} class="btn btn-sm btn-ghost">
 			<Icon icon="link-new-tab" />
 		</a>
 	</div>
 
 	<figure>
-		{#if exercise.image}
-			<img src={exercise.image} alt={exercise.name} />
+		{#if _exercise.image}
+			<img src={_exercise.image} alt={_exercise.name} />
 		{:else}
 			<Icon icon="dumbbell" size="3x" />
 		{/if}
 	</figure>
 
 	<div class="card-body">
-		<h2 class="card-title">{exercise.name}</h2>
+		<h2 class="card-title">{_exercise.name}</h2>
+
+		<div class="badges">
+			<span class="badge">{series} x {reps === 0 ? 'Limit' : reps}</span>
+		</div>
 	</div>
 </div>
 
