@@ -3,19 +3,17 @@
 </script>
 
 <div class="navbar">
-	<a href="/"  class="text-lg font-bold">The Fit App</a>
+	<a href="/" class="text-lg font-bold">The Fit App</a>
 
 	<div class="dropdown dropdown-end">
 		<div tabindex="0" role="button" class="btn btn-ghost rounded-btn">
 			<Icon icon="bars" />
 		</div>
 		<ul class="menu dropdown-content">
-			<li>
-				<a href="/exercises">
-					<Icon icon="dumbbell" />
-					<span>Exercises</span>
-				</a>
-			</li>
+			<a href="/exercises">
+				<Icon icon="dumbbell" />
+				<span>Exercises</span>
+			</a>
 			<li>
 				<a href="/training-plans">
 					<Icon icon="list" />
