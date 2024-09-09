@@ -37,6 +37,7 @@
 	"dependencies": {
 		"@fortawesome/free-solid-svg-icons": "^6.6.0",
 		"@supabase/supabase-js": "^2.45.1",
+		"amplify-adapter": "^0.1.2",
 		"chart.js": "^4.4.4",
 		"lodash": "^4.17.21",
 		"svelte-fa": "^4.0.2"
