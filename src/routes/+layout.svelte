@@ -5,6 +5,6 @@
 
 <Navbar />
 
-<div class="px-3">
+<div class="p-3">
 	<slot />
 </div>
