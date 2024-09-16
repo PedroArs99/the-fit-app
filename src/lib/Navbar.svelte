@@ -5,7 +5,7 @@
 <div class="navbar">
 	<a href="/" class="text-lg font-bold">The Fit App</a>
 
-	<div class="dropdown dropdown-open dropdown-end">
+	<div class="dropdown dropdown-end">
 		<div tabindex="0" role="button" class="btn btn-ghost rounded-btn">
 			<Icon icon="bars" />
 		</div>
