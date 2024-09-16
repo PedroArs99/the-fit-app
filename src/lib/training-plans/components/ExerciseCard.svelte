@@ -28,7 +28,7 @@
 	}
 </script>
 
-<div out:fade class="card md:max-w-56">
+<div out:fade class="card md:max-w-64">
 	<div class="card-actions">
 		<a href={`/exercises/${_exercise.id}`} class="btn btn-sm btn-ghost">
 			<Icon icon="link-new-tab" />
@@ -76,7 +76,7 @@
 								<input
 									type="number"
 									placeholder="Today's load..."
-									class="input input-bordered input-xs"
+									class="input input-bordered input-xs max-w-32"
 									on:change={(event) => (todaysLoad = event.currentTarget?.value)}
 								/>
 							</td>
