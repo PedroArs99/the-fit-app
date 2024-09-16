@@ -4,13 +4,25 @@
 	import type { WorkoutExercise } from '../training-plan.model';
 	import { _textX } from 'chart.js/helpers';
 	import { toShortDate } from '$lib/utils/date.utils';
+	import { exerciseRepository } from '$lib/exercises/exercise.repository';
 
 	export let exercise: WorkoutExercise;
+
+	let todaysLoad: string | undefined = undefined;
 
 	$: _exercise = exercise.exercise;
 	$: series = exercise.series;
 	$: reps = exercise.reps;
 	$: today = toShortDate(new Date());
+
+	async function registerNewEntry() {
+		if (todaysLoad) {
+			_exercise = await exerciseRepository.registerNewDiaryEntry(_exercise.id, {
+				date: today,
+				load: Number.parseFloat(todaysLoad)
+			});
+		}
+	}
 </script>
 
 <div out:fade class="card md:max-w-56">
@@ -53,16 +65,23 @@
 							<td>{entry.load}</td>
 						</tr>
 					{/each}
+
+					
 					<tr>
 						<td class="font-bold">{today}</td>
 						<td class="font-bold">
-							<input type="number" placeholder="Today's load..." class="input input-bordered input-xs max-w-32" />
+							<input
+								type="number"
+								placeholder="Today's load..."
+								class="input input-bordered input-xs"
+								on:change={(event) => (todaysLoad = event.currentTarget?.value)}
+							/>
 						</td>
 					</tr>
 				</tbody>
 			</table>
 
-			<button class="btn btn-primary btn-sm">Save</button>
+			<button class="btn btn-primary btn-sm" disabled={!todaysLoad} on:click={registerNewEntry}>Save</button>
 		</div>
 	</div>
 </div>
