@@ -3,12 +3,14 @@
 	import { fade } from 'svelte/transition';
 	import type { WorkoutExercise } from '../training-plan.model';
 	import { _textX } from 'chart.js/helpers';
+	import { toShortDate } from '$lib/utils/date.utils';
 
 	export let exercise: WorkoutExercise;
 
 	$: _exercise = exercise.exercise;
 	$: series = exercise.series;
 	$: reps = exercise.reps;
+	$: today = toShortDate(new Date());
 </script>
 
 <div out:fade class="card md:max-w-56">
@@ -48,11 +50,19 @@
 					{#each _exercise.diaryEntries as entry}
 						<tr>
 							<td class="font-bold">{entry.date}</td>
-							<td class="font-bold">{entry.load}</td>
+							<td>{entry.load}</td>
 						</tr>
 					{/each}
+					<tr>
+						<td class="font-bold">{today}</td>
+						<td class="font-bold">
+							<input type="number" placeholder="Today's load..." class="input input-bordered input-xs max-w-32" />
+						</td>
+					</tr>
 				</tbody>
 			</table>
+
+			<button class="btn btn-primary btn-sm">Save</button>
 		</div>
 	</div>
 </div>
