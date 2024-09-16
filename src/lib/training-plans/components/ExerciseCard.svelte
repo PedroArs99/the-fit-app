@@ -14,6 +14,7 @@
 	$: series = exercise.series;
 	$: reps = exercise.reps;
 	$: today = toShortDate(new Date());
+	$: isTodayAlreadyRegistered = _exercise.diaryEntries.find((entry) => entry.date === today);
 
 	async function registerNewEntry() {
 		if (todaysLoad) {
@@ -21,6 +22,8 @@
 				date: today,
 				load: Number.parseFloat(todaysLoad)
 			});
+
+			todaysLoad = undefined;
 		}
 	}
 </script>
@@ -66,22 +69,27 @@
 						</tr>
 					{/each}
 
-					
-					<tr>
-						<td class="font-bold">{today}</td>
-						<td class="font-bold">
-							<input
-								type="number"
-								placeholder="Today's load..."
-								class="input input-bordered input-xs"
-								on:change={(event) => (todaysLoad = event.currentTarget?.value)}
-							/>
-						</td>
-					</tr>
+					{#if !isTodayAlreadyRegistered}
+						<tr>
+							<td class="font-bold">{today}</td>
+							<td class="font-bold">
+								<input
+									type="number"
+									placeholder="Today's load..."
+									class="input input-bordered input-xs"
+									on:change={(event) => (todaysLoad = event.currentTarget?.value)}
+								/>
+							</td>
+						</tr>
+					{/if}
 				</tbody>
 			</table>
 
-			<button class="btn btn-primary btn-sm" disabled={!todaysLoad} on:click={registerNewEntry}>Save</button>
+			{#if !isTodayAlreadyRegistered}
+				<button class="btn btn-primary btn-sm" disabled={!todaysLoad} on:click={registerNewEntry}>
+					Save
+				</button>
+			{/if}
 		</div>
 	</div>
 </div>
