@@ -1,4 +1,4 @@
-import type { Exercise } from '$lib/exercises/exercise.model';
+import type { DiaryEntry, Exercise } from '$lib/exercises/exercise.model';
 import { supabase } from '$lib/supabase/client';
 import type { SupabaseRepository } from '$lib/supabase/repository';
 
@@ -52,6 +52,21 @@ class ExerciseRepository implements SupabaseRepository<Exercise> {
 			.eq('id', id);
 
 		if (error) throw Error(error.message);
+	}
+
+	async registerNewDiaryEntry(id: string, newEntry: DiaryEntry): Promise<Exercise> {
+		const exercise = await this.findById(id);
+
+		if (!exercise) throw Error(`Exercise with id ${id} was not found.`);
+
+		const updatedExercise = {
+			...exercise,
+			diaryEntries: [...exercise.diaryEntries, newEntry]
+		};
+
+		await this.update(id, updatedExercise);
+
+		return updatedExercise;
 	}
 }
 
