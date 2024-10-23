@@ -1,5 +1,6 @@
 <script lang="ts">
 	import {
+		faAppleAlt,
 		faArrowUpRightFromSquare,
 		faBars,
 		faChevronLeft,
@@ -13,6 +14,7 @@
 	import Fa, { type IconSize } from 'svelte-fa';
 
 	export let icon:
+	  | 'apple'
 		| 'bars'
 		| 'chevron-left'
 		| 'chevron-right'
@@ -25,6 +27,7 @@
 	export let size: IconSize | undefined = undefined;
 
 	const iconToDefinition = {
+		apple: faAppleAlt,
 		bars: faBars,
 		'chevron-left': faChevronLeft,
 		'chevron-right': faChevronRight,
