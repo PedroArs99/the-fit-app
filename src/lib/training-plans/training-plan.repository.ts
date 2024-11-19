@@ -30,8 +30,9 @@ class TrainingPlanRepository implements SupabaseRepository<TrainingPlan> {
 		const { data, error } = await supabase
 			.from(this.tableName)
 			.select('*, workouts ( *, exercises:workout_exercises( *, exercise:exercise_id( * ) ) )')
-			.eq('id', id);
-
+			.eq('id', id)
+			.order('sort', { referencedTable: 'workouts' });
+		
 		if (error) throw Error(error.message);
 
 		if (data) {
