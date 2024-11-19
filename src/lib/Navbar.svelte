@@ -10,5 +10,7 @@
 	.navbar {
 		display: flex;
 		justify-content: space-between;
+
+		@apply bg-primary;
 	}
 </style>
