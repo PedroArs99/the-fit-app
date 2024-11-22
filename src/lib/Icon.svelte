@@ -6,6 +6,7 @@
 		faChevronLeft,
 		faChevronRight,
 		faDumbbell,
+		faHeartPulse,
 		faList,
 		faPencil,
 		faPlus,
@@ -19,6 +20,7 @@
 		| 'chevron-left'
 		| 'chevron-right'
 		| 'dumbbell'
+		| 'heart-pulse'
 		| 'link-new-tab'
 		| 'list'
 		| 'pencil'
@@ -32,6 +34,7 @@
 		'chevron-left': faChevronLeft,
 		'chevron-right': faChevronRight,
 		dumbbell: faDumbbell,
+		'heart-pulse': faHeartPulse,
 		'link-new-tab': faArrowUpRightFromSquare,
 		list: faList,
 		pencil: faPencil,
