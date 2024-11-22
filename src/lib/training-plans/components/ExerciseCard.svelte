@@ -50,7 +50,7 @@
 			<span class="badge">{series} x {reps === 0 ? 'Limit' : reps}</span>
 		</div>
 
-		<div class="divider"></div>
+		<div class="divider divider-secondary"></div>
 
 		<div class="diary">
 			<h3>Dirary Entries:</h3>

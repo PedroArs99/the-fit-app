@@ -19,13 +19,13 @@
 	}
 
 	function synchronizeSearchParams(activeWorkout: string) {
-		if(browser) {
+		if (browser) {
 			// Create a new URLSearchParams object from the current URL
 			let params = new URLSearchParams(window.location.search);
-	
+
 			// Add or update the query parameters
-			params.set('activeWorkout', activeWorkout);
-	
+			params.set('activeWorkout', Number.parseInt(activeWorkout, 10).toString());
+
 			// Update the browser's URL without reloading the page
 			const newUrl = `${window.location.pathname}?${params.toString()}`;
 			window.history.pushState({}, '', newUrl);

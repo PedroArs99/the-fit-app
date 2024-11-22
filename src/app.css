@@ -19,7 +19,7 @@ form {
 }
 
 .card {
-  @apply w-full card-compact border;
+  @apply w-full card-compact border border-secondary;
 }
 
 .card figure {
@@ -45,5 +45,5 @@ form {
 }
 
 .input {
-  @apply input-bordered;
+  @apply input-bordered input-secondary;
 }
