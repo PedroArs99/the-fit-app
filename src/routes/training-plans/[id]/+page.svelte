@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
-	import Icon from '$lib/Icon.svelte';
+	import Icon from '$lib/ui/components/Icon.svelte';
 	import ExerciseCard from '$lib/training-plans/components/ExerciseCard.svelte';
 	import type { TrainingPlan, Workout } from '$lib/training-plans/training-plan.model';
 

@@ -2,6 +2,7 @@
 	import {
 		faAppleAlt,
 		faArrowUpRightFromSquare,
+		faAtom,
 		faBars,
 		faChevronLeft,
 		faChevronRight,
@@ -10,12 +11,14 @@
 		faList,
 		faPencil,
 		faPlus,
+		faRunning,
 		faTrash
 	} from '@fortawesome/free-solid-svg-icons';
 	import Fa, { type IconSize } from 'svelte-fa';
 
 	export let icon:
-	  | 'apple'
+		| 'apple'
+		| 'atom'
 		| 'bars'
 		| 'chevron-left'
 		| 'chevron-right'
@@ -26,10 +29,13 @@
 		| 'pencil'
 		| 'plus'
 		| 'trash';
+
 	export let size: IconSize | undefined = undefined;
+	export let spin: boolean = false;
 
 	const iconToDefinition = {
 		apple: faAppleAlt,
+		atom: faAtom,
 		bars: faBars,
 		'chevron-left': faChevronLeft,
 		'chevron-right': faChevronRight,
@@ -43,4 +49,4 @@
 	};
 </script>
 
-<Fa icon={iconToDefinition[icon]} {size} />
+<Fa icon={iconToDefinition[icon]} {size} spin={spin} />

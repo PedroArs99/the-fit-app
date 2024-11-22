@@ -1,10 +1,19 @@
 <script>
 	import Navbar from '$lib/ui/components/Navbar.svelte';
+	import { navigating } from '$app/stores';
+
 	import '../app.css';
+	import Spinner from '../lib/ui/components/Spinner.svelte';
+
+	$: console.log($navigating)
 </script>
 
 <Navbar />
 
 <div class="p-3">
-	<slot />
+	{#if $navigating} 
+		<Spinner />
+	{:else}
+		<slot />
+	{/if}
 </div>

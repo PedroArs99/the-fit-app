@@ -1,6 +1,6 @@
 <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 <script>
-	import Icon from '../../Icon.svelte';
+	import Icon from './Icon.svelte';
 </script>
 
 <div class="navbar">

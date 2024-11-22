@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Icon from '$lib/Icon.svelte';
+	import Icon from '$lib/ui/components/Icon.svelte';
 	import { fade } from 'svelte/transition';
 	import type { WorkoutExercise } from '../training-plan.model';
 	import { _textX } from 'chart.js/helpers';

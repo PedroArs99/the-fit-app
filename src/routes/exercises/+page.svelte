@@ -2,7 +2,7 @@
 	import ExerciseCard from '$lib/exercises/components/ExerciseCard.svelte';
 	import type { Exercise } from '$lib/exercises/exercise.model';
 	import { exerciseRepository } from '$lib/exercises/exercise.repository';
-	import Icon from '$lib/Icon.svelte';
+	import Icon from '$lib/ui/components/Icon.svelte';
 	import _ from 'lodash';
 
 	export let data: { exercises: Exercise[] };
