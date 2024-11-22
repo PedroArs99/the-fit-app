@@ -36,6 +36,10 @@ form {
   @apply min-h-24;
 }
 
+.dropdown-content {
+  @apply border border-neutral;
+}
+
 .form-control {
   @apply w-full;
 }
