@@ -32,6 +32,12 @@
 						<span>Training Plans</span>
 					</a>
 				</li>
+				<li>
+					<a href="/nutrition">
+						<Icon icon="apple" size="sm" />
+						<span>Nutrition</span>
+					</a>
+				</li>
 			</ul>
 		</div>
 	</div>
@@ -41,13 +47,15 @@
 			<Icon icon="dumbbell" size="sm" />
 			<span>Exercises</span>
 		</a>
-			<a class="nav-item" href="/training-plans">
-				<Icon icon="list" size="sm" />
-				<span>Training Plans</span>
-			</a>
+		<a class="nav-item" href="/training-plans">
+			<Icon icon="list" size="sm" />
+			<span>Training Plans</span>
+		</a>
+		<a class="nav-item" href="/nutrition">
+		<Icon icon="apple" size="sm" />
+		<span>Nutrition</span>
+	</a>
 	</div>
-
-	
 </div>
 
 <style lang="postcss">
@@ -74,6 +82,6 @@
 	}
 
 	.nav-item {
-		@apply btn btn-secondary;
+		@apply btn btn-ghost;
 	}
 </style>

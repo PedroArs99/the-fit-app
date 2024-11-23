@@ -13,7 +13,7 @@
 		<h2>Training Plans</h2>
 	</a>
   
-  <a class="dashboard-item" href="/">
+  <a class="dashboard-item" href="/nutrition">
 		<Icon icon="apple" size="2x" />
 		<h2>Nutrition</h2>
 	</a>
