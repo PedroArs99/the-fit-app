@@ -72,16 +72,16 @@
 
 	<div class="divider divider-horizontal divider-secondary"></div>
 
-	<div class="bmr-result">
-		<h3>BMR</h3>
-		<span class="font-bold">{bmrResult} kcal/day</span>
-	</div>
+	<div class="bmr-result-section">
+		<div class="bmr-result">
+			<h3>BMR</h3>
+			<span class="font-bold">{bmrResult} kcal/day</span>
+		</div>
 
-	<div class="divider divider-horizontal divider-secondary"></div>
-
-	<div class="bmr-result">
-		<h3>Effective Income</h3>
-		<span class="font-bold">{dailyIncome} kcal/day</span>
+		<div class="bmr-result">
+			<h3>Effective Income</h3>
+			<span class="font-bold">{dailyIncome} kcal/day</span>
+		</div>
 	</div>
 </div>
 
@@ -92,15 +92,28 @@
 		@apply gap-3 flex-col md:flex-row;
 	}
 
-	.bmr-input {
-		@apply input-bordered flex items-center gap-2;
-	}
-
 	.bmr-details-sm {
 		@apply flex flex-col gap-3 md:hidden;
 	}
 
-  .bmr-details-md {
-    @apply hidden md:flex gap-3;
-  }
+	.bmr-details-md {
+		@apply hidden md:flex gap-3;
+	}
+
+	.bmr-input {
+		@apply input-bordered flex items-center gap-2;
+	}
+
+	.bmr-result {
+		display: flex;
+
+		@apply flex-col md:flex-row md:gap-2;
+	}
+
+	.bmr-result-section {
+    display: flex;
+    justify-content: space-around;
+
+		@apply gap-3;
+	}
 </style>

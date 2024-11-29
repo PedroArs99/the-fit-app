@@ -9,4 +9,4 @@
 
 <div class="divider divider-secondary"></div>
 
-<Spinner />
+
