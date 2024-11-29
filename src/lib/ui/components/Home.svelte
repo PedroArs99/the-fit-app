@@ -35,6 +35,6 @@
     flex-direction: column;
     align-items: center;
 
-    @apply p-3  rounded-2xl gap-3 hover:bg-secondary hover:text-secondary-content;
+    @apply p-3 rounded-2xl gap-3 border border-primary hover:bg-secondary hover:border-0 hover:text-secondary-content;
 	}
 </style>

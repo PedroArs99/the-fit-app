@@ -1,11 +1,9 @@
 <script>
 	import Navbar from '$lib/ui/components/Navbar.svelte';
 	import { navigating } from '$app/stores';
-
-	import '../app.css';
 	import Spinner from '../lib/ui/components/Spinner.svelte';
 
-	$: console.log($navigating)
+	import '../app.css';
 </script>
 
 <Navbar />
