@@ -79,7 +79,7 @@
 		</div>
 
 		<div class="bmr-result">
-			<h3>Effective Income</h3>
+			<h3>Target</h3>
 			<span class="font-bold">{dailyIncome} kcal/day</span>
 		</div>
 	</div>

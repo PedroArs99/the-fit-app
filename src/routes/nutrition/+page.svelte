@@ -1,6 +1,6 @@
 <script>
 	import Bmr from '../../lib/nutrition/components/BMR.svelte';
-	import Spinner from '../../lib/ui/components/Spinner.svelte';
+	import MealsDiary from '../../lib/nutrition/components/MealsDiary.svelte';
 </script>
 
 <div class="actions">
@@ -9,4 +9,4 @@
 
 <div class="divider divider-secondary"></div>
 
-
+<MealsDiary />
