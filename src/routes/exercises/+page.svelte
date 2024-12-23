@@ -1,4 +1,5 @@
 <script lang="ts">
+	import ExcerciseCategoryPicker from '$lib/exercises/components/ExcerciseCategoryPicker.svelte';
 	import ExerciseCard from '$lib/exercises/components/ExerciseCard.svelte';
 	import type { Exercise } from '$lib/exercises/exercise.model';
 	import { exerciseRepository } from '$lib/exercises/exercise.repository';
@@ -7,18 +8,33 @@
 
 	export let data: { exercises: Exercise[] };
 
+	function onCategoryFilterChange(event: CustomEvent<{ category?: string }>) {		
+		const categorySelected = event.detail.category;
+
+		if (!categorySelected) {
+			exercises = data.exercises;
+		} else {
+			exercises = data.exercises.filter((it) => it.category === categorySelected);
+		}
+	}
+
 	function onExerciseDelete(event: CustomEvent) {
 		exerciseRepository.delete(event.detail.id).then(() => {
 			data.exercises = data.exercises.filter((e) => e.id !== event.detail.id);
 		});
 	}
 
-	$: groupedByCategory = Object.entries(_.groupBy(data.exercises, 'category')).sort(
-		([a, v1], [b, v2]) => a.localeCompare(b)
+	$: exercises = data.exercises;
+	$: groupedByCategory = Object.entries(_.groupBy(exercises, 'category')).sort(([a, v1], [b, v2]) =>
+		a.localeCompare(b)
 	);
 </script>
 
 <div class="actions">
+	<div class="filters">
+		<ExcerciseCategoryPicker on:change={onCategoryFilterChange} />
+	</div>
+
 	<a href="/exercises/new" class="btn btn-primary">
 		<Icon icon="plus" />
 		<span>Add New</span>
@@ -44,7 +60,8 @@
 <style lang="postcss">
 	.actions {
 		display: flex;
-		flex-direction: row-reverse;
+		align-items: flex-end;
+		justify-content: space-between;
 	}
 
 	.categories {
@@ -61,5 +78,9 @@
 		justify-content: space-evenly;
 
 		@apply gap-3;
+	}
+
+	.filters {
+		flex-grow: 1;
 	}
 </style>

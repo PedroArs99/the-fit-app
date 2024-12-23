@@ -19,7 +19,7 @@
 		<div class="label">
 			<span class="label-text">Category</span>
 		</div>
-		<select class="select select-bordered" on:select={onChange}>
+		<select class="select select-bordered" on:change={onChange}>
 			<option selected value={undefined}>-</option>
 			{#each categories as category}
 				<option value={category}>{category}</option>
