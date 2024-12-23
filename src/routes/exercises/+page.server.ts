@@ -1,8 +1,7 @@
-import type { PageLoad } from './$types';
 import { error } from '@sveltejs/kit';
 import { exerciseRepository } from '$lib/exercises/exercise.repository';
 
-export const load: PageLoad = async () => {
+export const load = async () => {
 	try {
 		const exercises = await exerciseRepository.findAll();
 
