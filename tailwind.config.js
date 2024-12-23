@@ -12,12 +12,12 @@ export default {
 					'primary-content': '#3d405b',
 
 					secondary: '#3d405b',
-					'secondary-content': '#f4f1de',
+					'secondary-content': '#eeeeee',
 
 					accent: '#81b29a',
 					neutral: '#f2cc8f',
 
-					'base-100': '#f4f1de',
+					'base-100': '#eeeeee',
 					'base-content': '#3d405b',
 
 					'--rounded-btn': '2rem'
