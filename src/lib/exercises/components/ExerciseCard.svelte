@@ -28,7 +28,7 @@
 
 	<figure>
 		{#if exercise.image}
-			<img src={exercise.image} alt={exercise.name} />
+			<img class="card-image" width="256px" height="256px" src={exercise.image} alt={exercise.name} />
 		{:else}
 			<Icon icon="dumbbell" size="3x" />
 		{/if}
@@ -40,6 +40,11 @@
 </div>
 
 <style lang="postcss">
+	.card-image {
+		width: 200px;
+		height: 200px;
+	}
+
 	.card-actions {
 		display: flex;
 		flex-direction: row-reverse;
