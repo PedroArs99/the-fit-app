@@ -4,6 +4,7 @@
 	import type { Exercise } from '$lib/exercises/exercise.model';
 	import { exerciseRepository } from '$lib/exercises/exercise.repository';
 	import Icon from '$lib/ui/components/Icon.svelte';
+	import { groupBy } from '$lib/utils/collections';
 
 	export let data: { exercises: Exercise[] };
 
@@ -24,7 +25,7 @@
 	}
 
 	$: exercises = data.exercises;
-	$: groupedByCategory = Object.entries(_.groupBy(exercises, 'category')).sort(([a, v1], [b, v2]) =>
+	$: groupedByCategory = Object.entries(groupBy(exercises, 'category')).sort(([a, v1], [b, v2]) =>
 		a.localeCompare(b)
 	);
 </script>
