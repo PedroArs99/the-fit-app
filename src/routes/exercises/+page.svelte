@@ -25,9 +25,7 @@
 	}
 
 	$: exercises = data.exercises;
-	$: groupedByCategory = Object.entries(groupBy(exercises, 'category')).sort(([a, v1], [b, v2]) =>
-		a.localeCompare(b)
-	);
+	$: groupedByCategory = groupBy(exercises, 'category')
 </script>
 
 <div class="actions">
