@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import Icon from '$lib/ui/components/Icon.svelte';
 	import { fade } from 'svelte/transition';
 	import type { WorkoutExercise } from '../training-plan.model';
@@ -6,15 +8,22 @@
 	import { toShortDate } from '$lib/utils/date.utils';
 	import { exerciseRepository } from '$lib/exercises/exercise.repository';
 
-	export let exercise: WorkoutExercise;
+	interface Props {
+		exercise: WorkoutExercise;
+	}
 
-	let todaysLoad: string | undefined = undefined;
+	let { exercise }: Props = $props();
 
-	$: _exercise = exercise.exercise;
-	$: series = exercise.series;
-	$: reps = exercise.reps;
-	$: today = toShortDate(new Date());
-	$: isTodayAlreadyRegistered = _exercise.diaryEntries.find((entry) => entry.date === today);
+	let todaysLoad: string | undefined = $state(undefined);
+
+	let _exercise;
+	run(() => {
+		_exercise = exercise.exercise;
+	});
+	let series = $derived(exercise.series);
+	let reps = $derived(exercise.reps);
+	let today = $derived(toShortDate(new Date()));
+	let isTodayAlreadyRegistered = $derived(_exercise.diaryEntries.find((entry) => entry.date === today));
 
 	async function registerNewEntry() {
 		if (todaysLoad) {
@@ -77,7 +86,7 @@
 									type="number"
 									placeholder="Today's load..."
 									class="input input-bordered input-xs max-w-32"
-									on:change={(event) => (todaysLoad = event.currentTarget?.value)}
+									onchange={(event) => (todaysLoad = event.currentTarget?.value)}
 								/>
 							</td>
 						</tr>
@@ -86,7 +95,7 @@
 			</table>
 
 			{#if !isTodayAlreadyRegistered}
-				<button class="btn btn-primary btn-sm" disabled={!todaysLoad} on:click={registerNewEntry}>
+				<button class="btn btn-primary btn-sm" disabled={!todaysLoad} onclick={registerNewEntry}>
 					Save
 				</button>
 			{/if}

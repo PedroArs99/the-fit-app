@@ -3,16 +3,16 @@
 	import { blur } from 'svelte/transition';
 	import { bmr, effectiveDailyIncome } from '../calculations/bmr';
 
-	let weight = 72;
-	let height = 177;
-	let age = 25;
-	let activityLevel = 1.55;
-	let deficitRate = 0.9;
+	let weight = $state(72);
+	let height = $state(177);
+	let age = $state(25);
+	let activityLevel = $state(1.55);
+	let deficitRate = $state(0.9);
 
-	let areDetailsOpen = false;
+	let areDetailsOpen = $state(false);
 
-	$: bmrResult = bmr(weight, height, age, activityLevel);
-	$: dailyIncome = effectiveDailyIncome(bmrResult, deficitRate);
+	let bmrResult = $derived(bmr(weight, height, age, activityLevel));
+	let dailyIncome = $derived(effectiveDailyIncome(bmrResult, deficitRate));
 </script>
 
 <div class="bmr">
@@ -41,7 +41,7 @@
 				</label>
 			</div>
 		{/if}
-		<button class="btn btn-sm" on:click={() => (areDetailsOpen = !areDetailsOpen)}>
+		<button class="btn btn-sm" onclick={() => (areDetailsOpen = !areDetailsOpen)}>
 			Body Details
 			<Icon icon={areDetailsOpen ? 'chevron-up' : 'chevron-down'} />
 		</button>

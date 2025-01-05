@@ -18,7 +18,9 @@
 	} from '@fortawesome/free-solid-svg-icons';
 	import Fa, { type IconSize } from 'svelte-fa';
 
-	export let icon:
+
+	interface Props {
+		icon: 
 		| 'apple'
 		| 'atom'
 		| 'bars'
@@ -33,9 +35,11 @@
 		| 'pencil'
 		| 'plus'
 		| 'trash';
+		size?: IconSize | undefined;
+		spin?: boolean;
+	}
 
-	export let size: IconSize | undefined = undefined;
-	export let spin: boolean = false;
+	let { icon, size = undefined, spin = false }: Props = $props();
 
 	const iconToDefinition = {
 		apple: faAppleAlt,

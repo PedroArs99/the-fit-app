@@ -3,12 +3,12 @@
 	import type { Exercise } from "$lib/exercises/exercise.model";
 	import { exerciseRepository } from "$lib/exercises/exercise.repository";
 
-  let exercise: Partial<Exercise> = {
+  let exercise: Partial<Exercise> = $state({
     name: undefined,
     description: undefined,
     category: undefined,
     image: undefined,
-  }
+  })
 
   async function submit() {
     const result = await exerciseRepository.create(exercise);
@@ -19,7 +19,7 @@
 
   }
 
-  $:isFormValid = !!exercise.name && !!exercise.category;
+  let isFormValid = $derived(!!exercise.name && !!exercise.category);
 </script>
 
 <div class="page">
@@ -30,7 +30,7 @@
 			<div class="label">
 				<span class="label-text">Name</span>
 			</div>
-			<!-- svelte-ignore a11y-autofocus -->
+			<!-- svelte-ignore a11y_autofocus -->
 			<input bind:value={exercise.name} type="text" placeholder="Type here" class="input" autofocus />
 		</label>
 
@@ -63,11 +63,11 @@
 			<div class="label">
 				<span class="label-text">Image <span class="badge badge-info">Optional</span></span>
 			</div>
-			<!-- svelte-ignore a11y-autofocus -->
+			<!-- svelte-ignore a11y_autofocus -->
 			<input bind:value={exercise.image} type="text" placeholder="Type here" class="input" autofocus />
 		</label>
 
-    <button class="btn btn-primary" disabled={!isFormValid} on:click={submit}>Save</button>
+    <button class="btn btn-primary" disabled={!isFormValid} onclick={submit}>Save</button>
 	</form>
 </div>
 

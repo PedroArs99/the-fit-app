@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import ExcerciseCategoryPicker from '$lib/exercises/components/ExcerciseCategoryPicker.svelte';
 	import ExerciseCard from '$lib/exercises/components/ExerciseCard.svelte';
 	import type { Exercise } from '$lib/exercises/exercise.model';
@@ -6,7 +8,11 @@
 	import Icon from '$lib/ui/components/Icon.svelte';
 	import { groupBy } from '$lib/utils/collections';
 
-	export let data: { exercises: Exercise[] };
+	interface Props {
+		data: { exercises: Exercise[] };
+	}
+
+	let { data = $bindable() }: Props = $props();
 
 	function onCategoryFilterChange(event: CustomEvent<{ category?: string }>) {		
 		const categorySelected = event.detail.category;
@@ -24,8 +30,11 @@
 		});
 	}
 
-	$: exercises = data.exercises;
-	$: groupedByCategory = groupBy(exercises, 'category')
+	let exercises;
+	run(() => {
+		exercises = data.exercises;
+	});
+	let groupedByCategory = $derived(groupBy(exercises, 'category'))
 </script>
 
 <div class="actions">

@@ -4,7 +4,11 @@
 	import { trainingPlanRepository } from '$lib/training-plans/training-plan.repository';
 	import { fade } from 'svelte/transition';
 
-	export let data: { trainingPlans: TrainingPlan[] };
+	interface Props {
+		data: { trainingPlans: TrainingPlan[] };
+	}
+
+	let { data = $bindable() }: Props = $props();
 
 	function onDeleteTrainingPlan(id: string) {
 		trainingPlanRepository.delete(id).then(() => {
@@ -33,7 +37,7 @@
 						<span>TODO: Update</span>
 						<Icon icon="pencil" />
 					</button>
-					<button class="btn btn-error" on:dblclick={() => onDeleteTrainingPlan(trainingPlan.id)}>
+					<button class="btn btn-error" ondblclick={() => onDeleteTrainingPlan(trainingPlan.id)}>
 						<Icon icon="trash" />
 						<span>Delete</span>
 					</button>

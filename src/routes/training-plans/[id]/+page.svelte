@@ -1,10 +1,16 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import { browser } from '$app/environment';
 	import Icon from '$lib/ui/components/Icon.svelte';
 	import ExerciseCard from '$lib/training-plans/components/ExerciseCard.svelte';
 	import type { TrainingPlan, Workout } from '$lib/training-plans/training-plan.model';
 
-	export let data: { activeWorkoutIdx: number; trainingPlan: TrainingPlan };
+	interface Props {
+		data: { activeWorkoutIdx: number; trainingPlan: TrainingPlan };
+	}
+
+	let { data = $bindable() }: Props = $props();
 
 	function nextWorkout() {
 		if (data.activeWorkoutIdx + 1 < workouts.length) {
@@ -32,9 +38,11 @@
 		}
 	}
 
-	$: workouts = data.trainingPlan.workouts;
-	$: activeWorkout = data.trainingPlan.workouts[data.activeWorkoutIdx] as Workout;
-	$: synchronizeSearchParams(`${data.activeWorkoutIdx}`);
+	let workouts = $derived(data.trainingPlan.workouts);
+	let activeWorkout = $derived(data.trainingPlan.workouts[data.activeWorkoutIdx] as Workout);
+	run(() => {
+		synchronizeSearchParams(`${data.activeWorkoutIdx}`);
+	});
 </script>
 
 <div class="training-plan">
@@ -45,7 +53,7 @@
 			<button
 				class="btn btn-ghost btn-outline"
 				disabled={data.activeWorkoutIdx === 0}
-				on:click={previousWorkout}
+				onclick={previousWorkout}
 			>
 				<Icon icon="chevron-left" />
 			</button>
@@ -53,7 +61,7 @@
 			<button
 				class="btn btn-ghost btn-outline"
 				disabled={data.activeWorkoutIdx === workouts.length - 1}
-				on:click={nextWorkout}
+				onclick={nextWorkout}
 			>
 				<Icon icon="chevron-right" />
 			</button>

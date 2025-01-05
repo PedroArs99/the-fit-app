@@ -10,7 +10,11 @@
 		PointElement,
   )
 
-	export let dataPoints: { label: string, value: number}[];
+	interface Props {
+		dataPoints: { label: string, value: number}[];
+	}
+
+	let { dataPoints }: Props = $props();
 
 	onMount(() => {
 		const ctx = document.getElementById('line-chart') as HTMLCanvasElement;

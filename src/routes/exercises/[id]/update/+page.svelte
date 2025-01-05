@@ -3,15 +3,19 @@
 	import type { Exercise } from "$lib/exercises/exercise.model";
 	import { exerciseRepository } from "$lib/exercises/exercise.repository";
 
-	export let data: { exercise: Exercise};
+	interface Props {
+		data: { exercise: Exercise};
+	}
 
-  let exercise: Partial<Exercise> = {
+	let { data }: Props = $props();
+
+  let exercise: Partial<Exercise> = $state({
 		id: data.exercise.id,
     name: data.exercise.name,
     description: data.exercise.description,
     category: data.exercise.category,
     image: data.exercise.image,
-  }
+  })
 
   async function submit() {
     await exerciseRepository.update(exercise.id!, exercise);
@@ -19,7 +23,7 @@
     goto(`/exercises/${exercise.id}`)
   }
 
-  $:isFormValid = !!exercise.id && !!exercise.name && !!exercise.category;
+  let isFormValid = $derived(!!exercise.id && !!exercise.name && !!exercise.category);
 </script>
 
 <div class="page">
@@ -30,7 +34,7 @@
 			<div class="label">
 				<span class="label-text">Name</span>
 			</div>
-			<!-- svelte-ignore a11y-autofocus -->
+			<!-- svelte-ignore a11y_autofocus -->
 			<input bind:value={exercise.name} type="text" placeholder="Type here" class="input" autofocus />
 		</label>
 
@@ -63,11 +67,11 @@
 			<div class="label">
 				<span class="label-text">Image <span class="badge badge-info">Optional</span></span>
 			</div>
-			<!-- svelte-ignore a11y-autofocus -->
+			<!-- svelte-ignore a11y_autofocus -->
 			<input bind:value={exercise.image} type="text" placeholder="Type here" class="input" autofocus />
 		</label>
 
-    <button class="btn btn-primary" disabled={!isFormValid} on:click={submit}>Save</button>
+    <button class="btn btn-primary" disabled={!isFormValid} onclick={submit}>Save</button>
 	</form>
 </div>
 

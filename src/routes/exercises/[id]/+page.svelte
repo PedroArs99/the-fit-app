@@ -2,14 +2,18 @@
 	import LineChart from '$lib/charts/LineChart.svelte';
 	import type { Exercise } from '$lib/exercises/exercise.model';
 
-	export let data: { exercise: Exercise };
+	interface Props {
+		data: { exercise: Exercise };
+	}
 
-	$: diaryEntries = data.exercise.diaryEntries
+	let { data }: Props = $props();
+
+	let diaryEntries = $derived(data.exercise.diaryEntries
 		.map((e) => ({
 			label: e.date,
 			value: e.load
 		}))
-		.slice(0, 5);
+		.slice(0, 5));
 </script>
 
 <div class="exercise">

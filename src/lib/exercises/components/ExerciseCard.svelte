@@ -4,7 +4,11 @@
 	import type { Exercise } from '../exercise.model';
 	import { fade } from 'svelte/transition';
 
-	export let exercise: Exercise;
+	interface Props {
+		exercise: Exercise;
+	}
+
+	let { exercise }: Props = $props();
 
 	const dispatch = createEventDispatcher();
 
@@ -21,7 +25,7 @@
 		<a href={`/exercises/${exercise.id}/update`} class="btn btn-sm btn-ghost">
 			<Icon icon="pencil" />
 		</a>
-		<button on:dblclick={onDelete} class="btn btn-sm btn-ghost">
+		<button ondblclick={onDelete} class="btn btn-sm btn-ghost">
 			<Icon icon="trash" />
 		</button>
 	</div>
