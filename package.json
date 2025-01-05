@@ -12,6 +12,9 @@
 		"format": "prettier --write ."
 	},
 	"dependencies": {
+		"@fortawesome/fontawesome-svg-core": "^6.7.2",
+		"@fortawesome/free-solid-svg-icons": "^6.7.2",
+		"@fortawesome/svelte-fontawesome": "^0.2.3",
 		"@supabase/supabase-js": "^2.45.1",
 		"amplify-adapter": "^0.1.2",
 		"chart.js": "^4.4.4"

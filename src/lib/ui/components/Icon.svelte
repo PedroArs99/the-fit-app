@@ -13,29 +13,29 @@
 		faList,
 		faPencil,
 		faPlus,
-		faRunning,
 		faTrash
 	} from '@fortawesome/free-solid-svg-icons';
-	import Fa, { type IconSize } from 'svelte-fa';
 
+	import { FontAwesomeIcon } from '@fortawesome/svelte-fontawesome';
+	import { config, type SizeProp } from '@fortawesome/fontawesome-svg-core';
 
 	interface Props {
-		icon: 
-		| 'apple'
-		| 'atom'
-		| 'bars'
-		| 'chevron-down'
-		| 'chevron-left'
-		| 'chevron-right'
-		| 'chevron-up'
-		| 'dumbbell'
-		| 'heart-pulse'
-		| 'link-new-tab'
-		| 'list'
-		| 'pencil'
-		| 'plus'
-		| 'trash';
-		size?: IconSize | undefined;
+		icon:
+			| 'apple'
+			| 'atom'
+			| 'bars'
+			| 'chevron-down'
+			| 'chevron-left'
+			| 'chevron-right'
+			| 'chevron-up'
+			| 'dumbbell'
+			| 'heart-pulse'
+			| 'link-new-tab'
+			| 'list'
+			| 'pencil'
+			| 'plus'
+			| 'trash';
+		size?: SizeProp | undefined;
 		spin?: boolean;
 	}
 
@@ -57,6 +57,10 @@
 		plus: faPlus,
 		trash: faTrash
 	};
+
+	import '@fortawesome/fontawesome-svg-core/styles.css' // Import the CSS
+	config.autoAddCss = false // Tell Font Awesome to skip adding the CSS automatically since it's being imported above
+
 </script>
 
-<Fa icon={iconToDefinition[icon]} {size} spin={spin} />
+<FontAwesomeIcon icon={iconToDefinition[icon]} {size} {spin} />
