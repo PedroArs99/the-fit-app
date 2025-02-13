@@ -19,12 +19,21 @@
 	);
 	let todaysLoad: string | undefined = $state(undefined);
 
+	let isSaving = $state(false);
+
 	async function registerNewEntry() {
 		if (todaysLoad) {
-			exercise = await exerciseRepository.registerNewDiaryEntry(exercise.id, {
-				date: today,
-				load: Number.parseFloat(todaysLoad)
-			});
+			isSaving = true;
+
+			exerciseRepository
+				.registerNewDiaryEntry(exercise.id, {
+					date: today,
+					load: Number.parseFloat(todaysLoad)
+				})
+				.then((result) => {
+					exercise = result;
+					isSaving = false;
+				});
 
 			todaysLoad = undefined;
 		}
@@ -50,10 +59,10 @@
 		<h2 class="card-title">{exercise.name}</h2>
 
 		<div class="badges">
-			<span class="badge">{series} x {reps === 0 ? 'Limit' : reps}</span>
+			<span class="badge badge-primary">{series} x {reps === 0 ? 'Limit' : reps}</span>
 		</div>
 
-		<div class="divider divider-secondary"></div>
+		<div class="divider divider-primary"></div>
 		<div class="diary">
 			<h3>Dirary Entries:</h3>
 			<table class="table table-sm">
@@ -78,9 +87,12 @@
 								<input
 									type="number"
 									placeholder="Today's load..."
-									class="input input-bordered input-xs max-w-32"
+									class="input input-xs max-w-32"
 									onchange={(event) => (todaysLoad = event.currentTarget?.value)}
 								/>
+								{#if isSaving}
+									<Icon icon="dumbbell" spin />
+								{/if}
 							</td>
 						</tr>
 					{/if}
