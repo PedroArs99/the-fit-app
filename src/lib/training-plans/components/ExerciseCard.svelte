@@ -1,6 +1,5 @@
 <script lang="ts">
 	import Icon from '$lib/ui/components/Icon.svelte';
-	import { fade } from 'svelte/transition';
 	import type { WorkoutExercise } from '../training-plan.model';
 	import { toShortDate } from '$lib/utils/date.utils';
 	import { exerciseRepository } from '$lib/exercises/exercise.repository';
@@ -32,7 +31,7 @@
 	}
 </script>
 
-<div out:fade class="card md:max-w-64">
+<div class="card md:max-w-64">
 	<div class="card-actions">
 		<a href={`/exercises/${exercise.id}`} class="btn btn-sm btn-ghost">
 			<Icon icon="link-new-tab" />
