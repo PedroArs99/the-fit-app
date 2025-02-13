@@ -2,6 +2,7 @@
 	import { goto } from "$app/navigation";
 	import type { Exercise } from "$lib/exercises/exercise.model";
 	import { exerciseRepository } from "$lib/exercises/exercise.repository";
+	import Page from "$lib/ui/components/Page.svelte";
 
   let exercise: Partial<Exercise> = $state({
     name: undefined,
@@ -22,10 +23,8 @@
   let isFormValid = $derived(!!exercise.name && !!exercise.category);
 </script>
 
-<div class="page">
-	<h1>Create New Exercise</h1>
-
-	<form>
+<Page title="New Exercise">
+		<form>
 		<label class="form-control">
 			<div class="label">
 				<span class="label-text">Name</span>
@@ -69,13 +68,4 @@
 
     <button class="btn btn-primary" disabled={!isFormValid} onclick={submit}>Save</button>
 	</form>
-</div>
-
-<style lang="postcss">
-	.page {
-		display: flex;
-		flex-direction: column;
-
-		@apply gap-3;
-	}
-</style>
+</Page>

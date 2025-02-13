@@ -1,6 +1,7 @@
 <script lang="ts">
 	import UpdateTrainingPlanExerciseCard from '$lib/training-plans/components/UpdateTrainingPlanExerciseCard.svelte';
 	import type { TrainingPlan } from '$lib/training-plans/training-plan.model';
+	import Page from '$lib/ui/components/Page.svelte';
 
 	interface Props {
 		data: { trainingPlan: TrainingPlan };
@@ -11,9 +12,7 @@
 	let { name, workouts } = props.data.trainingPlan;
 </script>
 
-<div class="training-plan">
-	<h1>{name}</h1>
-
+<Page title={name}>
 	<div class="workouts">
 		{#each workouts as workout}
 			<div class="workout">
@@ -24,16 +23,16 @@
 					{/each}
 				</div>
 			</div>
-      <div class="divider divider-neutral"></div>
+			<div class="divider divider-neutral"></div>
 		{/each}
 	</div>
-</div>
+</Page>
 
 <style lang="postcss">
 	.exercises {
 		display: flex;
 
-    @apply gap-3;
+		@apply gap-3;
 	}
 
 	.workout {

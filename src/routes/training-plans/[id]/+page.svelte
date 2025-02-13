@@ -3,6 +3,7 @@
 	import DailyExerciseCard from '$lib/training-plans/components/DailyExerciseCard.svelte';
 	import type { TrainingPlan } from '$lib/training-plans/training-plan.model';
 	import { pushState } from '$app/navigation';
+	import Page from '$lib/ui/components/Page.svelte';
 
 	interface Props {
 		data: { activeWorkoutIdx: number; trainingPlan: TrainingPlan };
@@ -42,8 +43,7 @@
 	}
 </script>
 
-<div class="training-plan">
-	<h1>{trainingPlan.name}</h1>
+<Page title={trainingPlan.name}>
 
 	<div class="active-workout">
 		<div class="workout-switcher">
@@ -70,7 +70,7 @@
 			{/each}
 		</div>
 	</div>
-</div>
+</Page>
 
 <style lang="postcss">
 	.active-workout {
@@ -83,14 +83,7 @@
 	.exercises {
 		@apply flex flex-col md:flex-row gap-3;
 	}
-
-	.training-plan {
-		display: flex;
-		flex-direction: column;
-
-		@apply gap-3;
-	}
-
+	
 	.workout-switcher {
 		display: flex;
 		flex-direction: row;

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import LineChart from '$lib/charts/LineChart.svelte';
 	import type { Exercise } from '$lib/exercises/exercise.model';
+	import Page from '$lib/ui/components/Page.svelte';
 
 	interface Props {
 		data: { exercise: Exercise };
@@ -8,16 +9,17 @@
 
 	let { data }: Props = $props();
 
-	let diaryEntries = $derived(data.exercise.diaryEntries
-		.map((e) => ({
-			label: e.date,
-			value: e.load
-		}))
-		.slice(0, 5));
+	let diaryEntries = $derived(
+		data.exercise.diaryEntries
+			.map((e) => ({
+				label: e.date,
+				value: e.load
+			}))
+			.slice(0, 5)
+	);
 </script>
 
-<div class="exercise">
-	<h1>{data.exercise.name}</h1>
+<Page title={data.exercise.name}>
 	<div class="badge">{data.exercise.category}</div>
 
 	<div class="facts">
@@ -36,18 +38,12 @@
 			<LineChart dataPoints={diaryEntries} />
 		</div>
 	</div>
-</div>
+</Page>
+
 
 <style lang="postcss">
 	.diary {
 		@apply md:max-w-96;
-	}
-
-	.exercise {
-		display: flex;
-		flex-direction: column;
-
-		@apply gap-3;
 	}
 
 	.facts {
