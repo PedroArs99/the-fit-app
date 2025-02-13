@@ -15,7 +15,7 @@ export default {
 					'secondary-content': '#ffffff',
 
 					accent: '#219B9D',
-					neutral: '#EEEEEE',
+					neutral: '#333333',
 
 					'base-100': '#ffffff',
 					'base-content': '#111111',
