@@ -8,17 +8,17 @@ export default {
 		themes: [
 			{
 				tfa: {
-					primary: '#e07a5f',
-					'primary-content': '#3d405b',
+					primary: '#FF8000',
+					'primary-content': '#111111',
 
-					secondary: '#3d405b',
+					secondary: '#4C1F7A',
 					'secondary-content': '#ffffff',
 
-					accent: '#81b29a',
-					neutral: '#f2cc8f',
+					accent: '#219B9D',
+					neutral: '#EEEEEE',
 
 					'base-100': '#ffffff',
-					'base-content': '#3d405b',
+					'base-content': '#111111',
 
 					'--rounded-btn': '2rem'
 				}
