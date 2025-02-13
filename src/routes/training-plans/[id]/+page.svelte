@@ -9,7 +9,7 @@
 	}
 
 	let props: Props = $props();
-	
+
 	let trainingPlan = props.data.trainingPlan;
 	let workouts = trainingPlan.workouts;
 
@@ -19,7 +19,7 @@
 	function nextWorkout() {
 		if (activeWorkoutIdx + 1 < workouts.length) {
 			activeWorkoutIdx += 1;
-			synchronizeSearchParams(activeWorkoutIdx)
+			synchronizeSearchParams(activeWorkoutIdx);
 		}
 	}
 
@@ -30,15 +30,15 @@
 	}
 
 	function synchronizeSearchParams(activeWorkoutIdx: number) {
-			// Create a new URLSearchParams object from the current URL
-			let params = new URLSearchParams(window.location.search);
+		// Create a new URLSearchParams object from the current URL
+		let params = new URLSearchParams(window.location.search);
 
-			// Add or update the query parameters
-			params.set('activeWorkout', activeWorkoutIdx.toString());
+		// Add or update the query parameters
+		params.set('activeWorkout', activeWorkoutIdx.toString());
 
-			// Update the browser's URL without reloading the page
-			const newUrl = `${window.location.pathname}?${params.toString()}`;
-			pushState(newUrl, {});
+		// Update the browser's URL without reloading the page
+		const newUrl = `${window.location.pathname}?${params.toString()}`;
+		pushState(newUrl, {});
 	}
 </script>
 
@@ -65,8 +65,8 @@
 		</div>
 
 		<div class="exercises">
-			{#each activeWorkout.exercises as exercise}
-				<ExerciseCard {exercise} />
+			{#each activeWorkout.exercises as exercise (exercise.exercise.id)}
+				<ExerciseCard workoutExercise={exercise} />
 			{/each}
 		</div>
 	</div>
