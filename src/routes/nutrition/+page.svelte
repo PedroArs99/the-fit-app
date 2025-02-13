@@ -7,6 +7,6 @@
 	<Bmr />
 </div>
 
-<div class="divider divider-secondary"></div>
+<div class="divider divider-primary"></div>
 
 <MealsDiary />

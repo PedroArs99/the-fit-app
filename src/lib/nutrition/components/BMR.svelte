@@ -70,7 +70,7 @@
 		</label>
 	</div>
 
-	<div class="divider divider-horizontal divider-secondary"></div>
+	<div class="divider divider-horizontal divider-primary"></div>
 
 	<div class="bmr-result-section">
 		<div class="bmr-result">
@@ -111,8 +111,8 @@
 	}
 
 	.bmr-result-section {
-    display: flex;
-    justify-content: space-around;
+		display: flex;
+		justify-content: space-around;
 
 		@apply gap-3;
 	}

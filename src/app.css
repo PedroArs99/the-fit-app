@@ -45,7 +45,7 @@ form {
 }
 
 .input {
-  @apply input-bordered input-secondary;
+  @apply input-bordered input-primary;
 }
 
 .progress {
