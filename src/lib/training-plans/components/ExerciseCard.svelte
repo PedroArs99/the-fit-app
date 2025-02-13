@@ -1,33 +1,28 @@
 <script lang="ts">
-	import { run } from 'svelte/legacy';
-
 	import Icon from '$lib/ui/components/Icon.svelte';
 	import { fade } from 'svelte/transition';
 	import type { WorkoutExercise } from '../training-plan.model';
-	import { _textX } from 'chart.js/helpers';
 	import { toShortDate } from '$lib/utils/date.utils';
 	import { exerciseRepository } from '$lib/exercises/exercise.repository';
 
 	interface Props {
-		exercise: WorkoutExercise;
+		workoutExercise: WorkoutExercise;
 	}
 
-	let { exercise }: Props = $props();
+	let { workoutExercise }: Props = $props();
 
+	let exercise = $state(workoutExercise.exercise);
+	let { series, reps } = workoutExercise;
+
+	let today = toShortDate(new Date());
+	let isTodayAlreadyRegistered = $derived(
+		exercise.diaryEntries.find((entry) => entry.date === today)
+	);
 	let todaysLoad: string | undefined = $state(undefined);
-
-	let _exercise;
-	run(() => {
-		_exercise = exercise.exercise;
-	});
-	let series = $derived(exercise.series);
-	let reps = $derived(exercise.reps);
-	let today = $derived(toShortDate(new Date()));
-	let isTodayAlreadyRegistered = $derived(_exercise.diaryEntries.find((entry) => entry.date === today));
 
 	async function registerNewEntry() {
 		if (todaysLoad) {
-			_exercise = await exerciseRepository.registerNewDiaryEntry(_exercise.id, {
+			exercise = await exerciseRepository.registerNewDiaryEntry(exercise.id, {
 				date: today,
 				load: Number.parseFloat(todaysLoad)
 			});
@@ -39,28 +34,27 @@
 
 <div out:fade class="card md:max-w-64">
 	<div class="card-actions">
-		<a href={`/exercises/${_exercise.id}`} class="btn btn-sm btn-ghost">
+		<a href={`/exercises/${exercise.id}`} class="btn btn-sm btn-ghost">
 			<Icon icon="link-new-tab" />
 		</a>
 	</div>
 
 	<figure>
-		{#if _exercise.image}
-			<img src={_exercise.image} alt={_exercise.name} />
+		{#if exercise.image}
+			<img src={exercise.image} alt={exercise.name} />
 		{:else}
 			<Icon icon="dumbbell" size="3x" />
 		{/if}
 	</figure>
 
 	<div class="card-body">
-		<h2 class="card-title">{_exercise.name}</h2>
+		<h2 class="card-title">{exercise.name}</h2>
 
 		<div class="badges">
 			<span class="badge">{series} x {reps === 0 ? 'Limit' : reps}</span>
 		</div>
 
 		<div class="divider divider-secondary"></div>
-
 		<div class="diary">
 			<h3>Dirary Entries:</h3>
 			<table class="table table-sm">
@@ -71,7 +65,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					{#each _exercise.diaryEntries as entry}
+					{#each exercise.diaryEntries as entry}
 						<tr>
 							<td class="font-bold">{entry.date}</td>
 							<td>{entry.load}</td>
