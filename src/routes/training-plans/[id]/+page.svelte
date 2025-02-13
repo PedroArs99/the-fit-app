@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Icon from '$lib/ui/components/Icon.svelte';
-	import ExerciseCard from '$lib/training-plans/components/ExerciseCard.svelte';
+	import DailyExerciseCard from '$lib/training-plans/components/DailyExerciseCard.svelte';
 	import type { TrainingPlan } from '$lib/training-plans/training-plan.model';
 	import { pushState } from '$app/navigation';
 
@@ -66,7 +66,7 @@
 
 		<div class="exercises">
 			{#each activeWorkout.exercises as exercise (exercise.exercise.id)}
-				<ExerciseCard workoutExercise={exercise} />
+				<DailyExerciseCard workoutExercise={exercise} />
 			{/each}
 		</div>
 	</div>
