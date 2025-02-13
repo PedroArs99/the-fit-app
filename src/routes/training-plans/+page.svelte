@@ -33,10 +33,10 @@
 				<a href={`training-plans/${trainingPlan.id}`} class="card-title">{trainingPlan.name}</a>
 
 				<div class="card-actions">
-					<button class="btn btn-info bg-gray-500">
-						<span>TODO: Update</span>
+					<a href={`training-plans/${trainingPlan.id}/update`} class="btn btn-secondary">
 						<Icon icon="pencil" />
-					</button>
+						<span>Update</span>
+					</a>
 					<button class="btn btn-error" ondblclick={() => onDeleteTrainingPlan(trainingPlan.id)}>
 						<Icon icon="trash" />
 						<span>Delete</span>
