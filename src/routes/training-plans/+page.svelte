@@ -3,6 +3,7 @@
 	import type { TrainingPlan } from '$lib/training-plans/training-plan.model';
 	import { trainingPlanRepository } from '$lib/training-plans/training-plan.repository';
 	import { fade } from 'svelte/transition';
+	import Page from '$lib/ui/components/Page.svelte';
 
 	interface Props {
 		data: { trainingPlans: TrainingPlan[] };
@@ -17,42 +18,38 @@
 	}
 </script>
 
-<div class="actions">
+{#snippet actions()}
 	<a href="/training-plans/new" class="btn btn-primary bg-gray-500">
 		<Icon icon="plus" />
 		<span>TODO: Add New</span>
 	</a>
-</div>
+{/snippet}
 
-<div class="divider"></div>
+<Page title="Training Plans" actions={actions}>
+	<div class="training-plans">
+		{#each data.trainingPlans as trainingPlan}
+			<div class="card w-full" out:fade>
+				<div class="card-body">
+					<a href={`training-plans/${trainingPlan.id}`} class="card-title">{trainingPlan.name}</a>
 
-<div class="training-plans">
-	{#each data.trainingPlans as trainingPlan}
-		<div class="card w-full" out:fade>
-			<div class="card-body">
-				<a href={`training-plans/${trainingPlan.id}`} class="card-title">{trainingPlan.name}</a>
-
-				<div class="card-actions">
-					<a href={`training-plans/${trainingPlan.id}/update`} class="btn btn-secondary">
-						<Icon icon="pencil" />
-						<span>Update</span>
-					</a>
-					<button class="btn btn-error" ondblclick={() => onDeleteTrainingPlan(trainingPlan.id)}>
-						<Icon icon="trash" />
-						<span>Delete</span>
-					</button>
+					<div class="card-actions">
+						<a href={`training-plans/${trainingPlan.id}/update`} class="btn btn-secondary">
+							<Icon icon="pencil" />
+							<span>Update</span>
+						</a>
+						<button class="btn btn-error" ondblclick={() => onDeleteTrainingPlan(trainingPlan.id)}>
+							<Icon icon="trash" />
+							<span>Delete</span>
+						</button>
+					</div>
 				</div>
 			</div>
-		</div>
-	{/each}
-</div>
+		{/each}
+	</div>
+</Page>
+
 
 <style lang="postcss">
-	.actions {
-		display: flex;
-		flex-direction: row-reverse;
-	}
-
 	.card-actions {
 		display: flex;
 		flex-direction: row;

@@ -1,21 +1,33 @@
 <script lang="ts">
-	import type { SvelteComponent } from 'svelte';
+	import type { Snippet } from 'svelte';
 
 	interface Props {
-		children: SvelteComponent;
+		actions?: Snippet;
+		children: Snippet;
 		title: string;
 	}
 
-	let { children, title } = $props();
+	let { actions, children, title }: Props = $props();
 </script>
 
 <div class="page">
 	<h1>{title}</h1>
 
+	{#if actions}
+		<div class="actions">
+			{@render actions()}
+		</div>
+	{/if}
+
 	{@render children()}
 </div>
 
 <style lang="postcss">
+	.actions {
+		display: flex;
+		flex-direction: row-reverse;
+	}
+
 	.page {
 		display: flex;
 		flex-direction: column;

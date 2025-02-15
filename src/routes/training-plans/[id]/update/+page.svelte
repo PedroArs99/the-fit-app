@@ -1,6 +1,8 @@
 <script lang="ts">
 	import UpdateTrainingPlanExerciseCard from '$lib/training-plans/components/UpdateTrainingPlanExerciseCard.svelte';
 	import type { TrainingPlan } from '$lib/training-plans/training-plan.model';
+	import { trainingPlanRepository } from '$lib/training-plans/training-plan.repository';
+	import Icon from '$lib/ui/components/Icon.svelte';
 	import Page from '$lib/ui/components/Page.svelte';
 
 	interface Props {
@@ -9,10 +11,21 @@
 
 	let props: Props = $props();
 
-	let { name, workouts } = props.data.trainingPlan;
+	let { name, workouts } = $state(props.data.trainingPlan);
+
+	function newWorkout() {
+		
+	}
 </script>
 
-<Page title={name}>
+{#snippet actions()}
+	<button class="btn btn-primary" onclick={newWorkout}>
+		<Icon icon="plus" />
+		<span>New Workout</span>
+	</button>
+{/snippet}
+
+<Page title={name} {actions}>
 	<div class="workouts">
 		{#each workouts as workout}
 			<div class="workout">
@@ -38,6 +51,8 @@
 	.workout {
 		display: flex;
 		flex-direction: column;
+
+		overflow: auto;
 
 		@apply gap-3 p-3 border border-dashed border-neutral rounded-2xl;
 	}
