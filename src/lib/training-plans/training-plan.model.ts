@@ -8,7 +8,7 @@ export interface WorkoutExercise {
 
 export interface Workout {
 	name: string;
-	sort: string;
+	sort: number;
 	exercises: WorkoutExercise[];
 }
 
