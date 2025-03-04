@@ -17,10 +17,10 @@ Resources:
       MemorySize: 256
       Policies:
         - DynamoDBCrudPolicy:
-            TableName: !Ref SampleTable
+            TableName: !Ref ShoesTable
       Environment:
         Variables:
-          SAMPLE_TABLE: !Ref SampleTable
+          SAMPLE_TABLE: !Ref ShoesTable
       Events:
         Api:
           Type: Api
@@ -35,10 +35,10 @@ Resources:
       Runtime: nodejs22.x
       Policies:
         - DynamoDBCrudPolicy:
-            TableName: !Ref SampleTable
+            TableName: !Ref ShoesTable
       Environment:
         Variables:
-          SAMPLE_TABLE: !Ref SampleTable
+          SAMPLE_TABLE: !Ref ShoesTable
       Events:
         Api:
           Type: Api
@@ -46,17 +46,18 @@ Resources:
             Path: /{id}
             Method: GET
 
-  putItemFunction:
+  RegisterShoesFn:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: src/handlers/put-item.putItemHandler
+      Handler: src/handlers/register-shoes.handler
       Runtime: nodejs22.x
+      MemorySize: 256
       Policies:
         - DynamoDBCrudPolicy:
-            TableName: !Ref SampleTable
+            TableName: !Ref ShoesTable
       Environment:
         Variables:
-          SAMPLE_TABLE: !Ref SampleTable
+          SAMPLE_TABLE: !Ref ShoesTable
       Events:
         Api:
           Type: Api
@@ -64,7 +65,7 @@ Resources:
             Path: /
             Method: POST
 
-  SampleTable:
+  ShoesTable:
     Type: AWS::Serverless::SimpleTable
 
 Outputs:
