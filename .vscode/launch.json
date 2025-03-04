@@ -9,6 +9,10 @@
       "port": 9999,
       "localRoot": "${workspaceRoot}/api",
       "remoteRoot": "/var/task",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "smartStep": true
     }
   ]
 }
