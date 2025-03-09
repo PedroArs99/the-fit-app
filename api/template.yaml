@@ -20,7 +20,7 @@ Resources:
             TableName: !Ref ShoesTable
       Environment:
         Variables:
-          SAMPLE_TABLE: !Ref ShoesTable
+          SHOES_TABLE: !Ref ShoesTable
       Events:
         Api:
           Type: Api
@@ -38,7 +38,7 @@ Resources:
             TableName: !Ref ShoesTable
       Environment:
         Variables:
-          SAMPLE_TABLE: !Ref ShoesTable
+          SHOES_TABLE: !Ref ShoesTable
       Events:
         Api:
           Type: Api
@@ -57,7 +57,7 @@ Resources:
             TableName: !Ref ShoesTable
       Environment:
         Variables:
-          SAMPLE_TABLE: !Ref ShoesTable
+          SHOES_TABLE: !Ref ShoesTable
       Events:
         Api:
           Type: Api

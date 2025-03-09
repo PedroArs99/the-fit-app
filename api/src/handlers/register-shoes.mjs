@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 const client = new DynamoDBClient({});
 const ddbDocClient = DynamoDBDocumentClient.from(client);
 
-const tableName = process.env.SAMPLE_TABLE;
+const tableName = process.env.SHOES_TABLE;
 
 export const handler = async (event) => {
   const id = uuidv4();
