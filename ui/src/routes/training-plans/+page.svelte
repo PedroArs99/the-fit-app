@@ -4,6 +4,7 @@
 	import { trainingPlanRepository } from '$lib/training-plans/training-plan.repository';
 	import { fade } from 'svelte/transition';
 	import Page from '$lib/ui/components/Page.svelte';
+	import FullWidthCard from '$lib/ui/components/cards/FullWidthCard.svelte';
 
 	interface Props {
 		data: { trainingPlans: TrainingPlan[] };
@@ -28,8 +29,7 @@
 <Page title="Training Plans" actions={actions}>
 	<div class="training-plans">
 		{#each data.trainingPlans as trainingPlan}
-			<div class="card w-full" out:fade>
-				<div class="card-body">
+			<FullWidthCard>
 					<a href={`training-plans/${trainingPlan.id}`} class="card-title">{trainingPlan.name}</a>
 
 					<div class="card-actions">
@@ -42,8 +42,8 @@
 							<span>Delete</span>
 						</button>
 					</div>
-				</div>
-			</div>
+				
+			</FullWidthCard>
 		{/each}
 	</div>
 </Page>
