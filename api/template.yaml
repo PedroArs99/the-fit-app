@@ -8,7 +8,7 @@ Transform:
 - AWS::Serverless-2016-10-31
 
 Resources:
-  getAllItemsFunction:
+  GetAllShoesFn:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: ./
@@ -25,7 +25,7 @@ Resources:
         Api:
           Type: Api
           Properties:
-            Path: /
+            Path: /running/shoes
             Method: GET
   
   getByIdFunction:
@@ -62,7 +62,7 @@ Resources:
         Api:
           Type: Api
           Properties:
-            Path: /
+            Path: /running/shoes
             Method: POST
 
   ShoesTable:
