@@ -4,8 +4,12 @@ import type { Shoe } from './shoe.model';
 import { apiClient } from '../../api/client';
 
 class ShoeRepository implements Repository<Shoe> {
-  create(entity: Partial<Shoe>): Promise<Shoe> {
-    throw new Error('Method not implemented.');
+  async create(entity: Partial<Shoe>): Promise<Shoe> {
+    const { data, status, statusText } = await apiClient.post('running/shoes', entity);
+
+		if (status > 400) throw Error(statusText);
+
+		return data;
   }
 
   async delete(id: string): Promise<void> {
