@@ -1,6 +1,6 @@
 import type { PageLoad } from './$types';
 import { error } from '@sveltejs/kit';
-import { shoeRepository } from '../../lib/running/shoes/shoe.repository';
+import { shoeRepository } from '$lib/running/shoes/shoe.repository';
 
 export const load: PageLoad = async () => {
 	try {

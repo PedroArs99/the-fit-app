@@ -21,7 +21,7 @@
 			text: 'Nutrition'
 		},
 		{
-			href: '/running',
+			href: '/running/shoes',
 			icon: 'person-running',
 			text: 'Running'
 		},
