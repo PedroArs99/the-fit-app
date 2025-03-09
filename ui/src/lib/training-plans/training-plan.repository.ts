@@ -1,8 +1,8 @@
 import { supabase } from '$lib/supabase/client';
-import type { SupabaseRepository } from '$lib/supabase/repository';
+import type { Repository } from '$lib/supabase/repository';
 import type { TrainingPlan } from './training-plan.model';
 
-class TrainingPlanRepository implements SupabaseRepository<TrainingPlan> {
+class TrainingPlanRepository implements Repository<TrainingPlan> {
 	private tableName = 'training_plans';
 
 	create(entity: Partial<TrainingPlan>): Promise<TrainingPlan> {
@@ -32,7 +32,7 @@ class TrainingPlanRepository implements SupabaseRepository<TrainingPlan> {
 			.select('*, workouts ( *, exercises:workout_exercises( *, exercise:exercise_id( * ) ) )')
 			.eq('id', id)
 			.order('sort', { referencedTable: 'workouts' });
-		
+
 		if (error) throw Error(error.message);
 
 		if (data) {
