@@ -1,5 +1,6 @@
 import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import { DynamoDBDocumentClient, ScanCommand } from "@aws-sdk/lib-dynamodb";
+import { buildHttpResponse } from "../utils/response.mjs";
 
 const client = new DynamoDBClient({});
 const ddbDocClient = DynamoDBDocumentClient.from(client);
@@ -14,10 +15,7 @@ export const handler = async (event) => {
   const data = await ddbDocClient.send(new ScanCommand(params));
   var items = data.Items;
 
-  const response = {
-    statusCode: 200,
-    body: JSON.stringify(items),
-  };
+  const response = buildHttpResponse(200, items);
 
   // All log statements are written to CloudWatch
   console.info(
