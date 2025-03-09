@@ -1,7 +1,36 @@
-<!-- @migration-task Error while migrating Svelte code: Cannot set properties of undefined (setting 'next') -->
 <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+<script lang="ts">
 	import type { IconLib } from './icons/Icon';
 	import Icon from './icons/Icon.svelte';
+
+	type NavLink = {
+		href: string;
+		icon: IconLib;
+		text: String;
+	};
+
+	const navLinks: NavLink[] = [
+		{
+			href: '/exercises',
+			icon: 'dumbbell',
+			text: 'Exercises'
+		},
+		{
+			href: '/nutrition',
+			icon: 'apple',
+			text: 'Nutrition'
+		},
+		{
+			href: '/running',
+			icon: 'person-running',
+			text: 'Running'
+		},
+		{
+			href: '/training-plans',
+			icon: 'list',
+			text: 'Training Plans'
+		}
+	];
 </script>
 
 <div class="navbar">
@@ -19,43 +48,27 @@
 			</div>
 			<ul
 				tabindex="0"
-				class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] w-48 mt-3 p-2 shadow-2xl"
+				class="menu dropdown-content bg-base-100 rounded-box z-[1] w-48 mt-3 p-2 shadow-2xl"
 			>
-				<li>
-					<a href="/exercises">
-						<Icon icon="dumbbell" size="sm" />
-						<span>Exercises</span>
-					</a>
-				</li>
-				<li>
-					<a href="/training-plans">
-						<Icon icon="list" size="sm" />
-						<span>Training Plans</span>
-					</a>
-				</li>
-				<li>
-					<a href="/nutrition">
-						<Icon icon="apple" size="sm" />
-						<span>Nutrition</span>
-					</a>
-				</li>
+				{#each navLinks as navLink}
+					<li>
+						<a href={navLink.href}>
+							<Icon icon={navLink.icon} size="sm" />
+							<span>{navLink.text}</span>
+						</a>
+					</li>
+				{/each}
 			</ul>
 		</div>
 	</div>
 
 	<div class="nav-end-lg">
-		<a class="nav-item" href="/exercises">
-			<Icon icon="dumbbell" size="sm" />
-			<span>Exercises</span>
-		</a>
-		<a class="nav-item" href="/training-plans">
-			<Icon icon="list" size="sm" />
-			<span>Training Plans</span>
-		</a>
-		<a class="nav-item" href="/nutrition">
-		<Icon icon="apple" size="sm" />
-		<span>Nutrition</span>
-	</a>
+		{#each navLinks as navLink}
+			<a class="nav-item" href={navLink.href}>
+				<Icon icon={navLink.icon} size="sm" />
+				<span>{navLink.text}</span>
+			</a>
+		{/each}
 	</div>
 </div>
 
