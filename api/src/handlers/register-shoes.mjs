@@ -1,6 +1,7 @@
 import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import { DynamoDBDocumentClient, PutCommand } from "@aws-sdk/lib-dynamodb";
 import { v4 as uuidv4 } from "uuid";
+import { buildHttpResponse } from '../utils/response.mjs';
 
 const client = new DynamoDBClient({});
 const ddbDocClient = DynamoDBDocumentClient.from(client);
@@ -21,10 +22,8 @@ export const handler = async (event) => {
 
   await ddbDocClient.send(new PutCommand(params));
 
-  const response = {
-    statusCode: 201,
-    body: JSON.stringify(body),
-  };
+  const response = buildHttpResponse(201, body);
+  console.log(response);
 
   // All log statements are written to CloudWatch
   console.info(

@@ -7,14 +7,22 @@ Description: >-
 Transform:
 - AWS::Serverless-2016-10-31
 
+Globals:
+  Api:
+    Cors: 
+        AllowHeaders: "'*'" 
+        AllowOrigin: "'*'"
+        AllowMethods: "'*'"
+  Function:
+    Runtime: nodejs22.x
+    MemorySize: 256
+
 Resources:
   GetAllShoesFn:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: ./
       Handler: src/handlers/get-all-shoes.handler
-      Runtime: nodejs22.x
-      MemorySize: 256
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref ShoesTable
@@ -32,7 +40,6 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Handler: src/handlers/get-by-id.getByIdHandler
-      Runtime: nodejs22.x
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref ShoesTable
@@ -50,8 +57,6 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Handler: src/handlers/register-shoes.handler
-      Runtime: nodejs22.x
-      MemorySize: 256
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref ShoesTable
