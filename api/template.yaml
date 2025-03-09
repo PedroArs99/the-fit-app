@@ -12,8 +12,8 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: ./
-      Handler: src/handlers/get-all-items.getAllItemsHandler
-      Runtime: nodejs20.x
+      Handler: src/handlers/get-all-shoes.handler
+      Runtime: nodejs22.x
       MemorySize: 256
       Policies:
         - DynamoDBCrudPolicy:
