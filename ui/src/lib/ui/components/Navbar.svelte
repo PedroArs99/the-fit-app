@@ -1,7 +1,7 @@
 <!-- @migration-task Error while migrating Svelte code: Cannot set properties of undefined (setting 'next') -->
 <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-<script>
-	import Icon from './Icon.svelte';
+	import type { IconLib } from './icons/Icon';
+	import Icon from './icons/Icon.svelte';
 </script>
 
 <div class="navbar">

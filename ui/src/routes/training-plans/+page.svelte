@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Icon from '$lib/ui/components/Icon.svelte';
+	import Icon from '$lib/ui/components/icons/Icon.svelte';
 	import type { TrainingPlan } from '$lib/training-plans/training-plan.model';
 	import { trainingPlanRepository } from '$lib/training-plans/training-plan.repository';
 	import { fade } from 'svelte/transition';

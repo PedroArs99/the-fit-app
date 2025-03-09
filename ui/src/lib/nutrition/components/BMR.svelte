@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Icon from '$lib/ui/components/Icon.svelte';
+	import Icon from '$lib/ui/components/icons/Icon.svelte';
 	import { blur } from 'svelte/transition';
 	import { bmr, effectiveDailyIncome } from '../calculations/bmr';
 

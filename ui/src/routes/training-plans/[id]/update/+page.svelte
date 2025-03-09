@@ -2,7 +2,7 @@
 	import UpdateTrainingPlanExerciseCard from '$lib/training-plans/components/UpdateTrainingPlanExerciseCard.svelte';
 	import type { TrainingPlan } from '$lib/training-plans/training-plan.model';
 	import { trainingPlanRepository } from '$lib/training-plans/training-plan.repository';
-	import Icon from '$lib/ui/components/Icon.svelte';
+	import Icon from '$lib/ui/components/icons/Icon.svelte';
 	import Page from '$lib/ui/components/Page.svelte';
 
 	interface Props {

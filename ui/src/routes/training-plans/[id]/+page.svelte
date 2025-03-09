@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Icon from '$lib/ui/components/Icon.svelte';
+	import Icon from '$lib/ui/components/icons/Icon.svelte';
 	import DailyExerciseCard from '$lib/training-plans/components/DailyExerciseCard.svelte';
 	import type { TrainingPlan } from '$lib/training-plans/training-plan.model';
 	import { pushState } from '$app/navigation';

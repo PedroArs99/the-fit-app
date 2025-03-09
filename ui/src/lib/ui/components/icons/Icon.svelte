@@ -12,6 +12,7 @@
 		faHeartPulse,
 		faList,
 		faPencil,
+		faPersonRunning,
 		faPlus,
 		faTrash
 	} from '@fortawesome/free-solid-svg-icons';
@@ -20,21 +21,8 @@
 	import { config, type SizeProp } from '@fortawesome/fontawesome-svg-core';
 
 	interface Props {
-		icon:
-			| 'apple'
-			| 'atom'
-			| 'bars'
-			| 'chevron-down'
-			| 'chevron-left'
-			| 'chevron-right'
-			| 'chevron-up'
-			| 'dumbbell'
-			| 'heart-pulse'
-			| 'link-new-tab'
-			| 'list'
-			| 'pencil'
-			| 'plus'
-			| 'trash';
+		icon: IconLib;
+			
 		size?: SizeProp | undefined;
 		spin?: boolean;
 	}
@@ -54,11 +42,13 @@
 		'link-new-tab': faArrowUpRightFromSquare,
 		list: faList,
 		pencil: faPencil,
+		'person-running': faPersonRunning,
 		plus: faPlus,
 		trash: faTrash
 	};
 
 	import '@fortawesome/fontawesome-svg-core/styles.css' // Import the CSS
+	import type { IconLib } from '../Icon';
 	config.autoAddCss = false // Tell Font Awesome to skip adding the CSS automatically since it's being imported above
 
 </script>
