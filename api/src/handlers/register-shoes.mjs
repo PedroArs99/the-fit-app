@@ -12,18 +12,19 @@ export const handler = async (event) => {
   const id = uuidv4();
   const body = JSON.parse(event.body);
 
+  const entity = {
+    ...body,
+    id
+  }
+
   var params = {
     TableName: tableName,
-    Item: {
-      ...body,
-      id,
-    },
+    Item: entity,
   };
 
   await ddbDocClient.send(new PutCommand(params));
 
-  const response = buildHttpResponse(201, body);
-  console.log(response);
+  const response = buildHttpResponse(201, entity);
 
   // All log statements are written to CloudWatch
   console.info(
