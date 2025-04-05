@@ -1,5 +1,7 @@
 export interface Shoe {
+  currentKm: number;
   id: string;
-  name: string;
+  maxKm: number;
   imageUrl: string;
+  name: string;
 }
