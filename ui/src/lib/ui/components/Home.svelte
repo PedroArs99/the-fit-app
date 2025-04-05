@@ -17,6 +17,11 @@
 		<Icon icon="apple" size="2x" />
 		<h2>Nutrition</h2>
 	</a>
+  
+  <a class="dashboard-item" href="/running/shoes">
+		<Icon icon="person-running" size="2x" />
+		<h2>Running</h2>
+	</a>
 </main>
 
 <style lang="postcss">
