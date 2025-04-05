@@ -1,4 +1,5 @@
 <script lang="ts">
+	import ShoeCard from '$lib/running/shoes/components/ShoeCard.svelte';
 	import type { Shoe } from '$lib/running/shoes/shoe.model';
 	import FullWidthCard from '$lib/ui/components/cards/FullWidthCard.svelte';
 	import Icon from '$lib/ui/components/icons/Icon.svelte';
@@ -22,18 +23,6 @@
 
 <Page title="Shoes" actions={actions}>
 		{#each shoes as shoe}
-			<FullWidthCard>
-				<div class="flex justify-start">
-					<img
-						class="card-image"
-						width="256px"
-						height="256px"
-						src={shoe.imageUrl}
-						alt={shoe.name}
-					/>
-
-					<span class="card-title">{shoe.name}</span>
-				</div>
-			</FullWidthCard>
+			<ShoeCard shoe={shoe}/>
 		{/each}
 </Page>
