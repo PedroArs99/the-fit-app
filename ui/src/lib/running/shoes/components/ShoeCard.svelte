@@ -1,5 +1,6 @@
 <script lang="ts">
 	import FullWidthCard from '$lib/ui/components/cards/FullWidthCard.svelte';
+	import ProgressBar from '$lib/ui/components/ProgressBar.svelte';
 	import type { Shoe } from '../shoe.model';
 
 	type Props = {
@@ -13,6 +14,11 @@
 	<div class="flex justify-start">
 		<img class="card-image" width="256px" height="256px" src={shoe.imageUrl} alt={shoe.name} />
 
-		<span class="card-title">{shoe.name}</span>
+		<div class="divider divider-horizontal"></div>
+
+		<div class="flex grow flex-col">
+			<span class="card-title">{shoe.name}</span>
+			<ProgressBar value={shoe.currentKm} max={shoe.maxKm} label={`${shoe.currentKm}/${shoe.maxKm} Km`} />
+		</div>
 	</div>
 </FullWidthCard>
