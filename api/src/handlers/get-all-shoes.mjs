@@ -10,6 +10,7 @@ const tableName = process.env.SHOES_TABLE;
 export const handler = async (event) => {
   var params = {
     TableName: tableName,
+    IndexName: "CurrentKmIndex",
   };
 
   const data = await ddbDocClient.send(new ScanCommand(params));
@@ -17,7 +18,6 @@ export const handler = async (event) => {
 
   const response = buildHttpResponse(200, items);
 
-  // All log statements are written to CloudWatch
   console.info(
     `response from: ${event.path} statusCode: ${response.statusCode} body: ${response.body}`
   );
