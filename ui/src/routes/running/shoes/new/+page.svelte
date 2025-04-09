@@ -27,14 +27,34 @@
 				<span class="label-text">Name</span>
 			</div>
 			<!-- svelte-ignore a11y_autofocus -->
-			<input
-				bind:value={shoes.name}
-				type="text"
-				placeholder="Type here"
-				class="input"
-				autofocus
-			/>
+			<input bind:value={shoes.name} type="text" placeholder="Type here" class="input" autofocus />
 		</label>
+
+		<div class="flex flex-wrap md:flex-nowrap md:gap-3">
+			<label class="form-control">
+				<div class="label">
+					<span class="label-text">Current Kms</span>
+				</div>
+				<input
+					bind:value={shoes.currentKm}
+					type="number"
+					placeholder="0"
+					class="input"
+				/>
+			</label>
+			
+			<label class="form-control">
+				<div class="label">
+					<span class="label-text">Max Kms</span>
+				</div>
+				<input
+					bind:value={shoes.maxKm}
+					type="number"
+					placeholder="1000"
+					class="input"
+				/>
+			</label>
+		</div>
 
 		<label class="form-control">
 			<div class="label">
