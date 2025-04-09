@@ -11,8 +11,8 @@
 </script>
 
 <FullWidthCard>
-	<div class="flex justify-start">
-		<img class="card-image" width="256px" height="256px" src={shoe.imageUrl} alt={shoe.name} />
+	<div class="flex flex-col md:flex-row justify-start">
+		<img class="card-image" height="256px" src={shoe.imageUrl} alt={shoe.name} />
 
 		<div class="divider divider-horizontal"></div>
 

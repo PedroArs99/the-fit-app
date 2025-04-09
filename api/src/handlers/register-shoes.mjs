@@ -26,7 +26,6 @@ export const handler = async (event) => {
 
   const response = buildHttpResponse(201, entity);
 
-  // All log statements are written to CloudWatch
   console.info(
     `response from: ${event.path} statusCode: ${response.statusCode} body: ${response.body}`
   );
