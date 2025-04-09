@@ -1,7 +1,7 @@
 import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import { DynamoDBDocumentClient, PutCommand } from "@aws-sdk/lib-dynamodb";
 import { v4 as uuidv4 } from "uuid";
-import { buildHttpResponse } from '../utils/response.mjs';
+import { buildHttpResponse } from "../utils/response.mjs";
 
 const client = new DynamoDBClient({});
 const ddbDocClient = DynamoDBDocumentClient.from(client);
@@ -14,8 +14,9 @@ export const handler = async (event) => {
 
   const entity = {
     ...body,
-    id
-  }
+    id,
+    gsiPartition: "currentKm",
+  };
 
   var params = {
     TableName: tableName,

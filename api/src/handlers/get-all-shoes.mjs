@@ -1,5 +1,6 @@
-import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
-import { DynamoDBDocumentClient, ScanCommand } from "@aws-sdk/lib-dynamodb";
+import { DynamoDBClient, QueryCommand } from "@aws-sdk/client-dynamodb";
+import { DynamoDBDocumentClient } from "@aws-sdk/lib-dynamodb";
+import { marshall, unmarshall } from "@aws-sdk/util-dynamodb";
 import { buildHttpResponse } from "../utils/response.mjs";
 
 const client = new DynamoDBClient({});
@@ -9,12 +10,17 @@ const tableName = process.env.SHOES_TABLE;
 
 export const handler = async (event) => {
   var params = {
-    TableName: tableName,
+    ExpressionAttributeValues: marshall({
+      ":partitionKey": "currentKm",
+    }),
     IndexName: "CurrentKmIndex",
+    KeyConditionExpression: "gsiPartition = :partitionKey",
+    ScanIndexForward: false,
+    TableName: tableName,
   };
 
-  const data = await ddbDocClient.send(new ScanCommand(params));
-  var items = data.Items;
+  const data = await ddbDocClient.send(new QueryCommand(params));
+  var items = data.Items.map(it => unmarshall(it));
 
   const response = buildHttpResponse(200, items);
 
