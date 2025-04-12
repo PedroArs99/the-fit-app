@@ -1,0 +1,6 @@
+quarkus:
+  lambda:
+    handler: test
+  package:
+    jar:
+      enabled: false
