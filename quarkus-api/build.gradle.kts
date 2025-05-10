@@ -15,6 +15,9 @@ val quarkusPlatformArtifactId: String by project
 val quarkusPlatformVersion: String by project
 
 dependencies {
+    implementation("io.quarkus:quarkus-container-image-jib")
+    implementation(enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}"))
+
     implementation("io.quarkus:quarkus-config-yaml")
     implementation("io.quarkus:quarkus-amazon-lambda-rest")
     implementation("io.quarkus:quarkus-arc")
