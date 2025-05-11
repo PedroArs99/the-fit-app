@@ -2,7 +2,8 @@
 
 ## How to build as Container Image
 ```shell
-./gradlew build -Dquarkus.native.enabled=true -Dquarkus.native.container-build=true -Dquarkus.container-image.build=true
+./gradlew build -Dquarkus.native.enabled=true -Dquarkus.native.container-build=true
+docker build -t termite.space/the-fit-app:x.x.x 
 ```
 
 ## Useful guides and docs
