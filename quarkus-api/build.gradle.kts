@@ -19,7 +19,6 @@ dependencies {
     implementation(enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}"))
 
     implementation("io.quarkus:quarkus-config-yaml")
-    implementation("io.quarkus:quarkus-amazon-lambda-rest")
     implementation("io.quarkus:quarkus-arc")
     implementation("io.quarkus:quarkus-kotlin")
     implementation("io.quarkus:quarkus-reactive-routes")
@@ -29,7 +28,6 @@ dependencies {
 }
 
 group = "space.termite"
-version = "0.0.0"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_21
@@ -39,6 +37,7 @@ java {
 tasks.withType<Test> {
     systemProperty("java.util.logging.manager", "org.jboss.logmanager.LogManager")
 }
+
 allOpen {
     annotation("jakarta.ws.rs.Path")
     annotation("jakarta.enterprise.context.ApplicationScoped")
