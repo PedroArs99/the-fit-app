@@ -4,9 +4,10 @@ Description: The Fit App Api written in Quarkus
 Resources:
   ECRRepository:
     Type: AWS::ECR::Repository
+    DeletionPolicy: Retain
     Properties:
       RepositoryName: termite.space/the-fit-app-api
-      ImageTagMutability: IMMUTABLE
+      ImageTagMutability: MUTABLE
   ECSCluster:
     Type: AWS::ECS::Cluster
     Properties:
@@ -14,6 +15,9 @@ Resources:
       CapacityProviders:
         - FARGATE
         - FARGATE_SPOT
+  ECSTaskRole:
+    Type: AWS::IAM::Role
+
   ECSTaskExecutionRole:
     Type: AWS::IAM::Role
     Properties:

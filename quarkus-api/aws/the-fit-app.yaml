@@ -1,0 +1,13 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Deploys The Fit App API and it's dependencies
+
+Resources:
+  TheFitAppApiStack:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: https://the-fit-app-cf-templates.s3.eu-central-1.amazonaws.com/api-deployment.yaml
+
+  TheFitAppApiServices:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: https://the-fit-app-cf-templates.s3.eu-central-1.amazonaws.com/app-services.yaml

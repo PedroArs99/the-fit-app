@@ -1,0 +1,28 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: AWS services consumed by The Fit App API
+
+Resources:
+ RunningShoesTable:
+   Type: AWS::DynamoDB::Table
+   Properties:
+     TableName: the-fit-app-api_running-shoes
+     AttributeDefinitions:
+       - AttributeName: id
+         AttributeType: S
+       - AttributeName: currentKm
+         AttributeType: N
+       - AttributeName: gsiPartition
+         AttributeType: S
+     BillingMode: PAY_PER_REQUEST
+     GlobalSecondaryIndexes:
+       - IndexName: CurrentKmIndex
+         KeySchema:
+           - AttributeName: gsiPartition
+             KeyType: HASH
+           - AttributeName: currentKm
+             KeyType: RANGE
+         Projection:
+           ProjectionType: ALL
+     KeySchema:
+       - AttributeName: id
+         KeyType: HASH
