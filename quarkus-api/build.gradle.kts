@@ -15,13 +15,22 @@ val quarkusPlatformArtifactId: String by project
 val quarkusPlatformVersion: String by project
 
 dependencies {
-    implementation("io.quarkus:quarkus-container-image-jib")
-    implementation(enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}"))
+    // AWS Services
+    implementation(enforcedPlatform("${quarkusPlatformGroupId}:quarkus-amazon-services-bom:${quarkusPlatformVersion}"))
 
-    implementation("io.quarkus:quarkus-config-yaml")
+    // DynamoDb
+    implementation("io.quarkiverse.amazonservices:quarkus-amazon-dynamodb")
+    implementation("io.quarkiverse.amazonservices:quarkus-amazon-dynamodb-enhanced")
+    implementation("software.amazon.awssdk:url-connection-client")
+
+    // Quarkus Platform
+    implementation(enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}"))
     implementation("io.quarkus:quarkus-arc")
+    implementation("io.quarkus:quarkus-config-yaml")
+    implementation("io.quarkus:quarkus-container-image-jib")
     implementation("io.quarkus:quarkus-kotlin")
     implementation("io.quarkus:quarkus-reactive-routes")
+
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
     testImplementation("io.quarkus:quarkus-junit5")
