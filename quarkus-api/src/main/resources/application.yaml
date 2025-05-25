@@ -1,4 +1,9 @@
 quarkus:
+  dynamodb:
+    aws:
+      region: eu-central-1
+      credentials:
+        type: default
   http:
     cors:
       enabled: true
