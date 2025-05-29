@@ -26,4 +26,8 @@ class RunningShoesCrudService @Inject constructor(
     fun findAll(): Uni<List<RunningShoes>> {
         return runningShoesDynamoRepository.findAll()
     }
+
+    fun findById(id: UUID): Uni<RunningShoes> {
+        return runningShoesDynamoRepository.findById(id)
+    }
 }

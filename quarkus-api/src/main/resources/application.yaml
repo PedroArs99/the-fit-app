@@ -1,3 +1,7 @@
+app:
+  dynamodb:
+    running-shoes-table-name: the-fit-app-api_running-shoes
+
 quarkus:
   devservices:
     enabled: false
