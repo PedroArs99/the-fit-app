@@ -14,6 +14,20 @@ class RunningShoesEntity() {
     var imageUrl: String? = null
     var name: String? = null
 
+    constructor(
+        currentKm: Double,
+        id: UUID,
+        maxKm: Double,
+        imageUrl: String,
+        name: String
+    ) : this() {
+        this.currentKm = currentKm
+        this.id = id
+        this.maxKm = maxKm
+        this.imageUrl = imageUrl
+        this.name = name
+    }
+
     fun toDomain(): RunningShoes = RunningShoes(
         currentKm = currentKm ?: throw RuntimeException("Error: Missing currentKm!"),
         id = id ?: throw RuntimeException("Error: Missing id!"),
@@ -22,3 +36,7 @@ class RunningShoesEntity() {
         name = name ?: throw RuntimeException("Error: Missing name!"),
     )
 }
+
+fun RunningShoes.toEntity() = RunningShoesEntity(
+    currentKm, id, maxKm, imageUrl, name
+)
