@@ -38,6 +38,7 @@
 				<input
 					bind:value={shoes.currentKm}
 					type="number"
+					step="0.01"
 					placeholder="0"
 					class="input"
 				/>
