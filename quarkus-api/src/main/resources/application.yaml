@@ -1,4 +1,6 @@
 quarkus:
+  devservices:
+    enabled: false
   dynamodb:
     aws:
       region: eu-central-1
