@@ -1,5 +1,15 @@
-nav {
-    padding: 16px;
-    
+:host {
     width: 100%;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+
+    padding: 16px;
+    width: 100%;
+}
+
+.active-link {
+    color: var(--color-primary)
 }
