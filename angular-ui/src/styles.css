@@ -3,7 +3,6 @@
   themes: "the-fit-app"
 };
 
-
 @plugin "daisyui/theme" {
   name: "the-fit-app";
   default: true;
@@ -15,7 +14,7 @@
   --color-base-300: "rgba(247, 250, 250,0.95)";
 
   --color-base-content: oklch(21% 0.006 285.885);
-  --color-primary: oklch(45% 0.24 277.023);
+  --color-primary: #52946B;
   --color-primary-content: oklch(93% 0.034 272.788);
   --color-secondary: oklch(65% 0.241 354.308);
   --color-secondary-content: oklch(94% 0.028 342.258);
@@ -42,3 +41,7 @@
   --noise: 0;
 }
 
+html,body {
+  width: 100%;
+  height: 100%;
+}
