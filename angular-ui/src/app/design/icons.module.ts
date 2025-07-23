@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FaIconComponent, FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { faHouse, faPersonRunning } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faHouse, faPersonRunning } from '@fortawesome/free-solid-svg-icons';
 
 const icons = [
+  faArrowLeft,
   faHouse,
   faPersonRunning
 ]
