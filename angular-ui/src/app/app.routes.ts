@@ -8,6 +8,10 @@ export const routes: Routes = [
         title: 'The Fit App - Home'
     },
     {
+        path: 'running',
+        loadChildren: () => import('./running/running.module').then(m => m.RunningModule)
+    },
+    {
         path: '**',
         redirectTo: 'home'
     }
