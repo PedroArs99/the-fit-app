@@ -7,5 +7,6 @@ import { Component, Input } from '@angular/core';
     styleUrl: './page-title.component.css',
 })
 export class PageTitleComponent {
-  @Input({ required: true }) title!: string; 
+  @Input({ required: true }) title!: string;
+  @Input() withBackNavigation: boolean = false;
 }
